@@ -142,18 +142,16 @@ editor.on('beforeChange',function(cm,change){
 
 
 
-$("save").click(function(){
-    $.ajax({url: "JavaScript/missile_command.js", success: function(result){
-    result=editor.getValue();
-    }});
+$("#save").click(function(){
+  var data= new FormData();
+  data.append("data", doc.getValue());
+  console.log(data);
+  var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
+  xhr.open('post', 'saveFile.php', false);
+  xhr.send(data);
 });
 
 function onNewLine(){
     editor.replaceSelection("");
 }
 
-
-function load_js()
-{
-
-}

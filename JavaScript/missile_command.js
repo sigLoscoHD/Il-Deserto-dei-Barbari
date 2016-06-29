@@ -8,7 +8,7 @@
 
 var MC = MC || (function() {
     var engine = (function() {
-        // Private variables protected by closure
+        // Private variables protected by closureeeeeeeeeeeeeeeeee
         var FPS = 1000 / 30,
             _canvas = document.querySelector('canvas'),
             _ctx = _canvas.getContext('2d'),
