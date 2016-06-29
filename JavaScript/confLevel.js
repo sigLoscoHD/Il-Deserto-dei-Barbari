@@ -89,6 +89,8 @@ $(window).load(function(){
         setTimeout(function(){
            $("#help1").removeClass("disabled");
            $("#help1").css("color","red");
+           var audio = new Audio('audio/ring.mp3');
+           audio.play();
            $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Help avaiable! <span class='glyphicon glyphicon-arrow-up'></span></div>");
            setTimeout(function(){
                $(".alert").alert('close');
