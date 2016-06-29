@@ -1,0 +1,66 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24-giu-2016, 13.38.04
+    Author     : matte
+*/
+.readOnly{
+    background-color: #CACACA;
+}
+#orders{
+    position:absolute;
+    left: 80%;
+}          
+#help{
+    position:absolute;
+    left: 90%;
+}    
+
+.disabled{
+    pointer-events:none;
+    opacity:0.4;
+}
+.alert{
+    position: absolute;
+    top:87%;
+    left:65%;
+    width:30%;
+}
+#codice{
+	position: absolute;
+	top: 10%;
+	left: 45%;
+	width: 50%;
+}
+.CodeMirror{
+	 border: 4px solid black;
+         height: auto;
+}
+
+#result{
+	position: absolute;
+}
+
+#canvas{
+    margin-left: 5%;
+    margin-top : 1%;
+}
+
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+#save{
+    position: absolute;
+    left:50%;
+    top:110%;
+}
+#valuated{
+    position: absolute;
+    left:10%;
+    top:110%;
+}

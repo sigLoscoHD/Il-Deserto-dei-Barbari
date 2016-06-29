@@ -1,0 +1,120 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 8-giu-2016, 10.18.54
+    Author     : matteo
+*/
+body {
+    background-image: url("../images/Sfondo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+
+}
+.navbar-brand{
+    font-weight: bold;
+}
+
+#voci-nav{
+    font-size: medium;
+}
+
+.jumbotron {
+    position: fixed;
+    height: 30%;
+    width: 70%;
+    top: 20%;
+    left: 18%;
+    background: transparent;
+    
+}
+
+#buttonJumbotron{
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+}
+
+#play{
+    height: 15%;  
+    width: 25%;
+    font-size: x-large;
+}
+
+#learn-more{
+    height: 15%;  
+    width: 25%;
+    font-size: x-large;
+
+}
+
+#titleDeserto{
+   text-align: center;
+   font-weight: bold;
+}
+
+#titleLearn{
+    text-align: center;
+    font-weight: bold;
+}
+
+#menu-levels{
+    width: 30% ;
+    height: 30%;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-color: white;
+    border: solid black 3px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 10px;
+}
+
+#basics{
+    width: 30% ;
+    height: 30%;
+}
+
+#levels{
+    width: 40% ;
+    margin: 0 auto
+}
+
+#titleGame{
+    text-align: center;
+    font-weight: bold;
+}
+
+#subTitleGame{
+    text-align: center;
+    font-weight: bold;
+}
+
+#basics{
+    position:relative;
+}
+
+.lev{
+    margin-top: 50%;
+    margin-bottom: 30%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.red .active a,
+.red .active a:hover {
+    background-color: red;
+}
+
+.nav-pills > .active > a, .nav-pills > .active > a:hover {
+    background-color: red;
+}
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
+    background-color:red;
+}

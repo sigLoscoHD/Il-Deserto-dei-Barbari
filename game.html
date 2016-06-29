@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Playing...</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS import -->
+        <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="CSS/stile.css" rel="stylesheet">
+        <!-- JS import -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Navbar-->
+     <div id="menu">
+        <nav class="navbar navbar-default">
+         <div class="container-fluid">
+         <!-- Brand -->
+          <div class="navbar-header">
+           <a class="navbar-brand" href="home.html">Learn JavaScript</a>
+         </div>
+         <!-- Voci della navbar -->
+         <div class="collapse navbar-collapse" id="voci-nav">
+           <ul class="nav navbar-nav">
+             <li><a href="game.html"> Play!</a></li>
+             <li><a href="aboutUs.html"> About Us</a></li>
+           </ul>
+         </div><!-- /.navbar-collapse -->
+       </div><!-- /.container-fluid -->
+     </nav>
+    </div>
+          <h1 id="titleGame">Start playing!</h1>
+          <h3 id="subTitleGame">Choose a level</h3>
+        
+        <div id="menu-levels">
+            <ul class="nav nav-pills red">
+                <li id="btnLev" role="presentation" class="active"><a href="#basics">Start with the basics</a></li>
+                <li id="btnLev" role="presentation"class="disabled"><a href="#refactor">Refactoring</a></li>
+                <li id="btnLev" role="presentation" class="disabled"><a href="#design">Designing</a></li>
+            </ul>
+            
+            <div id="levels">
+                <div id="basics" class="tab-pane fade in active">
+                    <a href="level.html?id=1"><button type="button" class="btn btn-danger btn-lg lev">Level 1</button></a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev" >Level 2</button></a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 3</button></a>
+                </div>
+                <div id="refactor" class="tab-pane fade disabled hidden">
+                    <a href=""> <button type="button" class="btn btn-danger btn-lg disabled lev ">Level 1</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 2</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 3</button> </a>
+                </div>
+                <div id="design" class="tab-pane fade disabled hidden">
+                    <a href=""><button type="button" class="btn btn-danger btn-lg disabled lev">Level 1</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 2</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 3</button> </a>
+                </div>
+            </div>
+        </div>
+        
+     
+    </body>
+    
+</html>
+

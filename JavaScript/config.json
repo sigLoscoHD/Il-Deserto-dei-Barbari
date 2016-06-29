@@ -1,0 +1,25 @@
+{
+    "levels": 
+            [
+        {
+            "id":"1",
+            "title":"Livello 1",
+            "editable": {
+                "begin":10,
+                "end":20
+            }, 
+            "command": "Cambia il ...................",
+            "help":"ammazzati tanto non sai programmare"
+        },
+        {   
+            "id": "2",
+            "title": "Livello 2",
+            "command": "Ops.........",
+             "editable": {
+                "begin":40,
+                "end":55
+            }, 
+            "help":"bene bene"
+        }
+            ]
+}
