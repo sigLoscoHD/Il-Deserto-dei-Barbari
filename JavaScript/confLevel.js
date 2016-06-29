@@ -20,7 +20,7 @@ function getUrlParameter(sParam) {
                     }
 };
 
-var parametro=getUrlParameter("id");
+var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
 
 
 //riprende il file config.json di configurazione dei livelli
@@ -72,8 +72,9 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
 doc=editor.getDoc();
 doc.setValue(missile);
 
-
+//appendiamo il titolo del livello sopra all'editor
 $("#numlev").append(config.title);
+
 //Modal: caricamento automatico del modal contenente le istruzioni
 $(window).load(function(){
         $("#text").empty();
@@ -84,12 +85,12 @@ $(window).load(function(){
         $("#text").append(config.command);
 });
 
+var audio = new Audio('audio/ring.mp3');
 
 $(window).load(function(){
         setTimeout(function(){
            $("#help1").removeClass("disabled");
            $("#help1").css("color","red");
-           var audio = new Audio('audio/ring.mp3');
            audio.play();
            $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Help avaiable! <span class='glyphicon glyphicon-arrow-up'></span></div>");
            setTimeout(function(){
@@ -141,7 +142,6 @@ editor.on('beforeChange',function(cm,change){
         change.cancel();
     }
 });
-
 
 
 $("#save").click(function(){
