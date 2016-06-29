@@ -78,6 +78,8 @@ $("#numlev").append(config.title);
 $(window).load(function(){
         $("#text").empty();
         $('#myModal').modal('show');
+        $(".modal-title").empty();
+        $(".modal-title").append("Orders");
         $("#text").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
 });
@@ -99,6 +101,8 @@ $(window).load(function(){
  $("#orders").click(function() {
         $("#text").empty();
         $("#myModal").modal();
+        $(".modal-title").empty();
+        $(".modal-title").append("Orders");
         $("#text").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
        
@@ -107,6 +111,9 @@ $(window).load(function(){
     $("#help1").click(function() {
         $("#text").empty();
         $("#myModal").modal();
+        $(".modal-title").empty();
+        $(".modal-title").append("Help me");
+        $("#text").append("<img src='images/crazyprog.jpg'/>");
         $("#text").append(config.help);
        
     });  
