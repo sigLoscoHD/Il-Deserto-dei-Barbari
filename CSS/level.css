@@ -45,8 +45,29 @@ and open the template in the editor.
 }
 
 #canvas{
+    position: absolute;
     margin-left: 5%;
     margin-top : 1%;
+    position: absolute; 
+    width:480px; 
+    height:480px;
+}
+
+#info{
+    background-color: rgb(0, 5, 20);
+    margin-left: 5%;
+    margin-top : 2%;
+    width:480px; 
+    height:480px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    line-height: 90%;
+}
+
+#textplay{
+    margin-top: 20%;
+    font-style: italic;
 }
 
 h1{
