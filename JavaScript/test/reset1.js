@@ -47,6 +47,10 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             _gameInterval = setInterval(_gameLoop, FPS); // setInterval è una funzione del window object. Chiama una funzione ogni tot milliseconds, return id timer
         }
         
+        function re_run(){
+            _gameInterval = setInterval(_gameLoop, FPS);
+        }
+        
         function startWave() {
             _new_missile = 0;
             _missiles_created = 0;
@@ -257,7 +261,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             'getRandomTarget': getRandomTarget,
             'launchRocket': launchRocket,
             'run': run,
-            'pause' : pause
+            'pause' : pause,
+            're_run': re_run
         };
     }) (); //private field
     
@@ -498,17 +503,30 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
     };
 
     function init() {
-        engine.loadLevel(levels[0]);
-        engine.run();
+        engine.loadLevel(levels[0]);    
     }
     
     function pause() {
         engine.pause();
     }
-
+    
+    //check se è la prima volta che vado sopra al gioco;
+    var flag=0;
+    
+    function re_run(){
+        if(flag==1){
+            engine.re_run();
+        }
+        else{   
+            engine.run();
+            flag=1;
+        }
+    }
+    
     return {
         'init': init,
-        'pause' : pause
+        'pause' : pause,
+        're_run': re_run
     };
    
 })();

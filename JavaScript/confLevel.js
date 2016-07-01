@@ -186,8 +186,8 @@ function onNewLine(){
 }
 
 function soluzione1(){
-   var line1=doc.getLine(69);
-   var line2=doc.getLine(70);
+   var line1=doc.getLine(74);
+   var line2=doc.getLine(75);
    var result1="'x': event.clientX - this.offsetLeft,";
    var result2="'y': event.clientY - this.offsetTop";
    console.log(line1);
