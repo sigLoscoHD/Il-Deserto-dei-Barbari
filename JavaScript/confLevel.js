@@ -150,6 +150,11 @@ $("#save").click(function(){
   xhr.send(data);
 });
 
+function hidden(){
+    $("#textplay").css("visibility","hiddem");
+}
+
+
 function onNewLine(){
     editor.replaceSelection("");
 }

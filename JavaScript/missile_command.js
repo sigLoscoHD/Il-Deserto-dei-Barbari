@@ -216,9 +216,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
          * @param {object} level Level data.
          */
         function loadLevel(level) {
-            _ctx.fillStyle = _gradient;
-            _ctx.fillRect(0, 0, _width, _height);
-            // Add game entities        
+            // Add game entities
             _entities.turret = new Turret(_width, _height);
             _entities.targets.push(_entities.turret);
             for (var i = 0; i < level.homes.length; i++) {
@@ -505,8 +503,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
     };
 
     function init() {
-        engine.loadLevel(levels[0]);
-        //engine.run();
+        engine.loadLevel(levels[0]);    
     }
     
     function pause() {
@@ -520,7 +517,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
         if(flag==1){
             engine.re_run();
         }
-        else{
+        else{   
             engine.run();
             flag=1;
         }
