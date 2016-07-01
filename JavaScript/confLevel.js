@@ -78,10 +78,11 @@ $("#numlev").append(config.title);
 //Modal: caricamento automatico del modal contenente le istruzioni
 $(window).load(function(){
         $("#text").empty();
+        $("#image").empty();
         $('#myModal').modal('show');
         $(".modal-title").empty();
         $(".modal-title").append("Orders");
-        $("#text").append("<img src='images/generale.jpg'/>");
+        $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
 });
 
@@ -103,29 +104,25 @@ $(window).load(function(){
 
  $("#orders").click(function() {
         $("#text").empty();
+        $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
         $(".modal-title").append("Orders");
-        $("#text").append("<img src='images/generale.jpg'/>");
+        $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
        
     });
     
     $("#help1").click(function() {
         $("#text").empty();
+        $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
         $(".modal-title").append("Help me");
-        $("#text").append("<img src='images/crazyprog.jpg'/>");
+        $("#image").append("<img src='images/crazyprog.jpg'/>");
         $("#text").append(config.help);
        
     });  
-    
-$("#close, #esc").click(function() {
-       $("#text").empty();
-    });
-
-
 
 //linee non editabili sulla base del livello
 var readOnly=new Array();

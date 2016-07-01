@@ -47,6 +47,10 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             _gameInterval = setInterval(_gameLoop, FPS); // setInterval è una funzione del window object. Chiama una funzione ogni tot milliseconds, return id timer
         }
         
+        function re_run(){
+            _gameInterval = setInterval(_gameLoop, FPS);
+        }
+        
         function startWave() {
             _new_missile = 0;
             _missiles_created = 0;
@@ -115,8 +119,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             var count = _entities.rockets.length;
             for (var i = 0; i < count; i++) {
                 _entities.rockets[i].move();
-                _rocketPosx = _entities.rockets[i].pos.x ;
-                _rocketPosy = _entities.rockets[i].pos.y ;
+                _rocketPosX = _entities.rockets[i].pos.x ;
+                _rocketPosY = _entities.rockets[i].pos.y ;
             }
 
             // Draw entities to the canvas
@@ -136,8 +140,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             );
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('click x ='+ _clickX + '   click y ='+ _clickY, 10,40 );
-            _ctx.fillText('Rocket pos x =' + _rocketPosx ,10,50);
-            _ctx.fillText('Rocket pos y =' + _rocketPosy ,10,60);
+            _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
+            _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);
             
         }
 
@@ -212,7 +216,9 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
          * @param {object} level Level data.
          */
         function loadLevel(level) {
-            // Add game entities
+            _ctx.fillStyle = _gradient;
+            _ctx.fillRect(0, 0, _width, _height);
+            // Add game entities        
             _entities.turret = new Turret(_width, _height);
             _entities.targets.push(_entities.turret);
             for (var i = 0; i < level.homes.length; i++) {
@@ -257,7 +263,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             'getRandomTarget': getRandomTarget,
             'launchRocket': launchRocket,
             'run': run,
-            'pause' : pause
+            'pause' : pause,
+            're_run': re_run
         };
     }) (); //private field
     
@@ -499,16 +506,30 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
 
     function init() {
         engine.loadLevel(levels[0]);
-        engine.run();
+        //engine.run();
     }
     
     function pause() {
         engine.pause();
     }
-
+    
+    //check se è la prima volta che vado sopra al gioco;
+    var flag=0;
+    
+    function re_run(){
+        if(flag==1){
+            engine.re_run();
+        }
+        else{
+            engine.run();
+            flag=1;
+        }
+    }
+    
     return {
         'init': init,
-        'pause' : pause
+        'pause' : pause,
+        're_run': re_run
     };
    
 })();
