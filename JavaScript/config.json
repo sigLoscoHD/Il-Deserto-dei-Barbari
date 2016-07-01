@@ -5,10 +5,10 @@
             "id":"1",
             "title":"Livello 1",
             "editable": {
-                "begin":10,
-                "end":20
+                "begin":67,
+                "end":72
             }, 
-            "command": "Cambia il ...................",
+            "command": "Soldato!! A chi stai mirando?!?! Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
             "help":"ammazzati tanto non sai programmare"
         },
         {   

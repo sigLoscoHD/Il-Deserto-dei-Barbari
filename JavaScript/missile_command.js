@@ -68,7 +68,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
                 'x': event.clientX - this.offsetLeft,
-                'y': event.clientY - this.offsetTop 
+                'y': event.clientY - this.offsetTop
                 
             };
              _clickX = event.clientX - this.offsetLeft;
@@ -115,8 +115,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             var count = _entities.rockets.length;
             for (var i = 0; i < count; i++) {
                 _entities.rockets[i].move();
-                _rocketPosx = _entities.rockets[i].pos.x ;
-                _rocketPosy = _entities.rockets[i].pos.y ;
+                _rocketPosX = _entities.rockets[i].pos.x ;
+                _rocketPosY = _entities.rockets[i].pos.y ;
             }
 
             // Draw entities to the canvas
@@ -136,8 +136,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             );
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('click x ='+ _clickX + '   click y ='+ _clickY, 10,40 );
-            _ctx.fillText('Rocket pos x =' + _rocketPosx ,10,50);
-            _ctx.fillText('Rocket pos y =' + _rocketPosy ,10,60);
+            _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
+            _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);
             
         }
 

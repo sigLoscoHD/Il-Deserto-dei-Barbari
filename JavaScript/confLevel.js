@@ -48,7 +48,7 @@ var missile;
 
 //riprendiamo il codice di missile_command
 $.ajax({
-    url:"JavaScript/missile_command.js",
+    url:"JavaScript/test/reset"+parametro+".js",
     type:"get",
     async:false,
     success:function(data){
@@ -74,6 +74,10 @@ doc.setValue(missile);
 
 //appendiamo il titolo del livello sopra all'editor
 $("#numlev").append(config.title);
+//al caricamento della pagina andiamo a caricare il giusto js con il bug in base al livello
+$(window).load(function (){
+    $("#script").attr("src","Javascript/test/reset"+parametro+".js");
+});
 
 //Modal: caricamento automatico del modal contenente le istruzioni
 $(window).load(function(){
@@ -145,15 +149,54 @@ editor.on('beforeChange',function(cm,change){
 
 
 $("#save").click(function(){
-  var data= new FormData();
-  data.append("data", doc.getValue());
-  console.log(data);
-  var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-  xhr.open('post', 'saveFile.php', false);
-  xhr.send(data);
+    var result= soluzione1();
+    if (result===true){
+    var data= new FormData();
+    data.append("data", doc.getValue());
+    var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
+    xhr.open('post', 'saveFile.php', false);
+    xhr.send(data);
+    alert("soluzione corretta!!");
+}
+else{
+    alert("soluzione sbagliata!!");
+}
+});
+
+var resetText;
+
+$("#reset").click(function(){
+    $.ajax({
+        url:"JavaScript/test/reset"+ parametro+ ".js",
+        type:"get",
+        async:false,
+        success:function(data){
+             resetText=data;
+        }
+    });
+    console.log("dati----------->" + resetText);
+    doc.setValue(resetText);
+    console.log("after reset1==>" + doc.getValue());
 });
 
 function onNewLine(){
     editor.replaceSelection("");
 }
 
+function soluzione1(){
+   var line1=doc.getLine(69);
+   var line2=doc.getLine(70);
+   var result1="'x': event.clientX - this.offsetLeft,";
+   var result2="'y': event.clientY - this.offsetTop";
+   console.log(line1);
+   console.log(line2);
+   console.log(result1);
+   console.log(result2);
+   if (line1.trim() === result1 && line2.trim() === result2){
+       return true;
+   }else
+   {
+       return false;
+   }
+   
+}
