@@ -6,10 +6,13 @@
  * 
  */
 
-var MC = MC || (function() {
-    var engine = (function() {
+
+
+var MC = MC || (function() { // self invoking anonymous function expression. Creates a temporary local scope 
+    // it's all done here the game
+    var engine = (function() { // the return is assigned to engine
         // Private variables protected by closure
-        var FPS = 1000 / 30,
+        var FPS = 1000 / 80, // piu valore è piccolo maggiore è la velocità gioco
             _canvas = document.querySelector('canvas'),
             _ctx = _canvas.getContext('2d'),
             _width = _canvas.width || _canvas.style.width,
@@ -20,6 +23,12 @@ var MC = MC || (function() {
             _missiles_created = 0,
             _missiles_destroyed = 0,
             _gameInterval,
+            _rocketPosX = 0,
+            _rocketPosY = 0,
+            _clickX = 0,
+            _clickY = 0,
+            
+            // javascript object
             _entities = {
                 'missiles': [],
                 'targets': [],
@@ -34,7 +43,7 @@ var MC = MC || (function() {
         function run() {
             startWave();
             Wave.init();
-            _gameInterval = setInterval(_gameLoop, FPS);
+            _gameInterval = setInterval(_gameLoop, FPS); // setInterval è una funzione del window object. Chiama una funzione ogni tot milliseconds, return id timer
         }
         
         function startWave() {
@@ -53,13 +62,16 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
+        
         function launchRocket(event) {
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
                 'x': event.clientX - this.offsetLeft,
                 'y': event.clientY - this.offsetTop 
+                
             };
-            
+             _clickX = event.clientX - this.offsetLeft;
+             _clickY = event.clientY - this.offsetTop ;
             _entities.rockets.push(new Rocket(
                 target,
                 {
@@ -71,6 +83,7 @@ var MC = MC || (function() {
 
         /**
          * Game loop
+         * 
          */
         function _gameLoop() {
             // Wave end?
@@ -101,6 +114,8 @@ var MC = MC || (function() {
             var count = _entities.rockets.length;
             for (var i = 0; i < count; i++) {
                 _entities.rockets[i].move();
+                _rocketPosx = _entities.rockets[i].pos.x ;
+                _rocketPosy = _entities.rockets[i].pos.y ;
             }
 
             // Draw entities to the canvas
@@ -119,6 +134,10 @@ var MC = MC || (function() {
                 10, 20
             );
             _ctx.fillText('Level = ' + _level, 10, 30);
+            _ctx.fillText('click x ='+ _clickX + '   click y ='+ _clickY, 10,40 );
+            _ctx.fillText('Rocket pos x =' + _rocketPosx ,10,50);
+            _ctx.fillText('Rocket pos y =' + _rocketPosy ,10,60);
+            
         }
 
         /**
@@ -230,7 +249,7 @@ var MC = MC || (function() {
             return _width;
         }
 
-        // Expose public methods
+        // Expose public methods, the others are private
         return {
             'loadLevel': loadLevel,
             'getWidth': getWidth,
@@ -238,11 +257,11 @@ var MC = MC || (function() {
             'launchRocket': launchRocket,
             'run': run
         };
-    }());
+    }) (); //private field
     
     
     var Wave = (function() {
-        var TOTAL_WAVE_NUM = 40,
+        var TOTAL_WAVE_NUM = 40, // number of levels
             _waves = [];
         
         /**
@@ -256,7 +275,7 @@ var MC = MC || (function() {
                     'BombChance': i * 2,
                     'FlyerChance': 5,
                     'TimeBetweenShots': 3000 - i * 200,
-                    'MissileSpeed': 0.5 + (i / 4)
+                    'MissileSpeed': 0.3 + (i / 5) // diminuisci valore per maggiore lentezza
                 };
             }
         }
@@ -266,23 +285,25 @@ var MC = MC || (function() {
          */
         function getWave(level) {
             return _waves[level];
-        }
-        
+        }       
+        // metodi visibili all'esterno
         return {
             'init': init,
             'getWave': getWave
         };
-    }());
+    }()); // private field
 
 
     /**
      * Game entity class.
+     * 
      */
-    var Entity = function Entity() {};
+    var Entity = function Entity() {}; //private constructor with weird syntax
 
     /**
     * Draw the game entity on the canvas
-    *
+    * We use the prototype property in order to add a method to existing objects
+    * Turret and homes
     * @param {elm} ctx Canvas context.
     */
     Entity.prototype.draw = function(ctx) {
@@ -379,12 +400,13 @@ var MC = MC || (function() {
     };
     
     var Rocket = function Rocket(target, origin) {
-        this.fullRadius = 30;
+        this.fullRadius = 45;
         this.currentRadius = 0;
         this.expanding = true;
         this.explosionSpeed = 1;
         this.exploded = false;
-        this.speed = 50;
+        //precisione dipende da velocità poichè il razzo (linea) si muove ogni tot pixel 
+        this.speed = 5; 
         this.distance = 0;
         
         this.target = target;
@@ -401,14 +423,14 @@ var MC = MC || (function() {
     };
     
     /* Some comment.
-     *
+     * queste due funzioni sono lanciate nel game loop
      */
     Rocket.prototype.move = function() {
         if (this.exploded) {
             return;
         }
-        
-        this.distance -= this.speed;
+        // this.distance = this.distance - this.speed. questo valore deve essere negativo per orientamento corretto
+        this.distance -= this.speed; 
         
         this.pos.x = Math.sin(this.angle) * this.distance + this.origin.x;
         this.pos.y = Math.cos(this.angle) * this.distance + this.origin.y;
@@ -444,7 +466,7 @@ var MC = MC || (function() {
                 this.pos.y
             );
             ctx.closePath();
-            ctx.stroke();
+            ctx.stroke(); // disegna linea
         }        
     };
 
@@ -454,13 +476,14 @@ var MC = MC || (function() {
      */
     var levels = [];
     levels[0] = {
+   
         'homes': [
-            { 'x': 55,  'y': 400 },
-            { 'x': 105, 'y': 405 },
+            { 'x': 45,  'y': 400 },
+            { 'x': 85, 'y': 405 },
             { 'x': 158, 'y': 400 },
             { 'x': 270, 'y': 410 },
             { 'x': 325, 'y': 405 },
-            { 'x': 390, 'y': 400 }
+            { 'x': 395, 'y': 400 }
         ],
         'background': [
             {'colour': 'rgb(0, 5, 20)', 'position': 0},
@@ -480,7 +503,7 @@ var MC = MC || (function() {
     return {
         'init': init
     };
+   
+})();
 
-}());
-
-MC.init();
+MC.init(); //inizializza gioco 
