@@ -34,6 +34,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
                 'targets': [],
                 'rockets': [],
                 'turret': null
+                
             },
             _levels = [];
 
@@ -55,7 +56,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
         /**
          * Pause game
          */
-        function _pause() {
+        function pause() {
             clearInterval(_gameInterval);
         }
         
@@ -255,7 +256,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             'getWidth': getWidth,
             'getRandomTarget': getRandomTarget,
             'launchRocket': launchRocket,
-            'run': run
+            'run': run,
+            'pause' : pause
         };
     }) (); //private field
     
@@ -499,9 +501,14 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
         engine.loadLevel(levels[0]);
         engine.run();
     }
+    
+    function pause() {
+        engine.pause();
+    }
 
     return {
-        'init': init
+        'init': init,
+        'pause' : pause
     };
    
 })();
