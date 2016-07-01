@@ -5,8 +5,8 @@
             "id":"1",
             "title":"Livello 1",
             "editable": {
-                "begin":67,
-                "end":72
+                "begin":70,
+                "end":75
             }, 
             "command": "Soldato!! A chi stai mirando?!?! Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
             "help":"ammazzati tanto non sai programmare"
