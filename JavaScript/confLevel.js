@@ -148,46 +148,30 @@ editor.on('beforeChange',function(cm,change){
 $("#save").click(function(){
     var result= soluzione1();
     if (result===true){
-    var data= new FormData();
-    data.append("data", doc.getValue());
-    var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-    xhr.open('post', 'saveFile.php', false);
-    xhr.send(data);
-    alert("soluzione corretta!!");
-}
-else{
-    alert("soluzione sbagliata!!");
-}
+        var data= new FormData();
+        data.append("data", doc.getValue());
+        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
+        xhr.open('post', 'saveFile.php', false);
+        xhr.send(data);
+        alert("soluzione corretta!!");
+    }
+    else
+        alert("soluzione sbagliata!!");
 });
 
 var resetText;
 
 $("#reset").click(function(){
-    $.ajax({
-        url:"JavaScript/test/reset"+ parametro+ ".js",
-        type:"get",
-        async:false,
-        success:function(data){
-             resetText=data;
-        }
-    });
-    console.log("dati----------->" + resetText);
-    doc.setValue(resetText);
-    console.log("after reset1==>" + doc.getValue());
+     doc.undo();
 });
-
-function hidden(){
-    $("#textplay").css("visibility","hiddem");
-}
-
 
 function onNewLine(){
     editor.replaceSelection("");
 }
 
 function soluzione1(){
-   var line1=doc.getLine(74);
-   var line2=doc.getLine(75);
+   var line1=doc.getLine(73);
+   var line2=doc.getLine(74);
    var result1="'x': event.clientX - this.offsetLeft,";
    var result2="'y': event.clientY - this.offsetTop";
    console.log(line1);
