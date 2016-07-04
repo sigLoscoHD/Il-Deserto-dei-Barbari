@@ -76,7 +76,7 @@ doc.setValue(missile);
 $("#numlev").append(config.title);
 //al caricamento della pagina andiamo a caricare il giusto js con il bug in base al livello
 $(window).load(function (){
-    $("#script").attr("src","Javascript/test/reset"+parametro+".js");
+    $("#script").attr("src","JavaScript/test/reset"+parametro+".js");
 });
 
 //Modal: caricamento automatico del modal contenente le istruzioni
@@ -153,7 +153,9 @@ $("#save").click(function(){
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'saveFile.php', false);
         xhr.send(data);
+        window.location="levelSucc.html?id=1";
         alert("soluzione corretta!!");
+        
     }
     else
         alert("soluzione sbagliata!!");
@@ -170,8 +172,8 @@ function onNewLine(){
 }
 
 function soluzione1(){
-   var line1=doc.getLine(73);
-   var line2=doc.getLine(74);
+   var line1=doc.getLine(81);
+   var line2=doc.getLine(82);
    var result1="'x': event.clientX - this.offsetLeft,";
    var result2="'y': event.clientY - this.offsetTop";
    console.log(line1);

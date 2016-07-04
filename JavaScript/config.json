@@ -5,11 +5,13 @@
             "id":"1",
             "title":"Livello 1",
             "editable": {
-                "begin":70,
-                "end":75
+                "begin":78,
+                "end":84
             }, 
             "command": "Soldato!! A chi stai mirando?!?! Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
-            "help":"ammazzati tanto non sai programmare"
+            "help":"ammazzati tanto non sai programmare",
+            "succTitle": "Livello 1 completato",
+            "succCommand":"Bravo soldato! Finalmente siamo in grado di difenderci! Ora sotto con il prossimo step"
         },
         {   
             "id": "2",
