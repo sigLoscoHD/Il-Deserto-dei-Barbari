@@ -50,7 +50,15 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
         function re_run(){
             _gameInterval = setInterval(_gameLoop, FPS);
         }
-        
+        function initialDraw () {
+            _ctx.fillStyle = "#191970";
+            _ctx.fillRect(0, 0, _width, _height);
+            _ctx.fillStyle = "#F0FFFF";
+            _ctx.font="50px Georgia";
+            _ctx.fillText("Come here to play", 45, 220);
+            _ctx.fillText("soldier!!", 135, 270);
+            _ctx.font="11px Georgia";
+        }
         function startWave() {
             _new_missile = 0;
             _missiles_created = 0;
@@ -262,7 +270,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
             'launchRocket': launchRocket,
             'run': run,
             'pause' : pause,
-            're_run': re_run
+            're_run': re_run,
+            'initialDraw' : initialDraw
         };
     }) (); //private field
     
@@ -503,7 +512,8 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
     };
 
     function init() {
-        engine.loadLevel(levels[0]);    
+        engine.loadLevel(levels[0]); 
+        engine.initialDraw();
     }
     
     function pause() {
