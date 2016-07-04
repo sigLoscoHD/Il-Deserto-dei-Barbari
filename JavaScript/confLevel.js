@@ -144,21 +144,24 @@ editor.on('beforeChange',function(cm,change){
     }
 });
 
-
+var failSound= new Audio("audio/fail.mp3");
 $("#save").click(function(){
     var result= soluzione1();
-    if (result===true){
+    if (result===true){        
         var data= new FormData();
         data.append("data", doc.getValue());
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'saveFile.php', false);
         xhr.send(data);
-        window.location="levelSucc.html?id=1";
-        alert("soluzione corretta!!");
         
+        window.location="levelSucc.html?id=1";  
     }
     else
-        alert("soluzione sbagliata!!");
+        failSound.play();
+        $('#result').html("<div class='alert alert-danger fade in'><strong>Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+         setTimeout(function(){
+               $(".alert").alert('close');
+           },2000);
 });
 
 var resetText;

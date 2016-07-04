@@ -3,6 +3,7 @@ var doc;
 var editor;
 var text;
 var config;
+var audioUnlock= new Audio("audio/unlock.mp3");
 
 function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -71,16 +72,25 @@ function onNewLine(){
 //appendiamo il titolo del livello sopra all'editor
 $("#numlev").append(config.title);
 
-// lo facciamo giocare per 30 secondi oppure controlla che il gioco funzioni correttamente poi 
-setTimeout(function (){
+// lo facciamo giocare per 30 secondi oppure controlla che il gioco funzioni correttamente 
+$(window).load(function(){
     $("#text").empty();
-        $("#image").empty();
-        $('#myModal').modal('show');
-        $(".modal-title").empty();
-        $(".modal-title").append(config.succTitle);
-        $("#image").append("<img src='images/generale.jpg'/>");
-        $("#text").append(config.succCommand);
+    $("#image").empty();
+    $('#myModal').modal('show');
+    $(".modal-title").empty();
+    $(".modal-title").append(config.succTitle);
+    $("#image").append("<img src='images/generale.jpg'/>");
+    $("#text").append(config.succCommand);
+    setTimeout(function(){
+        audioUnlock.play();
+        $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Level 1 complete! <span class='glyphicon glyphicon-ok'></span></div>");
+        setTimeout(function(){
+               $(".alert").alert('close');
+           },6000);
         $("#next").click(function() {
-            window.location="game.html?lev=1";
-        });
-},30000);
+        window.location="game.html?lev=1";
+    }); 
+    },7000);
+    
+});
+
