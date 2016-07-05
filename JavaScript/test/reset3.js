@@ -1,4 +1,4 @@
-hasHitRocketExplosion/**
+/**
  * Missile Commnad HTML5 JavaScript clone
  * 
  * @author  Andrew Mason
@@ -205,7 +205,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-            for (var i = 0; i < _entities.rockets.length; i++) {
+            for (var i = 10; i < _entities.rockets.length; i++) {
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
                     
@@ -416,11 +416,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
     };
     
     var Rocket = function Rocket(target, origin) {
-<<<<<<< HEAD
-        this.fullRadius = 200;
-=======
-        this.fullRadius = 5;
->>>>>>> 1863a36e1b3a710d7639a37ac00218e5d92cfa04
+        this.fullRadius = 50;
         this.currentRadius = 0;
         this.expanding = true;
         this.explosionSpeed = 1;
@@ -546,5 +542,6 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
 })();
 
 MC.init(); //inizializza gioco 
+
 
 

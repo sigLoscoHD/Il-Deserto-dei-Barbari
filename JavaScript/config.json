@@ -8,20 +8,35 @@
                 "begin":78,
                 "end":84
             }, 
-            "command": "Soldato!! A chi stai mirando?!?! Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
-            "help":"ammazzati tanto non sai programmare",
+            "command": "Soldato!! A chi stai mirando?!?! <br> Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
+            "help":"Indovinello ?!?! <br> Ad ogni posizione corrisponde una.....",
             "succTitle": "Livello 1 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         },
         {   
             "id": "2",
             "title": "Livello 2",
-            "command": "Ops.........",
+            "command": "Soldato! Cosa è successo ai nostri missili? <br> Queste non possono essere definite esplosioni! <br> Faccia qualcosa prima che gli invasori ci riducano in poltiglia! ",
              "editable": {
-                "begin":40,
-                "end":55
+                "begin":417,
+                "end":422
             }, 
-            "help":"bene bene"
+            "help":"L'esplosione ha una circonferenza quindi.......",
+            "succTitle": "Livello 2 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+        },
+        {   
+            "id": "3",
+            "title": "Livello 3",
+            "command": "Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci trasformi tutti in polvere!",
+             "editable": {
+                "begin":206,
+                "end":218
+            }, 
+            "help":"Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi",
+            "succTitle": "Livello 3 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         }
+        
             ]
 }
