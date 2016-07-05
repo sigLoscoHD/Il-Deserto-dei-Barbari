@@ -179,15 +179,9 @@ function soluzione1(){
    var line2=doc.getLine(82);
    var result1="'x': event.clientX - this.offsetLeft,";
    var result2="'y': event.clientY - this.offsetTop";
-   console.log(line1);
-   console.log(line2);
-   console.log(result1);
-   console.log(result2);
-   if (line1.trim() === result1 && line2.trim() === result2){
-       return true;
-   }else
-   {
-       return false;
-   }
    
+   if (line1.trim() === result1 && line2.trim() === result2)
+       return true;
+   else
+       return false;
 }
