@@ -71,6 +71,7 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
 //documento corrispondente all'editor
 doc=editor.getDoc();
 doc.setValue(missile);
+doc.setCursor(config.editable.begin+10);
 
 //appendiamo il titolo del livello sopra all'editor
 $("#numlev").append(config.title);
@@ -145,23 +146,39 @@ editor.on('beforeChange',function(cm,change){
 });
 
 var failSound= new Audio("audio/fail.mp3");
+var result;
 $("#save").click(function(){
-    var result= soluzione1();
+    
+    switch (parametro) {
+    case "1":
+        result= soluzione1();
+        break; 
+    case "2":
+        result= soluzione2();
+        break; 
+    case "3":
+        result= soluzione3();
+        break; 
+    }
+  console.log(result);   
     if (result===true){        
         var data= new FormData();
         data.append("data", doc.getValue());
+        data.append("param", parametro);
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'saveFile.php', false);
         xhr.send(data);
-        
-        window.location="levelSucc.html?id=1";  
+        window.location="levelSucc.html?id=" + parametro;  
     }
-    else
+    else{
         failSound.play();
+        $("#result").empty();
         $('#result').html("<div class='alert alert-danger fade in'><strong>Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
-         setTimeout(function(){
+        setTimeout(function(){
                $(".alert").alert('close');
            },2000);
+         
+       }
 });
 
 var resetText;
@@ -190,4 +207,29 @@ function soluzione1(){
        return false;
    }
    
+}
+
+function soluzione2(){
+    var line= doc.getLine(418);
+    var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
+    var result=line.match(exp);
+    console.log(result);
+    if (result >= 40 && result < 100 ){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+function soluzione3(){
+    var line= doc.getLine(207);
+    var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
+    var result=line.match(exp);
+    console.log(result[0]);
+    if (result[0]=== "0")
+        return true;
+    else
+        return false;
+    
 }

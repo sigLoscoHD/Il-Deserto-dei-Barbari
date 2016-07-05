@@ -41,26 +41,26 @@ and open the template in the editor.
         
         <div id="menu-levels">
             <ul class="nav nav-pills red">
-                <li id="btnLev" role="presentation" class="active"><a href="#basics">Start with the basics</a></li>
-                <li id="btnLev" role="presentation"class="disabled"><a href="#refactor">Refactoring</a></li>
-                <li id="btnLev" role="presentation" class="disabled"><a href="#design">Designing</a></li>
+                <li id="btnLev" role="presentation" class="active"><a href="#basics" data-toggle="tab">Start with the basics</a></li>
+                <li id="btnLev" role="presentation"><a href="#refactor" data-toggle="tab">Refactoring</a></li>
+                <li id="btnLev" role="presentation"><a href="#design" data-toggle="tab">Designing</a></li>
             </ul>
             
-            <div id="levels">
+            <div id="levels" class="tab-content clearfix">
                 <div id="basics" class="tab-pane fade in active">
                     <a href="level.html?id=1"><button type="button" class="btn btn-danger btn-lg lev">Level 1</button></a>
-                    <a href="level.html?id=2"><button type="button" class="btn btn-danger disabled btn-lg lev" id="nextLev">Level 2</button></a>
-                    <a href="level.html?id=3"><button type="button" class="btn btn-danger disabled btn-lg lev" id="nextLev">Level 3</button></a>
+                    <a href="level.html?id=2"><button type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 2</button></a>
+                    <a href="level.html?id=3"><button type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 3</button></a>
                 </div>
-                <div id="refactor" class="tab-pane fade disabled hidden">
-                    <a href=""> <button type="button" class="btn btn-danger btn-lg disabled lev ">Level 1</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 2</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 3</button> </a>
+                <div id="refactor" class="tab-pane fade in">
+                    <a href=""> <button type="button" class="btn btn-danger btn-lg lev ">Level 4</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 5</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 6</button> </a>
                 </div>
-                <div id="design" class="tab-pane fade disabled hidden">
-                    <a href=""><button type="button" class="btn btn-danger btn-lg disabled lev">Level 1</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 2</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger disabled btn-lg lev">Level 3</button> </a>
+                <div id="design" class="tab-pane fade in">
+                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 7</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 8</button> </a>
+                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 9</button> </a>
                 </div>
             </div>
         </div>

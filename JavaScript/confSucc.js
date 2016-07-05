@@ -83,10 +83,21 @@ $(window).load(function(){
     $("#text").append(config.succCommand);
     setTimeout(function(){
         audioUnlock.play();
-        $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Level 1 complete! <span class='glyphicon glyphicon-ok'></span></div>");
+        $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
         setTimeout(function(){
                $(".alert").alert('close');
-           },6000);
+               if (parametro== 3){
+                    $('#trophy').empty();
+                    setTimeout(function(){
+                        audioUnlock.play();
+                        $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
+                        setTimeout(function(){
+                          $(".alert").alert('close');
+                        },6000);
+                    },3000);
+                    
+                }
+        },6000);
         $("#next").click(function() {
         window.location="game.html?lev=1";
     }); 
