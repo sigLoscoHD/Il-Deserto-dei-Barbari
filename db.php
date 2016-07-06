@@ -65,7 +65,7 @@ class database{
             $result= $this->conn->query($query);
             
             if($result===false){
-                $this->stato=false;
+                $this->stato=false;              
                 $this->close();
                 return false;
             }
