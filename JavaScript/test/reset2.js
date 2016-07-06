@@ -1,4 +1,4 @@
-hasHitRocketExplosion/**
+/**
  * Missile Commnad HTML5 JavaScript clone
  * 
  * @author  Andrew Mason
