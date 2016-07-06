@@ -8,7 +8,7 @@ class database{
         $host="localhost",
         $username="root",
         $password="db",
-        $db_name="db_desertofff";
+        $db_name="db_deserto";
     
         public function get_stato(){
             return $this->stato;
@@ -65,7 +65,7 @@ class database{
             $result= $this->conn->query($query);
             
             if($result===false){
-                $this->stato=false;
+                $this->stato=false;              
                 $this->close();
                 return false;
             }

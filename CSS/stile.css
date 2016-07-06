@@ -128,3 +128,9 @@ body {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
     background-color:red;
 }
+#mex{
+    position: absolute;
+    top:87%;
+    left:65%;
+    width:30%;
+}

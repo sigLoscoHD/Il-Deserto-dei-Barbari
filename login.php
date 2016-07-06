@@ -5,8 +5,6 @@
 
     $autenticato=false;
 
-    
- 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $email = $_POST['email'];
@@ -21,8 +19,8 @@
         //2 inviare il comando
         $risultato = $db->select($query);
         
+        //se la query è errata
         if($risultato===false){
-            header("Location: login.html?mex=".$db->get_descrizione_stato());
             die;
         }      
 
@@ -38,7 +36,7 @@
         if($autenticato){
             setcookie('iduser', $riga["iduser"], time() + 60*60);
             setcookie('autenticato', TRUE, time() + 60*60);         
-            header("Location: profile.php?mex=log_succ");
+            header("Location: profile.html?mex=log_succ");
             exit;
         }
         else{
@@ -47,6 +45,6 @@
         }
     }   
     else{
-        header("Location: login.html?mex=not_logged"); //non autenticato
+        header("Location: home.html?mex=not_logged"); //non autenticato
         exit; 
     }
