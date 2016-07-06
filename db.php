@@ -4,12 +4,11 @@ class database{
     private
         $conn,                           
         $stato,           		
-        $descrizione_stato,	       
-        $stampa_errori=true,              
+        $descrizione_stato,            
         $host="localhost",
         $username="root",
         $password="db",
-        $db_name="db_deserto";
+        $db_name="db_desertofff";
     
         public function get_stato(){
             return $this->stato;
@@ -40,7 +39,7 @@ class database{
             if($this->conn->connect_error){                      
                 $this->stato = false;
                 $this->descrizione_stato = 'err_serv';	
-                header("Location: registration.html?".$this->get_descrizione_stato());
+                header("Location: home.html?mex=".$this->get_descrizione_stato());
                 die;
             }
             else
@@ -52,7 +51,7 @@ class database{
             if ( !$this->conn->select_db($this->db_name) ){
                 $this->stato = false;
                 $this->descrizione_stato = 'err_serv';	
-                header("Location: registration.html?".$this->get_descrizione_stato());
+                header("Location: home.html?mex=".$this->get_descrizione_stato());
             }
             else
                 $this->stato = true;										
@@ -67,12 +66,7 @@ class database{
             
             if($result===false){
                 $this->stato=false;
-                $this->descrizione_stato="err_serv";
                 $this->close();
-            
-                if($this->stampa_errori)
-                    $this->get_descrizione_stato();
-
                 return false;
             }
             else{
@@ -96,13 +90,7 @@ class database{
                 return $this->conn->insert_id;
             }
             else{
-                $this->stato=false;
-                $this->descrizione_stato="problema con il server";
-                
-                if($this->stampa_errori){
-                    echo $this->get_descrizione_stato();
-                }
-                
+                $this->stato=false;           
                 return false;
             }
         }
