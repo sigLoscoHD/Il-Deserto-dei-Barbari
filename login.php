@@ -22,7 +22,7 @@
         $risultato = $db->select($query);
         
         if($risultato===false){
-            header("Location: login.html?err=".$db->get_descrizione_stato());
+            header("Location: login.html?mex=".$db->get_descrizione_stato());
             die;
         }      
 
@@ -38,15 +38,15 @@
         if($autenticato){
             setcookie('iduser', $riga["iduser"], time() + 60*60);
             setcookie('autenticato', TRUE, time() + 60*60);         
-            header("Location: profile.php?id=".$_COOKIE["iduser"]);
+            header("Location: profile.php?mex=log_succ");
             exit;
         }
         else{
-             header("Location: login.html?errore=login_failed");
+             header("Location: login.html?mex=login_failed");
              exit;
         }
     }   
     else{
-        header("Location: login.html?errore=not_logged"); //non autenticato
+        header("Location: login.html?mex=not_logged"); //non autenticato
         exit; 
     }
