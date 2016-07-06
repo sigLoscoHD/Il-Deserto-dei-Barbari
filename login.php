@@ -34,7 +34,6 @@
 
         //redirect
         if($autenticato){
-<<<<<<< HEAD
             $_SESSION['sid']=session_id();
             $_SESSION['iduser']=$riga["iduser"];
             $_SESSION['name']=$riga["name"];
@@ -42,10 +41,6 @@
             $_SESSION['email']=$riga["email"];
             $_SESSION['username']=$riga["username"];
             $_SESSION['password']=$riga["password"];
-=======
-            setcookie('iduser', $riga["iduser"], time() + 60*60);
-            setcookie('autenticato', TRUE, time() + 60*60);         
->>>>>>> 66aaf8a01a174b7240eeb3a1c60a337b65dd849b
             header("Location: profile.html?mex=log_succ");
             exit;
         }
