@@ -31,12 +31,21 @@ and open the template in the editor.
            <ul class="nav navbar-nav">
              <li><a href="game.html"> Play!</a></li>
              <li><a href="aboutUs.html"> About Us</a></li>
+             <li><a href="logout.php"> Logout</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
        </div><!-- /.container-fluid -->
      </nav>
     </div>
+        
+        
       <!-- profile -->
+      
+      <!-- tab di scorrimento -->
+      <ul class="nav nav-tabs" id="tab-prof">
+        <li class="active"><a data-toggle="tab" href="#info">Personal Info</a></li>
+        <li><a data-toggle="tab" href="#trophy">Trophy</a></li>
+      </ul>
     <div class="container">
         <div class="row">
           <!-- left column -->
@@ -47,9 +56,9 @@ and open the template in the editor.
               <input type="file" class="text-center center-block well well-sm">
             </div>
           </div>
-          <!-- edit form column -->
-          <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-            <h1>Personal info</h1>
+          <!-- contenuto del tab-->
+          <div class=" tab-content" id="tab-cont">
+            <div class="col-md-8 col-sm-6 col-xs-12 personal-info tab-pane fade in active" id="info">
               <div class="form-group">
                 <label class="col-lg-3 control-label">First name:</label>
                 <div class="col-lg-8">
@@ -75,6 +84,45 @@ and open the template in the editor.
                 </div>
               </div>           
           </div>
+              <!-- visualizza trofei -->
+          <div id="trophy" class="tab-pane fade">
+              <table id="table-trof">
+                  <tr>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                  </tr>
+                  <tr>
+                      <td id="text">Complete Level 1</td>
+                      <td id="text">Complete Level 2</td> 
+                      <td id="text">Complete Level 3</td>
+                  </tr>
+                  <tr>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                  </tr>
+                  <tr>
+                       <td id="text">Complete Level 4</td>
+                      <td id="text">Complete Level 5</td> 
+                      <td id="text">Complete Level 6</td>
+                  </tr>
+                  <tr>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td>
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                      <td id="img"><span class="glyphicon glyphicon-tower"></span> </td> 
+                  </tr>
+                  <tr>
+                      <td id="text">Complete Level 7</td>
+                      <td id="text">Complete Level 8</td> 
+                      <td id="text">Complete Level 9</td>
+                  </tr>
+                  
+              </table> 
+          </div>
+       </div> <!--end of tab-cont -->
+    
+              
         </div>
       </div>
       <div id="mex"></div>
