@@ -31,7 +31,9 @@ and open the template in the editor.
          <!-- Voci della navbar -->
          <div class="collapse navbar-collapse" id="voci-nav">
            <ul class="nav navbar-nav">
+             <li><a href="login.html">Login</a></li>
              <li><a href="registration.html">Sign Up</a></li>
+             <li><a href="game.html"> Play!</a></li>
              <li><a href="aboutUs.html"> About Us</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
@@ -63,14 +65,11 @@ and open the template in the editor.
                 switch(mex){
                     case "login_failed":
                         $('#mex').html("<div class='alert alert-danger fade in'><strong>Incorrect username or password</strong></span></div>");
-                        break; 
-                    case "must_log":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>You must be logged in to gain access to this area</strong></span></div>");
-                        break;
+                        break;                 
                 };
                 setTimeout(function(){
                    $(".alert").alert('close');
-                },5000);        
+                },3000);        
             });
         </script>
     </body>

@@ -21,8 +21,11 @@
          </div>
          <!-- Voci della navbar -->
          <div class="collapse navbar-collapse" id="voci-nav">
-           <ul id="nav" class="nav navbar-nav">            
-             <li><a href="aboutUs.html"> About Us</a></li>            
+           <ul class="nav navbar-nav">
+             <li><a href="login.html">Login</a></li>
+             <li><a href="registration.html">Sign Up</a></li>
+             <li><a href="game.html"> Play!</a></li>
+             <li><a href="aboutUs.html"> About Us</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
        </div><!-- /.container-fluid -->
@@ -33,14 +36,13 @@
         <h1 id="titleLearn">Learn JavaScript playing with</h1>
         <h1 id="titleDeserto">"Il Deserto dei Barbari"</h1>
         <div id="buttonJumbotron">
-           <a id="play" class="btn btn-danger btn-lg" href="" role="button">Play!</a>
+           <a id="play" class="btn btn-danger btn-lg" href="game.html" role="button">Play!</a>
            <a id="learn-more" class="btn btn-success btn-lg" href="learnMore.html" role="button">Learn more</a>
         </div>
     </div> 
     
-    <div id="mex"></div>
+     <div id="mex"></div>
      
-    <script src="JavaScript/controloLog.js" type="text/javascript"></script>
     <script>
         $(window).load(function (){
             var mex=getUrlParameter("mex");
@@ -52,13 +54,10 @@
                 case "not_logged":
                     $('#mex').html("<div class='alert alert-danger fade in'><strong>You must be logged in!</strong></span></div>");
                     break;
-                case "suc_logout":
-                    $('#mex').html("<div class='alert alert-success fade in'><strong>Succesful logout!</strong></span></div>");
-                    break;
             };
             setTimeout(function(){
                $(".alert").alert('close');
-           },5000);  
+           },3000);  
         });
      </script>
   
