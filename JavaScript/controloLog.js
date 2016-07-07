@@ -22,19 +22,34 @@ function getCookie(cname) {
     async:false,
     success:function(data){
           user=data;
-          console.log(data);
+
         }
     });
 
-    console.log(user);
     var userJSON= JSON.parse(user);
-    console.log(JSON.stringify(userJSON));
-    if(user.result!= false){
+
+    if(userJSON.result!= "false"){
         $('#name').val(userJSON.result.name);
         $('#surname').val(userJSON.result.surname);
         $('#email').val(userJSON.result.email);
         $('#username').val(userJSON.result.username);
         $('#password').val(userJSON.result.password);
-    }
-       
 
+        $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
+        $("#nav").append("<li id='logout'><a href='logout.php'>Logout</a></li>");
+        $("#login").remove();
+        $("#sign").remove();
+        $("#play").attr("href","game.html");
+    }
+    else{
+        $("#play").attr("href","login.html?mex=must_log");
+        $("#nav").append("<li id='login'><a href='login.html'>Login</a></li>");
+        $("#nav").append("<li id='sign'><a href='registration.html'>Sign Up</a></li>");
+        $("#logout").remove();
+        $("#profile").remove();
+    }
+    
+    
+
+
+             
