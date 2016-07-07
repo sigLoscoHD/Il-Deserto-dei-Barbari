@@ -41,6 +41,7 @@
             $_SESSION['email']=$riga["email"];
             $_SESSION['username']=$riga["username"];
             $_SESSION['password']=$riga["password"];
+            $_SESSION['levello']=$riga["livello"];
             header("Location: profile.html?mex=log_succ");
             exit;
         }

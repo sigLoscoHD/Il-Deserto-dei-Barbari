@@ -46,6 +46,7 @@
             $_SESSION['email']=$email;
             $_SESSION['username']=$username;
             $_SESSION['password']=$password;
+            $_SESSION['livello']=1;
             header("Location: profile.html?mex=reg_succ");
             }
         else{

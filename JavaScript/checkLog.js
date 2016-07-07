@@ -35,7 +35,7 @@ if(userJSON.result!= "false"){
     $('#email').val(userJSON.result.email);
     $('#username').val(userJSON.result.username);
     $('#password').val(userJSON.result.password);
-
+    console.log('ci sono');
     $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
     $("#nav").append("<li id='logout'><a href='logout.php'>Logout</a></li>");
     $("#login").remove();
@@ -43,6 +43,7 @@ if(userJSON.result!= "false"){
     $("#play").attr("href","game.html");
 }
 else{
+      console.log('ci sonoddd');
     $("#play").attr("href","login.html?mex=must_log");
     $("#nav").append("<li id='login'><a href='login.html'>Login</a></li>");
     $("#nav").append("<li id='sign'><a href='registration.html'>Sign Up</a></li>");

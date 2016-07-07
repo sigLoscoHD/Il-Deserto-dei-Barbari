@@ -27,8 +27,7 @@ and open the template in the editor.
          </div>
          <!-- Voci della navbar -->
          <div class="collapse navbar-collapse" id="voci-nav">
-           <ul class="nav navbar-nav">
-             <li><a href="profile.html"> Profile</a></li>
+           <ul id="nav" class="nav navbar-nav">
              <li><a href="aboutUs.html"> About Us</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
@@ -47,25 +46,26 @@ and open the template in the editor.
             
             <div id="levels" class="tab-content clearfix">
                 <div id="basics" class="tab-pane fade in active">
-                    <a href="level.html?id=1"><button type="button" class="btn btn-danger btn-lg lev">Level 1</button></a>
-                    <a href="level.html?id=2"><button type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 2</button></a>
-                    <a href="level.html?id=3"><button type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 3</button></a>
+                    <a href="level.html?id=1"><button id="1" type="button" class="btn btn-danger btn-lg lev">Level 1</button></a>
+                    <a href="level.html?id=2"><button id="2" type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 2</button></a>
+                    <a href="level.html?id=3"><button id="3" type="button" class="btn btn-danger btn-lg lev" id="nextLev">Level 3</button></a>
                 </div>
                 <div id="refactor" class="tab-pane fade in">
-                    <a href=""> <button type="button" class="btn btn-danger btn-lg lev ">Level 4</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 5</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 6</button> </a>
+                    <a href=""><button id="4" type="button" class="btn btn-danger btn-lg lev ">Level 4</button> </a>
+                    <a href=""><button id="5" type="button" class="btn btn-danger btn-lg lev">Level 5</button> </a>
+                    <a href=""><button id="6" type="button" class="btn btn-danger btn-lg lev">Level 6</button> </a>
                 </div>
                 <div id="design" class="tab-pane fade in">
-                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 7</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 8</button> </a>
-                    <a href=""><button type="button" class="btn btn-danger btn-lg lev">Level 9</button> </a>                 
+                    <a href=""><button id="7" type="button" class="btn btn-danger btn-lg lev">Level 7</button> </a>
+                    <a href=""><button id="8" type="button" class="btn btn-danger btn-lg lev">Level 8</button> </a>
+                    <a href=""><button id="9" type="button" class="btn btn-danger btn-lg lev">Level 9</button> </a>                 
                 </div>
             </div>
         </div>
         
        <script src="JavaScript/confGame.js"></script>
-       <script src="JavaScript/controloLog.js" type="text/javascript"></script>
+       <script src="JavaScript/checkLog.js" type="text/javascript"></script>
+
        <script>
         if(userJSON.result=="false")
             window.location.href = 'login.html?mex=must_log';
