@@ -416,7 +416,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
     };
     
     var Rocket = function Rocket(target, origin) {
-        this.fullRadius = 50;
+        this.fullRadius = 45;
         this.currentRadius = 0;
         this.expanding = true;
         this.explosionSpeed = 1;
@@ -542,6 +542,3 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
 })();
 
 MC.init(); //inizializza gioco 
-
-
-

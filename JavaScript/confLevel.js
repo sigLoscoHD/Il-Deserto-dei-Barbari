@@ -142,8 +142,7 @@ $("#save").click(function(){
     case "3":
         result= soluzione3();
         break; 
-    }
-  console.log(result);   
+    } 
     if (result===true){        
         var data= new FormData();
         data.append("data", doc.getValue());
@@ -151,7 +150,24 @@ $("#save").click(function(){
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'saveFile.php', false);
         xhr.send(data);
-        window.location="levelSucc.html?id=" + parametro;  
+        $.ajax({
+            url:"incrementLevel.php?mex=get",
+            type:"post",
+            dataType: 'text',
+            async:false,
+            success:function(data){         
+                       if(data==parametro){
+                           $.ajax({
+                                url:"incrementLevel.php?mex=update",
+                                type:"post",
+                                dataType: 'text',
+                                async:false,
+                                success:function(){}
+                            });
+                       }
+                    }
+        });
+       window.location="levelSucc.html?id=" + parametro;  
     }
     else{
         failSound.play();

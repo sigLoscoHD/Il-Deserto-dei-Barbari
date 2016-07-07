@@ -95,6 +95,19 @@ class database{
             }
         }
         
+        function update($query){
+             $num= $this->conn->query($query);
+            
+            if($num==TRUE){
+                $this->stato=true;
+                return $num;
+            }
+            else{
+                $this->stato=false;           
+                return false;
+            }
+        }
+        
         function close(){
             $this->conn->close();
         }    		
