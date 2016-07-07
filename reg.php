@@ -31,7 +31,7 @@
                 exit;
         }
         
-        $query = "insert into users values (null,'".$name."','".$surname."','".$email."','".$username."','".$password."')";
+        $query = "insert into users values (null,'".$name."','".$surname."','".$email."','".$username."','".$password."','1')";
         
         $esito = $db->insert($query);
         
@@ -39,6 +39,13 @@
             setcookie('iduser', $esito, time() + 60*60);
             setcookie('autenticato', TRUE, time() + 60*60);
             $db->close();
+            $_SESSION['sid']=session_id();
+            $_SESSION['iduser']=$esito;
+            $_SESSION['name']=$name;
+            $_SESSION['surname']=$surname;
+            $_SESSION['email']=$email;
+            $_SESSION['username']=$username;
+            $_SESSION['password']=$password;
             header("Location: profile.html?mex=reg_succ");
             }
         else{
