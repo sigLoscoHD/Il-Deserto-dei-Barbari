@@ -1,15 +1,12 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
+// questo parametro ci indica a quale livello facciamo riferimento
+var parametro=getUrlParameter("id");
+var config;//riprende il file config.json di configurazione dei livelli
+var doc;
+var editor;
+var missile;
+var audio = new Audio('audio/ring.mp3');
 
-
-//riprende il file config.json di configurazione dei livelli
-
-var config;
-
+// ci riprendiamo lo specifico contenuto dal file di configurazione del nostro livello
 $.ajax({
     url:"JavaScript/config.json",
     type:"get",
@@ -23,24 +20,23 @@ $.ajax({
     }
 }); 
 
-// Initialize CodeMirror editor
-
-var doc;
-var editor;
-var missile;
-
 //riprendiamo il codice di missile_command
-$.ajax({
-    url:"JavaScript/test/reset"+parametro+".js",
-    type:"get",
-    async:false,
-    success:function(data){
-         missile=data;
-    }
-});
+function getFile(param){
+    var file;
+    $.ajax({
+        url:"getLevelFile.php",
+        type:"get",
+        data: {id: param},
+        async:false,
+        success:function(data){
+             file=data;
+        }
+    });
+    return file;
+}
 
+missile=getFile(parametro);
 //creazione dell'editor di code mirror
-
 editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             mode: 'javascript',
             lineNumbers: true,
@@ -51,6 +47,9 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             }
         });  
 
+function onNewLine(){
+    editor.replaceSelection("");
+}
 //documento corrispondente all'editor
 doc=editor.getDoc();
 doc.setValue(missile);
@@ -58,11 +57,6 @@ doc.setCursor(config.editable.begin+10);
 
 //appendiamo il titolo del livello sopra all'editor
 $("#numlev").append(config.title);
-//al caricamento della pagina andiamo a caricare il giusto js con il bug in base al livello
-$(window).load(function (){
-    $("#script").attr("src","JavaScript/test/reset"+parametro+".js");
-});
-
 //Modal: caricamento automatico del modal contenente le istruzioni
 $(window).load(function(){
         $("#text").empty();
@@ -74,7 +68,6 @@ $(window).load(function(){
         $("#text").append(config.command);
 });
 
-var audio = new Audio('audio/ring.mp3');
 
 $(window).load(function(){
         setTimeout(function(){
@@ -89,7 +82,7 @@ $(window).load(function(){
             
 });
 
-
+// ordine del comandate stampato sul modal
  $("#orders").click(function() {
         $("#text").empty();
         $("#image").empty();
@@ -100,7 +93,7 @@ $(window).load(function(){
         $("#text").append(config.command);
        
     });
-    
+ // aiuto del programmatore pazzo stampato su modal  
     $("#help1").click(function() {
         $("#text").empty();
         $("#image").empty();
@@ -128,6 +121,13 @@ editor.on('beforeChange',function(cm,change){
     }
 });
 
+//tasto reset
+$("#undo").click(function(){
+     doc.undo();
+});
+
+
+//gestione della soluzione
 var failSound= new Audio("audio/fail.mp3");
 var result;
 $("#save").click(function(){
@@ -180,15 +180,6 @@ $("#save").click(function(){
        }
 });
 
-var resetText;
-
-$("#reset").click(function(){
-     doc.undo();
-});
-
-function onNewLine(){
-    editor.replaceSelection("");
-}
 
 function soluzione1(){
    var line1=doc.getLine(81);
