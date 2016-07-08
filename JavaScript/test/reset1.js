@@ -78,7 +78,7 @@ var MC = MC || (function() { // self invoking anonymous function expression. Cre
         
         function launchRocket(event) {
             var target = {
-                //valori x e y del lancio modificati per precisione maggiore
+
                 'x': event.clientX - this.offsetLeft + 150,
                 'y': event.clientY - this.offsetTop + 75
                 

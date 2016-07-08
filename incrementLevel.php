@@ -17,6 +17,4 @@ else{
     
     $risultato=$db->insert($query);
     
-    if($risultato===false)
-        header("Location: home.html?mex=err_serv"); 
 }
