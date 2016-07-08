@@ -35,7 +35,8 @@ function getFile(param){
     return file;
 }
 
-missile=getFile(parametro);
+    missile=getFile(parametro);
+
 //creazione dell'editor di code mirror
 editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             mode: 'javascript',

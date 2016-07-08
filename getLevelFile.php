@@ -15,14 +15,16 @@
         die;
         }  
       //riprendiamo il contenuto dello specifico file dal db  
-    $file=$risultato[0];
-    $content=$file["content"];
-    //andiamo a crearci il file reale
-    $filename = 'JavaScript/test/reset.js';
-    $fp = fopen($filename, 'w');
-    fwrite($fp, $content);
-    fclose($fp);
-    echo $content;
-    $db->close();
-
-?>
+        
+    if(count($risultato)>0){
+        $file=$risultato[0];
+        $content=$file["content"];
+        //andiamo a crearci il file reale
+        $filename = 'JavaScript/test/reset.js';
+        $fp = fopen($filename, 'w');
+        fwrite($fp, $content);
+        fclose($fp);
+        echo $content;
+        $db->close();
+        die;
+    }
