@@ -1,12 +1,11 @@
-// questo parametro ci indica a quale livello facciamo riferimento
-var parametro=getUrlParameter("id");
-var config;//riprende il file config.json di configurazione dei livelli
+var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
 var doc;
 var editor;
 var missile;
+var config; //riprende il file config.json di configurazione dei livelli
 var audio = new Audio('audio/ring.mp3');
 
-// ci riprendiamo lo specifico contenuto dal file di configurazione del nostro livello
+//riprendiamo il file di configurazione fatto in json
 $.ajax({
     url:"JavaScript/config.json",
     type:"get",
@@ -20,24 +19,17 @@ $.ajax({
     }
 }); 
 
-//riprendiamo il codice di missile_command
-function getFile(param){
-    var file;
-    $.ajax({
-        url:"getLevelFile.php",
-        type:"get",
-        data: {id: param},
-        async:false,
-        success:function(data){
-             file=data;
-        }
-    });
-    return file;
-}
+//riprendiamo il codice di missile_command in base a quale livello ci troviamo
+$.ajax({
+    url:"JavaScript/test/reset"+parametro+".js",
+    type:"get",
+    async:false,
+    success:function(data){
+         missile=data;
+    }
+});
 
-    missile=getFile(parametro);
-
-//creazione dell'editor di code mirror
+//creazione dell'editor 
 editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             mode: 'javascript',
             lineNumbers: true,
@@ -48,18 +40,24 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             }
         });  
 
+// funzione che rimpiazza l'enter con lo stringa vuota        
 function onNewLine(){
     editor.replaceSelection("");
-}
-//documento corrispondente all'editor
-doc=editor.getDoc();
-doc.setValue(missile);
-doc.setCursor(config.editable.begin+10);
+}        
+        
+doc=editor.getDoc(); //documento corrispondente all'editor
+doc.setValue(missile); //settiamo il valore del codice da visualizzare sull'editor
+doc.setCursor(config.editable.begin+10); // settiamo il cursore sulla parte di codice interessata al livello
 
-//appendiamo il titolo del livello sopra all'editor
-$("#numlev").append(config.title);
-//Modal: caricamento automatico del modal contenente le istruzioni
+$("#numlev").append(config.title); //appendiamo il titolo del livello sopra all'editor
+
+//al caricamento della pagina....
 $(window).load(function(){
+        
+        //settiamo il giusto script
+        $("#script").attr("src","JavaScript/test/reset"+parametro+".js"); 
+        
+        //Configurazione del modal
         $("#text").empty();
         $("#image").empty();
         $('#myModal').modal('show');
@@ -67,10 +65,7 @@ $(window).load(function(){
         $(".modal-title").append("Orders");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
-});
 
-
-$(window).load(function(){
         setTimeout(function(){
            $("#help1").removeClass("disabled");
            $("#help1").css("color","red");
@@ -83,7 +78,7 @@ $(window).load(function(){
             
 });
 
-// ordine del comandate stampato sul modal
+
  $("#orders").click(function() {
         $("#text").empty();
         $("#image").empty();
@@ -93,9 +88,9 @@ $(window).load(function(){
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
        
-    });
- // aiuto del programmatore pazzo stampato su modal  
-    $("#help1").click(function() {
+});
+    
+$("#help1").click(function() {
         $("#text").empty();
         $("#image").empty();
         $("#myModal").modal();
@@ -104,7 +99,11 @@ $(window).load(function(){
         $("#image").append("<img src='images/crazyprog.jpg'/>");
         $("#text").append(config.help);
        
-    });  
+});  
+    
+$("#undo").click(function(){
+     doc.undo();
+});   
 
 //linee non editabili sulla base del livello
 var readOnly=new Array();
@@ -122,13 +121,13 @@ editor.on('beforeChange',function(cm,change){
     }
 });
 
-//tasto reset
-$("#undo").click(function(){
-     doc.undo();
-});
 
 
-//gestione della soluzione
+
+/*
+ * Gestione della soluzione
+ */
+
 var failSound= new Audio("audio/fail.mp3");
 var result;
 $("#save").click(function(){
