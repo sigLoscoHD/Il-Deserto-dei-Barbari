@@ -160,7 +160,7 @@ $("#save").click(function(){
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'saveFile.php', false);
         xhr.send(data);
-        window.location="level.html?id=" + parametro + "&check=1";  S
+        window.location="level.html?id=" + parametro + "&check=1"; 
 });
 /*
  * se siamo stati reindirizzati alla pagina con il parametro "check=1" 
