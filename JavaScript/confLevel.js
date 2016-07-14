@@ -168,6 +168,9 @@ $("#save").click(function(){
  * abbiamo premuto save and test (oppure abbiamo solamente cliccato save and test 
  * senza modificare nulla) 
  */
+
+
+
 if (check == "1"){
     //in base al livello in cui ci troviamo applichiamo una soluzione...
    switch (parametro) {
