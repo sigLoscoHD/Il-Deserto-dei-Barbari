@@ -38,7 +38,10 @@
     background-color: white;
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-left: 10%;
+    border-radius: 20%;
 }
+
 #info{
     margin-top:6%;
 }
