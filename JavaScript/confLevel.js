@@ -163,7 +163,7 @@ $("#save").click(function(){
         data.append("data", doc.getValue());
         data.append("param", parametro);
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-        xhr.open('post', '../PHP/saveFile.php', false);
+        xhr.open('post', 'PHP/saveFile.php', false);
         xhr.send(data);
         window.location="level.html?id=" + parametro + "&check=1"; 
 });

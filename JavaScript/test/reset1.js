@@ -72,7 +72,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-			_ctx.fillStyle = _gradient;
+            _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -428,17 +428,11 @@ var MC = MC || (function() {
 	function endofgamefunction(){
 		if(engine.get_endofgame()){
 			pause();
-			setTimeout(function(){ 
-				engine.finalDraw(); 
-				setTimeout(function(){ 				
-				engine.re_init();
-				engine.loadLevel(levels[0]);	
-				engine.run();
-				}, 3000); 				
-			}, 2000); 
-			
-		}
-		
+                            engine.finalDraw();				                                
+                            engine.re_init();
+                            engine.loadLevel(levels[0]);	
+                            engine.run();							
+		}		
 	}
     /**
      * Game entity class.
@@ -652,7 +646,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1){
+        if(flag==1 && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
