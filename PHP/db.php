@@ -1,3 +1,8 @@
+/* 
+File contenente una classe con tutti i metodi pubblici di interfaccia al Database.
+*/
+
+
 <?php
 
 class database{				
@@ -17,7 +22,13 @@ class database{
         public function get_descrizione_stato(){
             return $this->descrizione_stato;
         }
-
+        
+        /*
+         * _construct è il costruttore della classe database 
+         *  che si occupa di instaurare la connessione al db
+         * attraverso i due metodi connessione() e scelta_data_base()
+         */
+        
         public function __construct(){ 
             $this->connessione();
 
@@ -57,10 +68,17 @@ class database{
                 $this->stato = true;										
         }
         
+        /*
+         * questa funzione permette per motivi di sicurezza di non usare determinati
+         * caratteri utili ad utilizzare attacchi SQL injection
+         */
         function sanifica_parametro($param){
             return $this->conn->escape_string($param);
         }
         
+        /*
+         * funzione che permette l'esecuzione di query su db
+         */
         function select($query){
             $result= $this->conn->query($query);
             
@@ -82,6 +100,9 @@ class database{
             }
         }
         
+        /*
+         * funzione per inserire dati nel db
+         */
         function insert($query){
              $esito= $this->conn->query($query);
             
@@ -95,6 +116,9 @@ class database{
             }
         }
         
+        /*
+         * funzione per aggiornare dati sul db
+         */
         function update($query){
              $num= $this->conn->query($query);
             
