@@ -30,8 +30,8 @@
             "title": "Livello 3",
             "command": "Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci trasformi tutti in polvere!",
              "editable": {
-                "begin":206,
-                "end":218
+                "begin":280,
+                "end":280
             }, 
             "help":"Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi",
             "succTitle": "Livello 3 completato",

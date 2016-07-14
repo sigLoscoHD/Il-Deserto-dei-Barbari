@@ -308,7 +308,7 @@ function soluzione2(){
 }
 
 function soluzione3(){
-    var line= doc.getLine(207);
+    var line= doc.getLine(280);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
     console.log(result[0]);
