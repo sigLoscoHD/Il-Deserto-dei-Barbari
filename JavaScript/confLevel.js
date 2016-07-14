@@ -200,16 +200,16 @@ if (check == "1"){
             type:"post",
             dataType: 'text',
             async:false,
-            success:function(data){         
-                       if(data==parametro){
-                           $.ajax({
+            success:function(data){   
+                        if(data.trim()==parametro.trim()){
+                            $.ajax({
                                 url:"PHP/incrementLevel.php?mex=update",
                                 type:"post",
                                 dataType: 'text',
                                 async:false,
                                 success:function(){}
                             });
-                       }
+                        }
                     }
         });
         

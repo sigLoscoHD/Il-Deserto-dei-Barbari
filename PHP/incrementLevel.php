@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 
 include 'db.php';
-
 
 if($_REQUEST['mex']=='get'){
     echo $_SESSION["livello"];
