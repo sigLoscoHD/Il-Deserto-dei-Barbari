@@ -29,6 +29,11 @@ $.ajax({
 
 var userJSON= JSON.parse(user);
 
+for(var i=0;i<userJSON.result.livello;i++){
+    $("#"+i).addClass("completed");
+    $("#text"+i).addClass("completed");
+}
+
 if(userJSON.result!= "false"){
     $('#name').val(userJSON.result.name);
     $('#surname').val(userJSON.result.surname);
