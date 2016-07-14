@@ -1,10 +1,7 @@
-/* 
-File contenente una classe con tutti i metodi pubblici di interfaccia al Database.
-*/
-
 
 <?php
 
+//File contenente una classe con tutti i metodi pubblici di interfaccia al Database
 class database{				
     private
         $conn,                           
