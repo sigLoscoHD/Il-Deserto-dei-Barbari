@@ -72,7 +72,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-			_ctx.fillStyle = _gradient;
+            _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -424,7 +424,7 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
-
+    
     function endofgamefunction(){
         if(engine.get_endofgame()){
             pause();
@@ -434,6 +434,7 @@ var MC = MC || (function() {
             engine.run();			
         }		
     }
+
     /**
      * Game entity class.
      */
@@ -656,6 +657,7 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
+    console.log(getErrX());
     
     return {
         'init': init,
