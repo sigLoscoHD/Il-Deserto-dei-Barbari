@@ -12,12 +12,12 @@ var MC = MC || (function() {
             _missiles_created = 0,
             _missiles_destroyed = 0,
             _gameInterval=0,
-			_rocketPosX = 0,
+            _rocketPosX = 0,
             _rocketPosY = 0,
             _clickX = 0,
             _clickY = 0,
-			_again=false,
-			_endofgame=false,			
+            _again=false,
+            _endofgame=false,			
             _entities = {
                 'missiles': [],
                 'targets': [],
@@ -25,52 +25,50 @@ var MC = MC || (function() {
                 'turret': null
             },
             _levels = [];
-
         /**
          * Start the game
-         */
-		
+         */		
         function run(){
             startWave();
             Wave.init();
-			if(!_again){
-				_gameInterval = setInterval(_gameLoop, FPS);
-				_again=true;
-			}
+            if(!_again){
+                    _gameInterval = setInterval(_gameLoop, FPS);
+                    _again=true;
+            }
 
         }
 		
-		function re_run(){
+        function re_run(){
             _gameInterval = setInterval(_gameLoop, FPS);
         }
 		
-		function re_init(){
-			_level = 0;
-			_new_missile = 10000;
-			_missiles_created = 0;
-			_missiles_destroyed = 0;
-			_gameInterval=0;
-			_stricken=3;
-			_rocketPosX = 0;
-			_rocketPosY = 0;
-			_clickX = 0;
-			_clickY = 0;
-			_endofgame=false;			
+        function re_init(){
+            _level = 0;
+            _new_missile = 10000;
+            _missiles_created = 0;
+            _missiles_destroyed = 0;
+            _gameInterval=0;
+            _stricken=3;
+            _rocketPosX = 0;
+            _rocketPosY = 0;
+            _clickX = 0;
+            _clickY = 0;
+            _endofgame=false;			
 
-			_entities = {
-				'missiles': [],
-				'targets': [],
-				'rockets': [],
-				'turret': null
-			};
-			_levels = [];
-			
-			for(var i=0;i<initHomes.length;i++){
-				initHomes[i].stricken=3;
-				initHomes[i].y-=30;
-				initHomes[i].removed=0;					
-			}
-		}
+            _entities = {
+                    'missiles': [],
+                    'targets': [],
+                    'rockets': [],
+                    'turret': null
+            };
+            _levels = [];
+
+            for(var i=0;i<initHomes.length;i++){
+                    initHomes[i].stricken=3;
+                    initHomes[i].y-=30;
+                    initHomes[i].removed=0;					
+            }
+        }
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
@@ -83,13 +81,16 @@ var MC = MC || (function() {
             _ctx.font="11px Georgia";
         }
 		
-		function finalDraw () {
+        function finalDraw () {
             _ctx.fillStyle = "#191970";
-			_ctx.fillStyle = _gradient;
+            _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="85px Georgia";
             _ctx.fillText("You Lose", 70, 250);
+            _ctx.font="25px Georgia";
+            _ctx.fillText("Move the cursor out of the box", 70, 300);
+            _ctx.fillText("and come back here for a new challenge!", 20, 330);        
             _ctx.font="11px Georgia";
         }
         
@@ -109,8 +110,8 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x= 0;
-        var _err_y= 0;
+        var _err_x= 150;
+        var _err_y= 75;
         
         function launchRocket(event) {
             var target = {
@@ -132,7 +133,7 @@ var MC = MC || (function() {
         }
         function getErrX(){return _err_x;}
         function getErrY(){return _err_y;}
-        console.log(getErrX());
+       
         /**
          * Game loop
          */
@@ -406,7 +407,7 @@ var MC = MC || (function() {
                     'BombChance': i * 2,
                     'FlyerChance': 5,
                     'TimeBetweenShots': 3000 - i * 100,
-                    'MissileSpeed': 0.4 + (i / 8)
+                    'MissileSpeed': 10+ (i / 8)
                 };
             }
         }
@@ -425,19 +426,13 @@ var MC = MC || (function() {
     }());
 
 	function endofgamefunction(){
-		if(engine.get_endofgame()){
-			pause();
-			setTimeout(function(){ 
-				engine.finalDraw(); 
-				setTimeout(function(){ 				
-				engine.re_init();
-				engine.loadLevel(levels[0]);	
-				engine.run();
-				}, 3000); 				
-			}, 2000); 
-			
-		}
-		
+            if(engine.get_endofgame()){
+                pause();
+                engine.finalDraw();  				
+                engine.re_init();
+                engine.loadLevel(levels[0]);	
+                engine.run();			
+            }		
 	}
     /**
      * Game entity class.
@@ -591,6 +586,7 @@ var MC = MC || (function() {
         }
     };
     
+    
     Rocket.prototype.draw = function(ctx) {
         if (this.exploded) {
             if (this.expanding) {
@@ -620,8 +616,7 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-
-
+    
     /**
      * Levels
      */
@@ -651,7 +646,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1){
+        if(flag==1  && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -661,7 +656,6 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
-    console.log(getErrX());
     
     return {
         'init': init,

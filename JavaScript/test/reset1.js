@@ -133,7 +133,7 @@ var MC = MC || (function() {
         }
         function getErrX(){return _err_x;}
         function getErrY(){return _err_y;}
-        console.log(getErrX());
+
         /**
          * Game loop
          */
@@ -425,21 +425,15 @@ var MC = MC || (function() {
         };
     }());
 
-	function endofgamefunction(){
-		if(engine.get_endofgame()){
-			pause();
-			setTimeout(function(){ 
-				engine.finalDraw(); 
-				setTimeout(function(){ 				
-				engine.re_init();
-				engine.loadLevel(levels[0]);	
-				engine.run();
-				}, 3000); 				
-			}, 2000); 
-			
-		}
-		
-	}
+    function endofgamefunction(){
+        if(engine.get_endofgame()){
+            pause();
+            engine.finalDraw();  				
+            engine.re_init();
+            engine.loadLevel(levels[0]);	
+            engine.run();			
+        }		
+    }
     /**
      * Game entity class.
      */
@@ -652,7 +646,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1){
+        if(flag==1 && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -662,7 +656,6 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
-    console.log(getErrX());
     
     return {
         'init': init,

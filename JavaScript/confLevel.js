@@ -163,7 +163,7 @@ $("#save").click(function(){
         data.append("data", doc.getValue());
         data.append("param", parametro);
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-        xhr.open('post', '../PHP/saveFile.php', false);
+        xhr.open('post', 'PHP/saveFile.php', false);
         xhr.send(data);
         window.location="level.html?id=" + parametro + "&check=1"; 
 });
@@ -298,16 +298,13 @@ function soluzione1(){
 
 
 function soluzione2(){
-    var line= doc.getLine(418);
-    var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
-    var result=line.match(exp);
-    console.log(result);
-    if (result >= 40 && result < 100 ){
+    var result="if(this.pos.y<this.target.y){"; //la soluzione
+    var line=doc.getLine(583); // andiamo a prendere la riga incriminata
+    line = line.replace(/\s+/g, '');
+    if (result == line)
         return true;
-    }
-    else{
+    else 
         return false;
-    }
 }
 
 function soluzione3(){
