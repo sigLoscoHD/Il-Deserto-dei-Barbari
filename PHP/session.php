@@ -9,6 +9,7 @@
                     . '"surname":"'.$_SESSION["surname"].'",'
                     . '"email":"'.$_SESSION["email"].'",'
                     . '"password":"'.$_SESSION["password"].'",'
+                    . '"livello":"'.$_SESSION["livello"].'",'
                     . '"username":"'.$_SESSION["username"].'"}}';
         }
     }
