@@ -19,7 +19,7 @@
             "command": "Soldato! Cosa è successo ai nostri missili? <br> Queste non possono essere definite esplosioni! <br> Faccia qualcosa prima che gli invasori ci riducano in poltiglia! ",
              "editable": {
                 "begin":583,
-                "end":585
+                "end":583
             }, 
             "help":"L'esplosione ha una circonferenza quindi.......",
             "succTitle": "Livello 2 completato",

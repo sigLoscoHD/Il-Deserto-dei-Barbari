@@ -424,18 +424,7 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
-
-<<<<<<< HEAD
-	function endofgamefunction(){
-		if(engine.get_endofgame()){
-			pause();
-                            engine.finalDraw();				                                
-                            engine.re_init();
-                            engine.loadLevel(levels[0]);	
-                            engine.run();							
-		}		
-	}
-=======
+    
     function endofgamefunction(){
         if(engine.get_endofgame()){
             pause();
@@ -445,7 +434,7 @@ var MC = MC || (function() {
             engine.run();			
         }		
     }
->>>>>>> 33440d70d5f5fee545e650d582abec80f9e70d24
+
     /**
      * Game entity class.
      */
