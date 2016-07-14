@@ -158,7 +158,7 @@ $("#save").click(function(){
         data.append("data", doc.getValue());
         data.append("param", parametro);
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-        xhr.open('post', 'saveFile.php', false);
+        xhr.open('post', '../PHP/saveFile.php', false);
         xhr.send(data);
         window.location="level.html?id=" + parametro + "&check=1"; 
 });
@@ -188,14 +188,14 @@ if (check == "1"){
         
         //incrementiamo il numero di livelli sbloccati dal nostro utente
         $.ajax({
-            url:"incrementLevel.php?mex=get",
+            url:"PHP/incrementLevel.php?mex=get",
             type:"post",
             dataType: 'text',
             async:false,
             success:function(data){         
                        if(data==parametro){
                            $.ajax({
-                                url:"incrementLevel.php?mex=update",
+                                url:"PHP/incrementLevel.php?mex=update",
                                 type:"post",
                                 dataType: 'text',
                                 async:false,

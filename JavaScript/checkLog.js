@@ -18,7 +18,7 @@ var user;
 
 
 $.ajax({
-    url:"session.php",
+    url:"PHP/session.php",
     type:"get",
     dataType: 'text',
     async:false,
@@ -36,7 +36,7 @@ if(userJSON.result!= "false"){
     $('#username').val(userJSON.result.username);
     $('#password').val(userJSON.result.password);
     $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
-    $("#nav").append("<li id='logout'><a href='logout.php'>Logout</a></li>");
+    $("#nav").append("<li id='logout'><a href='PHP/logout.php'>Logout</a></li>");
     $("#login").remove();
     $("#sign").remove();
     $("#play").attr("href","game.html");

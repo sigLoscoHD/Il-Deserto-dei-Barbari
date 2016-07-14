@@ -42,15 +42,15 @@
             $_SESSION['username']=$riga["username"];
             $_SESSION['password']=$riga["password"];
             $_SESSION['livello']=$riga["livello"];
-            header("Location: profile.html?mex=log_succ");
+            header("Location: ../profile.html?mex=log_succ");
             exit;
         }
         else{
-             header("Location: login.html?mex=login_failed");
+             header("Location: ../login.html?mex=login_failed");
              exit;
         }
     }   
     else{
-        header("Location: home.html?mex=not_logged"); //non autenticato
+        header("Location: ../home.html?mex=not_logged"); //non autenticato
         exit; 
     }

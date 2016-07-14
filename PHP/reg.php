@@ -27,7 +27,7 @@
         
         if (count($risultato)>0){
                 $db->close();
-                header("Location: registration.html?mex=existent_email"); 
+                header("Location: ../registration.html?mex=existent_email"); 
                 exit;
         }
         
@@ -51,13 +51,13 @@
             }
         else{
             $db->close();
-            header("Location: registration.html?mex=reg_failed"); 
+            header("Location: ../registration.html?mex=reg_failed"); 
         }    
             
         exit;
         
     }
     else{
-        header("Location: registration.html?err=must_log");
+        header("Location: ../registration.html?err=must_log");
         exit; 
     }

@@ -1,5 +1,5 @@
 $.ajax({
-    url:"checkLevel.php",
+    url:"PHP/checkLevel.php",
     type:"get",
     dataType: 'text',
     async:false,
