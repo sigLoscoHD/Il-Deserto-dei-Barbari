@@ -1,5 +1,10 @@
+/* 
+* In questo file configuriamo l'editor ed il gioco secondo il livello cliccato dall'utente.
+*/
+
+
 var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
-var check=getUrlParameter("check"); //parametro che serve per andare alla pagina con la modifica 
+var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
 var doc;
 var editor;
 var missile;
@@ -8,7 +13,7 @@ var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
 var failSound= new Audio("audio/fail.mp3");
 
-//riprendiamo il file di configurazione fatto in json
+//riprendiamo il file di configurazione fatto in json in base al livello (parametro)
 $.ajax({
     url:"JavaScript/config.json",
     type:"get",

@@ -16,7 +16,7 @@ function getCookie(cname) {
 
 var user;
 
-
+// chiamata ajax che esegue il file session.php e restituisce il risultato in data.
 $.ajax({
     url:"PHP/session.php",
     type:"get",
@@ -27,7 +27,8 @@ $.ajax({
             }
     });
 
-var userJSON= JSON.parse(user);
+// JSON 
+var userJSON = JSON.parse(user);
 
 for(var i=0;i<userJSON.result.livello;i++){
     $("#"+i).addClass("completed");
