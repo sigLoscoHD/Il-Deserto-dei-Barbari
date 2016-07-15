@@ -1,5 +1,5 @@
 /* 
-* In questo file configuriamo l'editor ed il gioco secondo il livello cliccato dall'utente.
+* In questo file configuriamo l'editor ed il gioco a seconda del livello a cui si trova l'utente.
 */
 
 
@@ -7,7 +7,7 @@ var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livel
 var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
 var doc;
 var editor;
-var missile;
+var missile; //variabile con il codice del gioco da visualizzare sull'editor.
 var config; //riprende il file config.json di configurazione dei livelli
 var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
@@ -27,6 +27,10 @@ $.ajax({
     }
 }); 
 
+/*
+ * Se check è uguale a zero non abbiamo ancora fatto save and test (caricheremo reset .js sull'editor).
+ * Altrimenti abbiamo già cercato di testare una soluzione e quindi caricheremo test.js sull'editor .
+ */
 if (check=="0"){
 //riprendiamo il codice di missile_command in base a quale livello ci troviamo
 $.ajax({
@@ -72,7 +76,9 @@ doc.setCursor(config.editable.begin+10); // settiamo il cursore sulla parte di c
 $("#numlev").append(config.title); //appendiamo il titolo del livello sopra all'editor
 
 
-
+/*
+ * In base al check come prima settiamo il codice di esecuzione del gioco e il modal 
+ */
 if( check == "0"){
 //al caricamento della pagina....
 $(window).load(function(){
@@ -105,7 +111,7 @@ $(window).load(function(){
 }
 
 
- $("#orders").click(function() {
+$("#orders").click(function() {
         $("#text").empty();
         $("#image").empty();
         $("#myModal").modal();
@@ -131,7 +137,7 @@ $("#undo").click(function(){
      doc.undo();
 });   
 
-//linee non editabili sulla base del livello
+//setting delle linee non editabili sulla base del livello
 var readOnly=new Array();
 
 for(var i=0; i<doc.lineCount();i++){
@@ -155,8 +161,7 @@ var result; // variabile all'interno della quale andiamo a salvare il valore del
 
 /*
  * al click del pulsante "Save and Test" reindirizziamo alla pagina con il parametro "check" settato a 1
- * e andiamo a modificare lo script sia nell'editor che quello appeso al gioco ( settiamo test.js come 
- * nuovo script, ovvero lo script modificato dall'utente) 
+ * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
  */
 $("#save").click(function(){     
         var data= new FormData();
@@ -168,6 +173,7 @@ $("#save").click(function(){
         window.location="level.html?id=" + parametro + "&check=1"; 
 });
 /*
+ * Ricapitolando:
  * se siamo stati reindirizzati alla pagina con il parametro "check=1" 
  * significa che abbiamo modificato il codice all'interno del nostro editor e
  * abbiamo premuto save and test (oppure abbiamo solamente cliccato save and test 
@@ -201,7 +207,7 @@ if (check == "1"){
             dataType: 'text',
             async:false,
             success:function(data){   
-                        if(data.trim()==parametro.trim()){
+                        if(data.trim()==parametro.trim()){ //puliamo le variabili da spaziature
                             $.ajax({
                                 url:"PHP/incrementLevel.php?mex=update",
                                 type:"post",
@@ -261,7 +267,7 @@ if (check == "1"){
 
                     }
             },6000);
-            //appendiamo il nuovo pulsante "Next"
+            //appendiamo il nuovo pulsante "Next" che reindirizza a game.html
             $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Next <span class='glyphicon glyphicon-arrow-right'></span></button>");
             $("#next").click(function() {
             window.location="game.html";
@@ -294,8 +300,6 @@ function soluzione1(){
       return false;
   }
 }
-
-
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione

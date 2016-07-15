@@ -278,17 +278,17 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-            for(i=0;i<_entities.rockets.length;i++){
+			for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-
+                    
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-
+                
                 if (dist < _entities.rockets[i].currentRadius) {
                     return true;
                 }
-
-            }
+				               
+			}
             return false;
         }
 
@@ -581,7 +581,7 @@ var MC = MC || (function() {
         this.pos.x = Math.sin(this.angle) * this.distance + this.origin.x;
         this.pos.y = Math.cos(this.angle) * this.distance + this.origin.y;
         
-        if (this.pos.y > this.target.y) {
+        if (this.pos.y < this.target.y) {
             this.exploded = true;
         }
     };
