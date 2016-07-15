@@ -58,6 +58,8 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             mode: 'javascript',
             lineNumbers: true,
             firstLineNumber: 0,
+            gutters: ["CodeMirror-lint-markers"],
+            lint: true,
             extraKeys: {
                 "Ctrl-Space": "autocomplete",
                 "Enter": onNewLine
@@ -163,7 +165,16 @@ var result; // variabile all'interno della quale andiamo a salvare il valore del
  * al click del pulsante "Save and Test" reindirizziamo alla pagina con il parametro "check" settato a 1
  * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
  */
-$("#save").click(function(){     
+$("#save").click(function(){
+    if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
+        failSound.play();
+        $("#result").empty();
+        $('#result').html("<div class='alert alert-danger fade in'><strong>Syntax Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+        setTimeout(function(){
+               $(".alert").alert('close');
+           },2000);
+    }
+    else{
         var data= new FormData();
         data.append("data", doc.getValue());
         data.append("param", parametro);
@@ -171,6 +182,7 @@ $("#save").click(function(){
         xhr.open('post', 'PHP/saveFile.php', false);
         xhr.send(data);
         window.location="level.html?id=" + parametro + "&check=1"; 
+        }
 });
 /*
  * Ricapitolando:
@@ -291,8 +303,6 @@ if (check == "1"){
 function soluzione1(){
     var x= MC.getErrX();
     var y= MC.getErrY();
-    
-    console.log(" ciiosoas" + y);
   if (x>=0 && x<=5 && y>=0 && y<=5 ){
       return true;
   }
