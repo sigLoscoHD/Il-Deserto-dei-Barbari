@@ -76,8 +76,8 @@ var MC = MC || (function() {
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
-            _ctx.fillText("Come here to play", 45, 220);
-            _ctx.fillText("soldier!!", 135, 270);
+            _ctx.fillText("come here to defend", 20, 220);
+            _ctx.fillText("ourselves soldier!!", 40, 270);
             _ctx.font="11px Georgia";
         }
 		
@@ -666,5 +666,3 @@ var MC = MC || (function() {
     };
 
 }());
-
-MC.init();

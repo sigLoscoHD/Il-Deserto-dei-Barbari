@@ -5,10 +5,10 @@
             "id":"1",
             "title":"Livello 1",
             "editable": {
-                "begin":111,
-                "end":114
+                "begin":112,
+                "end":113
             }, 
-            "command": "Soldato!! A chi stai mirando?!?! <br> Aggiusta la mira e centra questi missili prima che diventiamo un cumulo di cenere!!!",
+            "command": "Soldato!! Siamo sotto attacco! Il nemico negli ultimi tempi è diventato più forte che mai. I suoi missili si stanno abbattendo violentemente su di noi, senza lasciarci scampo. Le nostre difese presentano molti problemi, le nostre armi sono arruginite, funzionano male, e tu sei l'unico che può sistemarle! Un nuovo attacco sta giungendo proprio ora! <br> Il sistema di puntamento dei nostri cannoni è guasto, necessità di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra questi missili prima che diventiamo un cumulo di cenere!!!",
             "help":"Indovinello ?!?! <br> Ad ogni posizione corrisponde una.....",
             "succTitle": "Livello 1 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
