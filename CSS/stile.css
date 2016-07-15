@@ -24,11 +24,10 @@ body {
 }
 
 .jumbotron {
-    position: fixed;
     height: 30%;
     width: 70%;
-    top: 20%;
-    left: 18%;
+    padding-top: 13%;
+    margin: 0 auto;
     background: transparent;
     
 }
