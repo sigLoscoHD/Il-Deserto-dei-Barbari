@@ -54,6 +54,8 @@ editor = CodeMirror.fromTextArea(document.getElementById('code'),{
             mode: 'javascript',
             lineNumbers: true,
             firstLineNumber: 0,
+            gutters: ["CodeMirror-lint-markers"],
+            lint: true,
             extraKeys: {
                 "Ctrl-Space": "autocomplete",
                 "Enter": onNewLine
