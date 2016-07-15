@@ -62,42 +62,34 @@ body {
 }
 
 #menu-levels{
-    width: 30% ;
-    height: 30%;
-    margin-left: auto ;
-    margin-right: auto ;
+    width: 25%;
+    height: 20%;
+    margin:0 auto;
     background-color: white;
     border: solid black 3px;
     padding: 5px 5px 5px 5px;
-    border-radius: 10px;
+    border-radius: 4%;
+    text-align: center;
 }
 
-#basics{
-    width: 30% ;
-    height: 30%;
+.tab{
+    height: 1%;
 }
-#refactor{
-    width: 30% ;
-    height: 30%;
-}
-
-#design{
-    width: 30% ;
-    height: 30%;
-}
-
 
 #levels{
-    width: 40% ;
-    margin: 0 auto
+    text-align: center;
 }
 
 #titleGame{
-    text-align: center;
-    font-weight: bold;
+    font-size: 50px;   
 }
 
 #subTitleGame{
+    font-size: 35px;
+}
+
+.title{
+    color: #ffffff;
     text-align: center;
     font-weight: bold;
 }
@@ -107,26 +99,20 @@ body {
 }
 
 .lev{
-    margin-top: 50%;
-    margin-bottom: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.red .active a,
-.red .active a:hover {
-    background-color: red;
-}
-
-.nav-pills > .active > a, .nav-pills > .active > a:hover {
-    background-color: red;
-}
-
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-    background-color:red;
+    background-color:#d9534f;
 }
+
 #mex{
     position: absolute;
     top:87%;
@@ -134,3 +120,21 @@ body {
     width:30%;
 }
 
+.header{
+    background-color: red;
+    width: 25%;
+    margin-top:20%;
+
+    text-align: center;
+}
+
+li>a{
+    font-size: 18px;
+}
+
+a{
+    color: #999999;
+}
+a:hover{
+    color: #999999;
+}
