@@ -82,7 +82,7 @@ function onNewLine(){
 doc=editor.getDoc(); //documento corrispondente all'editor
 doc.setValue(missile); //settiamo il valore del codice da visualizzare sull'editor
 doc.setCursor(config.editable.begin+10); // settiamo il cursore sulla parte di codice interessata al livello
-
+editor.setSize(700, 400);
 $("#numlev").append(config.title); //appendiamo il titolo del livello sopra all'editor
 
 
@@ -287,6 +287,7 @@ var result; // variabile all'interno della quale andiamo a salvare il valore del
  * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
  */
 $("#save").click(function(){
+    // se vengono riscontrati degli errori di sintassi nell'editor, stampiamo l'errore e rimaniamo sulla pagina
     if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
         failSound.play();
         $("#result").empty();
@@ -296,6 +297,7 @@ $("#save").click(function(){
            },2000);
     }
     else{
+        // in caso contrario andiamo avanti
         var data= new FormData();
         data.append("data", doc.getValue());
         data.append("param", parametro);
