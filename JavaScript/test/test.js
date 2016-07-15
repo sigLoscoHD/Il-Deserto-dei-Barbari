@@ -110,8 +110,8 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x=
-        var _err_y=89
+        var _err_x= SAS;
+        var _err_y= SASAS;
         
         function launchRocket(event) {
             var target = {
