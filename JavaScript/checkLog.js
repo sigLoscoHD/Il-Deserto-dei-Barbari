@@ -14,7 +14,7 @@ function getCookie(cname) {
 }
 
 
-var user;
+var user; //variabile che serve a contenere i dati
 
 // chiamata ajax che esegue il file session.php e restituisce il risultato in data.
 $.ajax({
@@ -27,14 +27,16 @@ $.ajax({
             }
     });
 
-// JSON 
+// parsing della variabile user in file JSON
 var userJSON = JSON.parse(user);
 
+// colorazione livelli completati sul profilo utente 
 for(var i=0;i<userJSON.result.livello;i++){
     $("#"+i).addClass("completed");
     $("#text"+i).addClass("completed");
 }
 
+// Dati pagina html(profile.html) impostati sulla base della sessione utente
 if(userJSON.result!= "false"){
     $('#name').val(userJSON.result.name);
     $('#surname').val(userJSON.result.surname);

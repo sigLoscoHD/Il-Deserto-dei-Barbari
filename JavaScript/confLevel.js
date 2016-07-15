@@ -1,5 +1,5 @@
 /* 
-* In questo file configuriamo l'editor ed il gioco secondo il livello cliccato dall'utente.
+* In questo file configuriamo l'editor ed il gioco a seconda del livello a cui si trova l'utente.
 */
 
 
@@ -7,7 +7,7 @@ var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livel
 var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
 var doc;
 var editor;
-var missile;
+var missile; //variabile con il codice del gioco da visualizzare sull'editor.
 var config; //riprende il file config.json di configurazione dei livelli
 var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
@@ -27,26 +27,38 @@ $.ajax({
     }
 }); 
 
-if (check=="0"){
-//riprendiamo il codice di missile_command in base a quale livello ci troviamo
-$.ajax({
-    url:"JavaScript/test/reset"+parametro+".js",
-    type:"get",
-    async:false,
-    success:function(data){
-         missile=data;
+/*
+ * Se check è uguale a zero non abbiamo ancora fatto save and test (caricheremo reset .js sull'editor).
+ * Altrimenti abbiamo già cercato di testare una soluzione e quindi caricheremo test.js sull'editor .
+ */
+if (check=="init"||check=="crit"){
+    //riprendiamo il codice di missile_command in base a quale livello ci troviamo
+    $.ajax({
+        url:"JavaScript/test/reset"+parametro+".js",
+        type:"get",
+        async:false,
+        success:function(data){
+             missile=data;
+        }
+    });
+
+    if(check=="crit"){
+        failSound.play();
+        $('#result').html("<div class='alert alert-danger fade in'><strong> Critical error ! Your solution is semantically incorrect and leads to malfunctioning of the game. Try again!</strong><span class='glyphicon glyphicon-ban-circle'></span></div>");
+        setTimeout(function(){
+            $(".alert").alert('close');
+        },10000);
     }
-});
 }
 else {
     $.ajax({
-    url:"JavaScript/test/test.js",
-    type:"get",
-    async:false,
-    success:function(data){
-         missile=data;
-    }
-});
+        url:"JavaScript/test/test.js",
+        type:"get",
+        async:false,
+        success:function(data){
+             missile=data;
+        }
+    });
 }
 
 //creazione dell'editor 
@@ -74,113 +86,40 @@ doc.setCursor(config.editable.begin+10); // settiamo il cursore sulla parte di c
 $("#numlev").append(config.title); //appendiamo il titolo del livello sopra all'editor
 
 
-
-if( check == "0"){
-//al caricamento della pagina....
-$(window).load(function(){
-        
-        //settiamo il giusto script
-        $("#script").attr("src","JavaScript/test/reset"+parametro+".js"); 
-        
-        //Configurazione del modal
-        $("#text").empty();
-        $("#image").empty();
-        $('#myModal').modal('show');
-        $(".modal-title").empty();
-        $(".modal-title").append("Orders");
-        $("#image").append("<img src='images/generale.jpg'/>");
-        $("#text").append(config.command);
-
-        setTimeout(function(){
-           $("#help1").removeClass("disabled");
-           $("#help1").css("color","red");
-           audio.play();
-           $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Help avaiable! <span class='glyphicon glyphicon-arrow-up'></span></div>");
-           setTimeout(function(){
-               $(".alert").alert('close');
-           },3000);
-        },10000);
-            
-});
-} else{
-    $("#script").attr("src","JavaScript/test/test.js"); 
-}
-
-
- $("#orders").click(function() {
-        $("#text").empty();
-        $("#image").empty();
-        $("#myModal").modal();
-        $(".modal-title").empty();
-        $(".modal-title").append("Orders");
-        $("#image").append("<img src='images/generale.jpg'/>");
-        $("#text").append(config.command);
-       
-});
-    
-$("#help1").click(function() {
-        $("#text").empty();
-        $("#image").empty();
-        $("#myModal").modal();
-        $(".modal-title").empty();
-        $(".modal-title").append("Help me");
-        $("#image").append("<img src='images/crazyprog.jpg'/>");
-        $("#text").append(config.help);
-       
-});  
-    
-$("#undo").click(function(){
-     doc.undo();
-});   
-
-//linee non editabili sulla base del livello
-var readOnly=new Array();
-
-for(var i=0; i<doc.lineCount();i++){
-    if(i<config.editable.begin || i>config.editable.end){
-        readOnly[i]=i;
-        doc.addLineClass(i,"background","readOnly");
-    }
-}
-
-editor.on('beforeChange',function(cm,change){
-    if(~readOnly.indexOf(change.from.line)){
-        change.cancel();
-    }
-});
-
-
 /*
- * Gestione della soluzione
+ * In base al check come prima settiamo il codice di esecuzione del gioco e il modal 
  */
-var result; // variabile all'interno della quale andiamo a salvare il valore della soluzione (in genere un bool)
+if( check == "init"){
+    //al caricamento della pagina....
+    $(window).load(function(){
+            //settiamo il giusto script
+            $("#script").attr("src","JavaScript/test/reset"+parametro+".js"); 
+
+            //Configurazione del modal
+            $("#text").empty();
+            $("#image").empty();
+            $('#myModal').modal('show');
+            $(".modal-title").empty();
+            $(".modal-title").append("Orders");
+            $("#image").append("<img src='images/generale.jpg'/>");
+            $("#text").append(config.command);
+
+            setTimeout(function(){
+               $("#help1").removeClass("disabled");
+               $("#help1").css("color","red");
+               audio.play();
+               $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Help avaiable! <span class='glyphicon glyphicon-arrow-up'></span></div>");
+               setTimeout(function(){
+                   $(".alert").alert('close');
+               },3000);
+            },10000);
+
+    });
+} 
 
 /*
- * al click del pulsante "Save and Test" reindirizziamo alla pagina con il parametro "check" settato a 1
- * e andiamo a modificare lo script sia nell'editor che quello appeso al gioco ( settiamo test.js come 
- * nuovo script, ovvero lo script modificato dall'utente) 
- */
-$("#save").click(function(){
-    if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
-        failSound.play();
-        $("#result").empty();
-        $('#result').html("<div class='alert alert-danger fade in'><strong>Syntax Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
-        setTimeout(function(){
-               $(".alert").alert('close');
-           },2000);
-    }
-    else{
-        var data= new FormData();
-        data.append("data", doc.getValue());
-        data.append("param", parametro);
-        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
-        xhr.open('post', 'PHP/saveFile.php', false);
-        xhr.send(data);
-        window.location="level.html?id=" + parametro + "&check=1"; 
-        }
-});
-/*
- * se siamo stati reindirizzati alla pagina con il parametro "check=1" 
+ * Ricapitolando:
+ * se siamo stati reindirizzati alla pagina con il parametro "check=test" 
  * significa che abbiamo modificato il codice all'interno del nostro editor e
  * abbiamo premuto save and test (oppure abbiamo solamente cliccato save and test 
  * senza modificare nulla) 
@@ -188,9 +127,10 @@ $("#save").click(function(){
 
 
 
-if (check == "1"){
+if (check == "test"){
+    $("#script").attr("src","JavaScript/test/test.js"); 
     //in base al livello in cui ci troviamo applichiamo una soluzione...
-   switch (parametro) {
+    switch (parametro) {
         case "1":
             result= soluzione1();
             break; 
@@ -213,7 +153,7 @@ if (check == "1"){
             dataType: 'text',
             async:false,
             success:function(data){   
-                        if(data.trim()==parametro.trim()){
+                        if(data.trim()==parametro.trim()){ //puliamo le variabili da spaziature
                             $.ajax({
                                 url:"PHP/incrementLevel.php?mex=update",
                                 type:"post",
@@ -273,7 +213,7 @@ if (check == "1"){
 
                     }
             },6000);
-            //appendiamo il nuovo pulsante "Next"
+            //appendiamo il nuovo pulsante "Next" che reindirizza a game.html
             $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Next <span class='glyphicon glyphicon-arrow-right'></span></button>");
             $("#next").click(function() {
             window.location="game.html";
@@ -294,6 +234,78 @@ if (check == "1"){
     }
 }
 
+$("#orders").click(function() {
+        $("#text").empty();
+        $("#image").empty();
+        $("#myModal").modal();
+        $(".modal-title").empty();
+        $(".modal-title").append("Orders");
+        $("#image").append("<img src='images/generale.jpg'/>");
+        $("#text").append(config.command);
+       
+});
+    
+$("#help1").click(function() {
+        $("#text").empty();
+        $("#image").empty();
+        $("#myModal").modal();
+        $(".modal-title").empty();
+        $(".modal-title").append("Help me");
+        $("#image").append("<img src='images/crazyprog.jpg'/>");
+        $("#text").append(config.help);
+       
+});  
+    
+$("#undo").click(function(){
+     doc.undo();
+});   
+
+//setting delle linee non editabili sulla base del livello
+var readOnly=new Array();
+
+for(var i=0; i<doc.lineCount();i++){
+    if(i<config.editable.begin || i>config.editable.end){
+        readOnly[i]=i;
+        doc.addLineClass(i,"background","readOnly");
+    }
+}
+
+editor.on('beforeChange',function(cm,change){
+    if(~readOnly.indexOf(change.from.line)){
+        change.cancel();
+    }
+});
+
+
+/*
+ * Gestione della soluzione
+ */
+var result; // variabile all'interno della quale andiamo a salvare il valore della soluzione (in genere un bool)
+
+/*
+ * al click del pulsante "Save and Test" reindirizziamo alla pagina con il parametro "check" settato a test
+ * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
+ */
+$("#save").click(function(){
+    if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
+        failSound.play();
+        $("#result").empty();
+        $('#result').html("<div class='alert alert-danger fade in'><strong>Syntax Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+        setTimeout(function(){
+               $(".alert").alert('close');
+           },2000);
+    }
+    else{
+        var data= new FormData();
+        data.append("data", doc.getValue());
+        data.append("param", parametro);
+        var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
+        xhr.open('post', 'PHP/saveFile.php', false);
+        xhr.send(data);
+        window.location="level.html?id=" + parametro + "&check=test"; 
+        }
+});
+
 function soluzione1(){
     var x= MC.getErrX();
     var y= MC.getErrY();
@@ -304,8 +316,6 @@ function soluzione1(){
       return false;
   }
 }
-
-
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
@@ -321,7 +331,6 @@ function soluzione3(){
     var line= doc.getLine(280);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
-    console.log(result[0]);
     if (result[0]=== "0")
         return true;
     else

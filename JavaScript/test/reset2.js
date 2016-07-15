@@ -76,8 +76,8 @@ var MC = MC || (function() {
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
-            _ctx.fillText("Come here to play", 45, 220);
-            _ctx.fillText("soldier!!", 135, 270);
+            _ctx.fillText("come here to defend", 20, 220);
+            _ctx.fillText("ourselves soldier!!", 40, 270);
             _ctx.font="11px Georgia";
         }
 		
@@ -110,8 +110,8 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x= 150;
-        var _err_y= 75;
+        var _err_x= 0;
+        var _err_y= 0;
         
         function launchRocket(event) {
             var target = {
@@ -666,5 +666,3 @@ var MC = MC || (function() {
     };
 
 }());
-
-MC.init();

@@ -1,4 +1,9 @@
-$.ajax({
+/*
+ * Chiamata ajax che ritorna in data il livello dell'utente 
+ * ed in base ad esso sblocca gli opportuni livelli.
+ */
+
+$.ajax({   
     url:"PHP/checkLevel.php",
     type:"get",
     dataType: 'text',

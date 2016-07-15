@@ -7,8 +7,7 @@
             <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
             <link href="CSS/stile.css" rel="stylesheet">
             <link href="plugin/codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
-            <link rel="stylesheet" href="plugin/codemirror/addon/lint/lint.css">
-            <script src="plugin/codemirror/addon/lint/css-lint.js"></script>
+            <link rel="stylesheet" href="plugin/codemirror/addon/lint/lint.css">        
             <!-- javascript -->
             <!-- jquery deve essere il primo file importato -->
             <script src="JavaScript/jquery.min.js" type="text/javascript"></script>
@@ -21,6 +20,7 @@
             <script src="//ajax.aspnetcdn.com/ajax/jshint/r07/jshint.js"></script>
             <script src="plugin/codemirror/addon/lint/lint.js"></script>
             <script src="plugin/codemirror/addon/lint/javascript-lint.js"></script>
+            <script src="plugin/codemirror/addon/lint/css-lint.js"></script>
 	</head>
         <body>
             <div id="menu">
@@ -80,14 +80,22 @@
            
             
             <canvas  id="canvas" width="480" height="480" onmouseover='MC.re_run()' onmouseout='MC.pause()'></canvas>
-            <script id="script" src="" type="text/javascript"></script>  
-           
+            <script id="script" src="" type="text/javascript"></script>
+
             <script src="JavaScript/confLevel.js"></script>
             <script src="JavaScript/checkLog.js" type="text/javascript"></script>
             <script>
                 if(userJSON.result=="false")
                     window.location.href = 'login.html?mex=must_log';
+                
+                try{
+                    MC.init();
+                }
+                catch(err){
+                    window.location.replace("level.html?id=1&check=crit");
+                }
             </script>
+            
           
 	</body>
 </html>
