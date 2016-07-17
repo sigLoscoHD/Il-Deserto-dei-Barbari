@@ -72,7 +72,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-			_ctx.fillStyle = _gradient;
+            _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -133,7 +133,7 @@ var MC = MC || (function() {
         }
         function getErrX(){return _err_x;}
         function getErrY(){return _err_y;}
-       
+
         /**
          * Game loop
          */
@@ -194,7 +194,7 @@ var MC = MC || (function() {
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
-				
+				_drawTurretBase();
 				// Draw debug information
 				debugInfo();
 			}
@@ -234,8 +234,22 @@ var MC = MC || (function() {
                 }
             }
         }
+        /*
+         * Draw turret basement 
+         * 
+         * @returns {undefined}
+         */
+        function _drawTurretBase () {
+            var width = 35;
+            var height = 20;
+            var x = _width/2 - width/2;
+            var y = 440;
+            _ctx.fillStyle="#FF0000";
+            _ctx.fillRect(x,y,width,height); 
+        }
+        
 		
-		function _drawDefense(entities) {
+	function _drawDefense(entities) {
             for (var i = 0; i < entities.length; i++) {
 				if(entities[i].pos.removed==0)
 					entities[i].draw(_ctx);
@@ -424,16 +438,17 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
+    
+    function endofgamefunction(){
+        if(engine.get_endofgame()){
+            pause();
+            engine.finalDraw();  				
+            engine.re_init();
+            engine.loadLevel(levels[0]);	
+            engine.run();			
+        }		
+    }
 
-	function endofgamefunction(){
-            if(engine.get_endofgame()){
-                pause();
-                engine.finalDraw();  				
-                engine.re_init();
-                engine.loadLevel(levels[0]);	
-                engine.run();			
-            }		
-	}
     /**
      * Game entity class.
      */
@@ -460,22 +475,25 @@ var MC = MC || (function() {
      * @param {object} pos Location position.
      */
     var Turret = function Turret(width, height) {
-       this.width = 20;
-       this.height = 20;
+       this.width = 6;
+       this.height = 24;    
        this.pos = {
         'x': (width / 2) - (this.width / 2),
-        'y': 430,
+        'y': 420,
 		'removed':0
        };
        this.colour = 'rgb(255, 0, 0)';
     };
+    
     Turret.prototype = new Entity();
 
-    /**
+    
+     /**
      * Home entity class
      *
      * @param {object} pos Location position.
      */
+    
     var Home = function Home(pos) {
        this.pos = pos;
        this.width = 20;
@@ -586,7 +604,6 @@ var MC = MC || (function() {
         }
     };
     
-    
     Rocket.prototype.draw = function(ctx) {
         if (this.exploded) {
             if (this.expanding) {
@@ -616,7 +633,8 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-    
+
+
     /**
      * Levels
      */
@@ -646,7 +664,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1  && !engine.get_endofgame()){
+        if(flag==1 && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -656,6 +674,7 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
+    console.log("bella"+ getErrX());
     
     return {
         'init': init,
@@ -666,3 +685,4 @@ var MC = MC || (function() {
     };
 
 }());
+
