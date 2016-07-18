@@ -432,7 +432,7 @@ var MC = MC || (function() {
                     'BombChance': i * 2,
                     'FlyerChance': 5,
                     'TimeBetweenShots': 3000 - i * 100,
-                    'MissileSpeed':20 + (i / 8)
+                    'MissileSpeed':10 + (i / 8)
                 };
             }
         }

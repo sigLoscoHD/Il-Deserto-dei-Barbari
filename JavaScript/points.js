@@ -5,5 +5,7 @@ function store_points(points){
         async:false,
         success:function(){}
     });
+    
+    setGrado(points);
 }
 

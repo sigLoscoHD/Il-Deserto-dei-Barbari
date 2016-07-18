@@ -25,7 +25,7 @@ var MC = MC || (function() {
                 'turret': null
             },
             _points=0,
-            _levels = [];         
+            _levels = [];
         /**
          * Start the game
          */		
@@ -54,7 +54,6 @@ var MC = MC || (function() {
             _rocketPosY = 0;
             _clickX = 0;
             _clickY = 0;
-            _points=0;
             _endofgame=false;			
 
             _entities = {
@@ -63,6 +62,7 @@ var MC = MC || (function() {
                     'rockets': [],
                     'turret': null
             };
+            _points=0;
             _levels = [];
 
             for(var i=0;i<initHomes.length;i++){
@@ -74,7 +74,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-            _ctx.fillStyle = _gradient;
+			_ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -284,18 +284,18 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-            for(i=0;i<_entities.rockets.length;i++){
+			for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-
+                    
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-
+                
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
                     return true;
                 }
-
-            }
+				               
+			}
             return false;
         }
 
@@ -440,8 +440,7 @@ var MC = MC || (function() {
 	function endofgamefunction(){
             if(engine.get_endofgame()){
                 pause();
-                engine.finalDraw();
-                
+                engine.finalDraw();  				
                 engine.re_init();
                 engine.loadLevel(levels[0]);	
                 engine.run();			

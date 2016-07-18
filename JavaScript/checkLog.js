@@ -1,3 +1,7 @@
+
+var grado={};
+
+
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -30,10 +34,46 @@ $.ajax({
 // parsing della variabile user in file JSON
 var userJSON = JSON.parse(user);
 
+getGrado(userJSON.result.punteggio);
 // colorazione livelli completati sul profilo utente 
 for(var i=0;i<userJSON.result.livello;i++){
     $("#"+i).addClass("completed");
     $("#text"+i).addClass("completed");
+}
+
+function getGrado(punteggio){ 
+    
+    var localGrado=1;
+    var eccesso=0;  
+    while(punteggio>0){
+        eccesso=punteggio; 
+        punteggio-=localGrado*15000; 
+        if(punteggio>0)
+            localGrado++;
+    }
+    
+    grado={'gr': localGrado,'eccesso': eccesso};   
+}
+
+function setGrado(punteggio){
+
+    grado.eccesso=parseInt(grado.eccesso)+punteggio;
+
+    if(parseInt(grado.eccesso)>15000*(grado.gr)){
+        grado.eccesso=parseInt(grado.eccesso)-15000*(grado.gr);
+        grado.gr++;      
+    }
+    
+    $("#grado").empty();
+    $("#grado").text(grado.gr);
+    
+    $("#progress-bar").attr("aria-valuenow",""+grado.eccesso);
+    $("#progress-bar").attr("aria-valuemax",""+15000*(grado.gr));
+    $("#progress-bar").css("width",""+(grado.eccesso/(15000*grado.gr))*100+"%");
+    
+    $("#eccesso").empty();
+    $("#eccesso").text(grado.eccesso);
+    console.log("set");
 }
 
 // Dati pagina html(profile.html) impostati sulla base della sessione utente
@@ -45,6 +85,7 @@ if(userJSON.result!= "false"){
     $('#password').val(userJSON.result.password);
     $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
     $("#nav").append("<li id='logout'><a href='PHP/logout.php'>Logout</a></li>");
+    $("#nav").append("<li id='level'>"+userJSON.result.username+" Grado : <nobr id='grado'>"+ grado.gr+"</nobr><div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='"+grado.eccesso+"' aria-valuemin=0 aria-valuemax='"+15000*(grado.gr)+"' style='width:"+(grado.eccesso/(15000*(grado.gr)))*100+"%'><p id='eccesso'>"+grado.eccesso+"</p></div></div></li>");
     $("#login").remove();
     $("#sign").remove();
     $("#play").attr("href","game.html");

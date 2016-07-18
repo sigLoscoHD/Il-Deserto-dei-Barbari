@@ -12,6 +12,7 @@
                     . '"email":"'.$_SESSION["email"].'",'
                     . '"password":"'.$_SESSION["password"].'",'
                     . '"livello":"'.$_SESSION["livello"].'",'
+                    . '"punteggio":"'.$_SESSION["punteggio"].'",'
                     . '"username":"'.$_SESSION["username"].'"}}';
         }
     }
