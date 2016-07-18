@@ -74,7 +74,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-            _ctx.fillStyle = _gradient;
+			_ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -297,18 +297,23 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-            for(i=0;i<_entities.rockets.length;i++){
+			for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-
+                    
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-
+                
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
                     return true;                
                     ;
                 }
+<<<<<<< HEAD
             }
+=======
+				               
+			}
+>>>>>>> f70ce064db8668d65d9a0c069d5eb899a969b041
             return false;
         }
 
@@ -461,6 +466,18 @@ var MC = MC || (function() {
         }		
     }
 
+<<<<<<< HEAD
+=======
+	function endofgamefunction(){
+            if(engine.get_endofgame()){
+                pause();
+                engine.finalDraw();  				
+                engine.re_init();
+                engine.loadLevel(levels[0]);	
+                engine.run();			
+            }		
+	}
+>>>>>>> f70ce064db8668d65d9a0c069d5eb899a969b041
     /**
      * Game entity class.
      */

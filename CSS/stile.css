@@ -137,3 +137,20 @@ a{
 a:hover{
     color: #999999;
 }
+
+#level{
+    width:20%;
+    position:absolute;
+    margin-left: 35%;
+    margin-top: 0.1%;
+
+}
+
+.progress{
+    width:70%;
+    background-color:#cccccc;
+}
+
+.progress-bar{
+    background-color: #d9534f;
+}

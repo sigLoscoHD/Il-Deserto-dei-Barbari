@@ -161,17 +161,16 @@ if (check == "test"){
                                 async:false,
                                 success:function(){}
                             });
-                            
+                   
                             $.ajax({
                                 url:"PHP/increment_points.php?points=10000",
                                 type:"post",
                                 async:false,
-                                success:function(){}
-                            });
+                                success:function(){setGrado(10000);}
+                            });                        
                         }
                     }
-        });
-        
+        });       
         //rendo tutte le righe non editabili (l'editor possiamo anche rimuoverlo --> scelta da prendere al momento lascio così)
         for(var i=0; i<doc.lineCount();i++){
             doc.addLineClass(i,"background","readOnly");
