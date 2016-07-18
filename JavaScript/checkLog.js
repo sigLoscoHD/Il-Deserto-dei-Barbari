@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 //grado e punti del grado del giocatore
->>>>>>> 84c16fe0c556394107922793b101c4c985727cd2
 var grado={};
 var user; //variabile che serve a contenere i dati
 
@@ -24,6 +21,7 @@ getGrado(userJSON.result.punteggio);
 for(var i=0;i<userJSON.result.livello;i++){
     $("#"+i).addClass("completed");
     $("#text"+i).addClass("completed");
+    //controllo sblocco trofei delle macro sezioni e relativa colorazione
     if (i>=3){
         $("#debug").addClass("completed");
         $("#debug-text").addClass("completed");
