@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+//grado e punti del grado del giocatore
+>>>>>>> 84c16fe0c556394107922793b101c4c985727cd2
 var grado={};
 var user; //variabile che serve a contenere i dati
 
@@ -34,9 +38,11 @@ for(var i=0;i<userJSON.result.livello;i++){
     }
 }
 
+//calcolo del grado sulla base del punteggio totale
 function getGrado(punteggio){ 
     
     var localGrado=1;
+    //punti del grado corrente
     var eccesso=0;  
     while(punteggio>0){
         eccesso=punteggio; 
@@ -66,7 +72,6 @@ function setGrado(punteggio){
     
     $("#eccesso").empty();
     $("#eccesso").text(grado.eccesso);
-    console.log("set");
 }
 
 // Dati pagina html(profile.html) impostati sulla base della sessione utente
@@ -76,6 +81,7 @@ if(userJSON.result!= "false"){
     $('#email').val(userJSON.result.email);
     $('#username').val(userJSON.result.username);
     $('#password').val(userJSON.result.password);
+    $("#nav").append("<li><a href='leaderboard.html'>Leaderboard</a></li>");
     $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
     $("#nav").append("<li id='logout'><a href='PHP/logout.php'>Logout</a></li>");
     $("#nav").append("<li id='level'> <span class='glyphicon glyphicon-user'></span> "+userJSON.result.username+" Grado : <nobr id='grado'>"+ grado.gr+"</nobr><div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='"+grado.eccesso+"' aria-valuemin=0 aria-valuemax='"+15000*(grado.gr)+"' style='width:"+(grado.eccesso/(15000*(grado.gr)))*100+"%'><p id='eccesso'>"+grado.eccesso+"</p></div></div></li>");

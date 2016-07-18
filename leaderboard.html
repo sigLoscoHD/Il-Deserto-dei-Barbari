@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Leaderboard</title>
+        <!-- CSS import -->
+        <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="CSS/stile.css" rel="stylesheet">
+        <link href="CSS/leaderboard.css" rel="stylesheet" type="text/css"/>
+        <!-- JS import -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+        <script src="JavaScript/getParameter.js" type="text/javascript"></script>       
+    </head>
+    <body>
+        <!-- Navbar-->
+        <div id="menu">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                <!-- Brand -->
+                    <div class="navbar-header">
+                         <a class="navbar-brand" href="home.html">Learn JavaScript</a>
+                    </div>
+                    <!-- Voci della navbar -->
+                    <div class="collapse navbar-collapse" id="voci-nav">
+                        <ul id="nav" class="nav navbar-nav">            
+                            <li><a href="aboutUs.html"> About Us</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        
+        <p id="title">Leaderboard</p>
+        <table id="leaderboard" class="table">
+            <tr>
+                <td>#</td><td>User</td><td>Grado</td><td>Punteggio</td>
+            </tr>           
+        </table>
+        
+       
+        <script src="JavaScript/checkLog.js" type="text/javascript"></script>
+        <script src="JavaScript/getUser.js" type="text/javascript"></script>
+        <script>
+            if(userJSON.result=="false") // in caso non sia loggato
+                window.location.href = 'login.html?mex=must_log';
+        </script>
+    </body>
+</html>

@@ -2,7 +2,6 @@
 * In questo file configuriamo l'editor ed il gioco a seconda del livello a cui si trova l'utente.
 */
 
-
 var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
 var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
 var doc;
