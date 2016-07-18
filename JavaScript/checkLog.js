@@ -1,23 +1,4 @@
-
 var grado={};
-
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length,c.length);
-        }
-    }
-    return "";
-}
-
-
 var user; //variabile che serve a contenere i dati
 
 // chiamata ajax che esegue il file session.php e restituisce il risultato in data.
@@ -39,6 +20,18 @@ getGrado(userJSON.result.punteggio);
 for(var i=0;i<userJSON.result.livello;i++){
     $("#"+i).addClass("completed");
     $("#text"+i).addClass("completed");
+    if (i>=3){
+        $("#debug").addClass("completed");
+        $("#debug-text").addClass("completed");
+    }
+    if (i>=6){
+        $("#refactor").addClass("completed");
+        $("#refactor-text").addClass("completed");
+    }
+    if (i>=9){
+        $("#design").addClass("completed");
+        $("#design-text").addClass("completed");
+    }
 }
 
 function getGrado(punteggio){ 
@@ -85,7 +78,7 @@ if(userJSON.result!= "false"){
     $('#password').val(userJSON.result.password);
     $("#nav").append("<li id='profile'><a href='profile.html'> Profile</a></li>");
     $("#nav").append("<li id='logout'><a href='PHP/logout.php'>Logout</a></li>");
-    $("#nav").append("<li id='level'>"+userJSON.result.username+" Grado : <nobr id='grado'>"+ grado.gr+"</nobr><div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='"+grado.eccesso+"' aria-valuemin=0 aria-valuemax='"+15000*(grado.gr)+"' style='width:"+(grado.eccesso/(15000*(grado.gr)))*100+"%'><p id='eccesso'>"+grado.eccesso+"</p></div></div></li>");
+    $("#nav").append("<li id='level'> <span class='glyphicon glyphicon-user'></span> "+userJSON.result.username+" Grado : <nobr id='grado'>"+ grado.gr+"</nobr><div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='"+grado.eccesso+"' aria-valuemin=0 aria-valuemax='"+15000*(grado.gr)+"' style='width:"+(grado.eccesso/(15000*(grado.gr)))*100+"%'><p id='eccesso'>"+grado.eccesso+"</p></div></div></li>");
     $("#login").remove();
     $("#sign").remove();
     $("#play").attr("href","game.html");

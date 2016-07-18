@@ -2,14 +2,14 @@
 <html lang="en">
 	<head>
             <title>Play...</title>
-        <!-- CSS -->
-            <link href="CSS/level.css" rel="stylesheet" type="text/css"/>
+            <!-- CSS -->
             <link href="plugin/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css"/>
             <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
             <link href="CSS/stile.css" rel="stylesheet">
             <link href="plugin/codemirror/addon/hint/show-hint.css" rel="stylesheet" type="text/css"/>
-            <link rel="stylesheet" href="plugin/codemirror/addon/lint/lint.css">        
-            <!-- javascript -->
+            <link rel="stylesheet" href="plugin/codemirror/addon/lint/lint.css">
+            <link href="CSS/level.css" rel="stylesheet" type="text/css"/>
+             <!-- javascript -->
             <!-- jquery deve essere il primo file importato -->
             <script src="JavaScript/jquery.min.js" type="text/javascript"></script>
             <script src="plugin/codemirror/lib/codemirror.js" type="text/javascript"></script>
@@ -38,7 +38,6 @@
                                 <li id="playNav"><a href="game.html"> Play!</a></li>
                                 <li id="profile"><a href="profile.html"> Profile</a></li>
                                 <li id="aboutUs"><a href="aboutUs.html">About Us</a></li>
-                                <li id="user"><a href="#" id="username"></a></li>
                                 <li id="orders"><a href="#">Orders <span class="glyphicon glyphicon-info-sign"></span></a></li>
                                 <li id="help" ><a href="#" class="disabled" id="help1">Help<span class="glyphicon glyphicon-question-sign"></span></a></li>
                             </ul>
@@ -90,10 +89,6 @@
             <script>
                 if(userJSON.result=="false")
                     window.location.href = 'login.html?mex=must_log';
-                
-                $("#username").append("<span class='glyphicon glyphicon-user'></span> " + userJSON.result.username + " Lev. 1");
-                $("#user").css("position","absolute");
-                $("#user").css("left","70%");
                 
                 try{
                     MC.init();

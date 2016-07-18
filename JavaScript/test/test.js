@@ -25,7 +25,7 @@ var MC = MC || (function() {
                 'turret': null
             },
             _points=0,
-            _levels = [];
+            _levels = [];         
         /**
          * Start the game
          */		
@@ -54,6 +54,7 @@ var MC = MC || (function() {
             _rocketPosY = 0;
             _clickX = 0;
             _clickY = 0;
+            _points=0;
             _endofgame=false;			
 
             _entities = {
@@ -62,7 +63,6 @@ var MC = MC || (function() {
                     'rockets': [],
                     'turret': null
             };
-            _points=0;
             _levels = [];
 
             for(var i=0;i<initHomes.length;i++){
@@ -74,7 +74,7 @@ var MC = MC || (function() {
 		
         function initialDraw () {
             _ctx.fillStyle = "#191970";
-			_ctx.fillStyle = _gradient;
+            _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
@@ -126,7 +126,7 @@ var MC = MC || (function() {
 			
             _clickX = event.clientX - this.offsetLeft;
             _clickY = event.clientY - this.offsetTop;
-
+			 
             _entities.rockets.push(new Rocket(
                 target,
                 {
@@ -137,7 +137,7 @@ var MC = MC || (function() {
         }
         function getErrX(){return _err_x;}
         function getErrY(){return _err_y;}
-
+       
         /**
          * Game loop
          */
@@ -198,16 +198,16 @@ var MC = MC || (function() {
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
-				_drawTurretBase();
+				
 				// Draw debug information
 				debugInfo();
 			}
         }
         
 		
-        function get_endofgame(){
-                return _endofgame;
-        }
+		function get_endofgame(){
+			return _endofgame;
+		}
 		
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -218,7 +218,8 @@ var MC = MC || (function() {
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
 			
-            /*_ctx.fillText('Level = ' + _level, 10, 30);			
+            /*_ctx.fillText('Level = ' + _level, 10, 30);
+
             _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
             _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
             _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
@@ -239,22 +240,8 @@ var MC = MC || (function() {
                 }
             }
         }
-        /*
-         * Draw turret basement 
-         * 
-         * @returns {undefined}
-         */
-        function _drawTurretBase () {
-            var width = 35;
-            var height = 20;
-            var x = _width/2 - width/2;
-            var y = 440;
-            _ctx.fillStyle="#FF0000";
-            _ctx.fillRect(x,y,width,height); 
-        }
-        
 		
-	function _drawDefense(entities) {
+		function _drawDefense(entities) {
             for (var i = 0; i < entities.length; i++) {
 				if(entities[i].pos.removed==0)
 					entities[i].draw(_ctx);
@@ -297,23 +284,18 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-			for(i=0;i<_entities.rockets.length;i++){
+            for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-                    
+
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-                
+
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
-                    return true;                
-                    ;
+                    return true;
                 }
-<<<<<<< HEAD
+
             }
-=======
-				               
-			}
->>>>>>> f70ce064db8668d65d9a0c069d5eb899a969b041
             return false;
         }
 
@@ -394,11 +376,11 @@ var MC = MC || (function() {
         function getWidth() {
             return _width;
         }
-
+        
         function getPoints(){
             return _points;
         }
-        
+
         // Expose public methods
         return {
             'loadLevel': loadLevel,
@@ -437,7 +419,7 @@ var MC = MC || (function() {
                     'BombChance': i * 2,
                     'FlyerChance': 5,
                     'TimeBetweenShots': 3000 - i * 100,
-                    'MissileSpeed':20 + (i / 8)
+                    'MissileSpeed': 10+ (i / 8)
                 };
             }
         }
@@ -454,30 +436,17 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
-    
-    function endofgamefunction(){
-        if(engine.get_endofgame()){
-            pause();
-            engine.finalDraw();  
-            store_points(engine.getPoints());
-            engine.re_init();
-            engine.loadLevel(levels[0]);	
-            engine.run();         
-        }		
-    }
 
-<<<<<<< HEAD
-=======
 	function endofgamefunction(){
             if(engine.get_endofgame()){
                 pause();
-                engine.finalDraw();  				
+                engine.finalDraw();
+                
                 engine.re_init();
                 engine.loadLevel(levels[0]);	
                 engine.run();			
             }		
 	}
->>>>>>> f70ce064db8668d65d9a0c069d5eb899a969b041
     /**
      * Game entity class.
      */
@@ -504,25 +473,22 @@ var MC = MC || (function() {
      * @param {object} pos Location position.
      */
     var Turret = function Turret(width, height) {
-       this.width = 6;
-       this.height = 24;    
+       this.width = 20;
+       this.height = 20;
        this.pos = {
         'x': (width / 2) - (this.width / 2),
-        'y': 420,
+        'y': 430,
 		'removed':0
        };
        this.colour = 'rgb(255, 0, 0)';
     };
-    
     Turret.prototype = new Entity();
 
-    
-     /**
+    /**
      * Home entity class
      *
      * @param {object} pos Location position.
      */
-    
     var Home = function Home(pos) {
        this.pos = pos;
        this.width = 20;
@@ -633,6 +599,7 @@ var MC = MC || (function() {
         }
     };
     
+    
     Rocket.prototype.draw = function(ctx) {
         if (this.exploded) {
             if (this.expanding) {
@@ -662,8 +629,7 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-
-
+    
     /**
      * Levels
      */
@@ -693,7 +659,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1 && !engine.get_endofgame()){
+        if(flag==1  && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -715,5 +681,3 @@ var MC = MC || (function() {
     };
 
 }());
-
-
