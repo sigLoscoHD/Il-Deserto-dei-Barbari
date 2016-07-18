@@ -7,11 +7,10 @@ and open the template in the editor.
     Created on : 9-giu-2016, 16.09.12
     Author     : matte
 */
-#titleAuthors{
+#titleAuthors{   
     text-align: center;
     font-weight: bold;
 }
-
 
 .block-update-card {
   height: 100%;
