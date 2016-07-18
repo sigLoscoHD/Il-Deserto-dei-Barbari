@@ -201,16 +201,51 @@ if (check == "test"){
      
         //a livello completato sblocchiamo l'obiettivo dopo pochi secondi
         setTimeout(function(){
-            audioUnlock.play();
-            $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+            
+            if(userJSON.result.livello <= parametro){
+                audioUnlock.play();
+                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+            }
+            else{
+                $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+            }
+            
             setTimeout(function(){
                    $(".alert").alert('close');
                    //nel caso in cui si è completato un gruppo di livelli ulteriore sblocco
-                   if (parametro== "3"){
+                   
+                   //trofeo complete debug
+                   if (parametro== "3" && userJSON.result.livello <= parametro){
                         $('#trophy').empty();
                         setTimeout(function(){
                             audioUnlock.play();
-                            $('#trophy').html("<div class='alert alert-success fade in'><strong>Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
+                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
+                            setTimeout(function(){
+                              $(".alert").alert('close');
+                            },6000);
+                        },2000);
+
+                    }
+                    
+                    // trofeo complete refactor
+                    if (parametro== "6" && userJSON.result.livello <= parametro){
+                        $('#trophy').empty();
+                        setTimeout(function(){
+                            audioUnlock.play();
+                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Refactor King!<span class='glyphicon glyphicon-ok'></span></div>");
+                            setTimeout(function(){
+                              $(".alert").alert('close');
+                            },6000);
+                        },2000);
+
+                    }
+                    
+                    // trofeo complete design 
+                    if (parametro== "9" && userJSON.result.livello <= parametro){
+                        $('#trophy').empty();
+                        setTimeout(function(){
+                            audioUnlock.play();
+                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
                             setTimeout(function(){
                               $(".alert").alert('close');
                             },6000);

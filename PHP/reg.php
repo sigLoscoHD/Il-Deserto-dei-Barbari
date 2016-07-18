@@ -48,7 +48,7 @@
             $_SESSION['password']=$password;
             $_SESSION['livello']=1;
             $_SESSION['punteggio']=0;
-            header("Location: profile.html?mex=reg_succ");
+            header("Location: ../profile.html?mex=reg_succ");
             }
         else{
             $db->close();
