@@ -431,8 +431,8 @@ var MC = MC || (function() {
                     'MirvChance': 30 + i * 4,
                     'BombChance': i * 2,
                     'FlyerChance': 5,
-                    'TimeBetweenShots': 3000 - i * 100,
-                    'MissileSpeed':10 + (i / 8)
+                    'TimeBetweenShots': 1500 - i * 100,
+                    'MissileSpeed':1 + (i / 4)
                 };
             }
         }
