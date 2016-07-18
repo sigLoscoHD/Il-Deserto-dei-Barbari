@@ -8,9 +8,10 @@ $.ajax({
     type:"get",
     dataType: 'text',
     async:false,
-    success:function(data){         
+    success:function(data){
                 for(var i=0;i<data;i++){
                     $("#"+(i+1)).removeAttr("disabled");
+                    
                 }
             }
     });

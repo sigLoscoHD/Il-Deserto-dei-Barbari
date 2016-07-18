@@ -24,6 +24,7 @@ var MC = MC || (function() {
                 'rockets': [],
                 'turret': null
             },
+            _points=0,
             _levels = [];
         /**
          * Start the game
@@ -61,6 +62,7 @@ var MC = MC || (function() {
                     'rockets': [],
                     'turret': null
             };
+            _points=0;
             _levels = [];
 
             for(var i=0;i<initHomes.length;i++){
@@ -87,10 +89,12 @@ var MC = MC || (function() {
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="85px Georgia";
-            _ctx.fillText("You Lose", 70, 250);
+            _ctx.fillText("You Lose", 70, 150);
+            _ctx.font="50px Georgia";
+            _ctx.fillText("Points= "+_points, 30, 320);
             _ctx.font="25px Georgia";
-            _ctx.fillText("Move the cursor out of the box", 70, 300);
-            _ctx.fillText("and come back here for a new challenge!", 20, 330);        
+            _ctx.fillText("Move the cursor out of the box", 70,200);
+            _ctx.fillText("and come back here for a new challenge!", 20, 230);        
             _ctx.font="11px Georgia";
         }
         
@@ -122,7 +126,7 @@ var MC = MC || (function() {
 			
             _clickX = event.clientX - this.offsetLeft;
             _clickY = event.clientY - this.offsetTop;
-			 
+
             _entities.rockets.push(new Rocket(
                 target,
                 {
@@ -201,9 +205,9 @@ var MC = MC || (function() {
         }
         
 		
-		function get_endofgame(){
-			return _endofgame;
-		}
+        function get_endofgame(){
+                return _endofgame;
+        }
 		
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -211,9 +215,10 @@ var MC = MC || (function() {
                 'Missile launched = ' + _missiles_created + '/' + Wave.getWave(_level).MissilesToDetroy,
                 10, 20
             );
+            _ctx.fillText('Level = ' + _level, 10, 30);
+            _ctx.fillText('Points = ' + _points, 10, 40);
 			
-            /*_ctx.fillText('Level = ' + _level, 10, 30);
-			_ctx.fillText('Level = ' + _level, 10, 30);
+            /*_ctx.fillText('Level = ' + _level, 10, 30);			
             _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
             _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
             _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
@@ -292,17 +297,18 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-			for(i=0;i<_entities.rockets.length;i++){
+            for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-                    
+
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-                
+
                 if (dist < _entities.rockets[i].currentRadius) {
-                    return true;
+                    _points+=1*_level + 1;
+                    return true;                
+                    ;
                 }
-				               
-			}
+            }
             return false;
         }
 
@@ -384,6 +390,10 @@ var MC = MC || (function() {
             return _width;
         }
 
+        function getPoints(){
+            return _points;
+        }
+        
         // Expose public methods
         return {
             'loadLevel': loadLevel,
@@ -400,7 +410,8 @@ var MC = MC || (function() {
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
             'getErrX': getErrX,
-            'getErrY' : getErrY
+            'getErrY' : getErrY,
+            'getPoints' : getPoints
                     
         };
     }());
@@ -421,7 +432,7 @@ var MC = MC || (function() {
                     'BombChance': i * 2,
                     'FlyerChance': 5,
                     'TimeBetweenShots': 3000 - i * 100,
-                    'MissileSpeed': 10+ (i / 8)
+                    'MissileSpeed':20 + (i / 8)
                 };
             }
         }
@@ -442,10 +453,11 @@ var MC = MC || (function() {
     function endofgamefunction(){
         if(engine.get_endofgame()){
             pause();
-            engine.finalDraw();  				
+            engine.finalDraw();  
+            store_points(engine.getPoints());
             engine.re_init();
             engine.loadLevel(levels[0]);	
-            engine.run();			
+            engine.run();         
         }		
     }
 
@@ -674,15 +686,17 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
-    console.log("bella"+ getErrX());
+    function getPoints(){return engine.getPoints();}
     
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
         'getErrX': getErrX,
-        'getErrY' : getErrY
+        'getErrY' : getErrY,
+        'getPoints' : getPoints
     };
 
 }());
+
 

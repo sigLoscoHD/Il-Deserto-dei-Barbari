@@ -50,6 +50,7 @@
             $_SESSION['username']=$riga["username"];
             $_SESSION['password']=$riga["password"];
             $_SESSION['livello']=$riga["livello"];
+            $_SESSION['punteggio']=$riga["punteggio"];
             header("Location: ../profile.html?mex=log_succ"); // redirect al profilo
             exit;
         }

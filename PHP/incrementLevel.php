@@ -13,6 +13,7 @@ else{
 
     $db=new database();
     
-    $risultato=$db->insert($query);
+    $risultato=$db->update($query);
     
+    $db->close();
 }

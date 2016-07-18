@@ -161,6 +161,13 @@ if (check == "test"){
                                 async:false,
                                 success:function(){}
                             });
+                            
+                            $.ajax({
+                                url:"PHP/increment_points.php?points=10000",
+                                type:"post",
+                                async:false,
+                                success:function(){}
+                            });
                         }
                     }
         });
@@ -321,7 +328,7 @@ function soluzione1(){
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
-    var line=doc.getLine(583); // andiamo a prendere la riga incriminata
+    var line=doc.getLine(595); // andiamo a prendere la riga incriminata
     line = line.replace(/\s+/g, '');
     if (result == line)
         return true;
@@ -330,12 +337,12 @@ function soluzione2(){
 }
 
 function soluzione3(){
-    var line= doc.getLine(280);
+    var line= doc.getLine(286);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
     if (result[0]=== "0")
         return true;
     else
-        return false;
-    
+        return false;   
 }
+

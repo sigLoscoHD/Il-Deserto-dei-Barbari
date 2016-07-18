@@ -31,7 +31,7 @@
                 exit;
         }
         
-        $query = "insert into users values (null,'".$name."','".$surname."','".$email."','".$username."','".$password."','1')";
+        $query = "insert into users values (null,'".$name."','".$surname."','".$email."','".$username."','".$password."','1','0')";
         
         $esito = $db->insert($query);
         
@@ -47,6 +47,7 @@
             $_SESSION['username']=$username;
             $_SESSION['password']=$password;
             $_SESSION['livello']=1;
+            $_SESSION['punteggio']=0;
             header("Location: profile.html?mex=reg_succ");
             }
         else{
