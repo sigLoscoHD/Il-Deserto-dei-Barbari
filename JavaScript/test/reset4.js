@@ -272,27 +272,49 @@ var MC = MC || (function() {
             }
         }
         
+        function power(x, n){
+            
+           return Math.pow(x,n); 
+            
+            
+            
+            
+            
+            
+            
+        }
         /**
          * Check if a missile hit a rocket explosion.
          * 
          * @param {object} missile.
          * @return {bool} Boolean verdict.
          */
+        var flag1=false;
         function hasHitRocketExplosion(missile) {
-            for(i=10;i<_entities.rockets.length;i++){
-                var x = _entities.rockets[i].pos.x - missile.pos.x,
-                    y = _entities.rockets[i].pos.y - missile.pos.y;
+            for(i=0;i<_entities.rockets.length;i++){
+                var x = _entities.rockets[i].pos.x - missile.pos.x;
+                var y = _entities.rockets[i].pos.y - missile.pos.y;
 
-                var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+                var potX=power(x, 2);
+                var potY=power(y, 2);
 
+                var dist = Math.sqrt(potX +potY); 
+                console.log("fuori");
+                if(!flag1){
+                    console.log("dentro");
+                    soluzione4(x,potX);
+                    flag1=true;
+                }
+                    
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
                     return true;
                 }
-
             }
             return false;
         }
+        function getX(){return x;}
+        function getPotX(){return potX;}
 
         /**
          * Load and setup a level
@@ -302,7 +324,7 @@ var MC = MC || (function() {
 		
 		
 		
-		var initHomes=[
+	var initHomes=[
             { 'x': 30,  'y': 430,'stricken':3,'removed':0},
             { 'x': 100, 'y': 430 ,'stricken':3,'removed':0},
             { 'x': 175, 'y': 430 ,'stricken':3,'removed':0},
@@ -391,9 +413,10 @@ var MC = MC || (function() {
             'initialDraw' : initialDraw,
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
-            'getPoints' : getPoints
-                    
-        };
+            'getPoints' : getPoints,
+            'getX': getX,
+            'getPotX': getPotX
+            };
     }());
     
     
@@ -534,16 +557,15 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if ((this.pos.x >= this.target.pos.x &&
+     if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
-            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
-		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y){		
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                    if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                        this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                        engine.removeEntities(i);
+                    }				
+                }
             return true;			
         } 
 		else
@@ -662,11 +684,17 @@ var MC = MC || (function() {
     }
     function getPoints(){return engine.getPoints();}
     
+    function getX(){return engine.getX();}
+    function getPotX(){return engine.getPotX();}
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
-        'getPoints' : getPoints
+        'getPoints' : getPoints,
+        'getX': getX,
+        'getPotX': getPotX
     };
 
 }());
+
+

@@ -114,14 +114,11 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x= 0;
-        var _err_y= 0;
-        
         function launchRocket(event) {
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
-                'x': event.clientX - this.offsetLeft + _err_x,
-                'y': event.clientY - this.offsetTop + _err_y 
+                'x': event.clientX - this.offsetLeft,
+                'y': event.clientY - this.offsetTop
             };
 			
             _clickX = event.clientX - this.offsetLeft;
@@ -135,8 +132,6 @@ var MC = MC || (function() {
                 }
             ));
         }
-        function getErrX(){return _err_x;}
-        function getErrY(){return _err_y;}
        
         /**
          * Game loop
@@ -149,7 +144,7 @@ var MC = MC || (function() {
 			while(number_of_target<_entities.targets.length && !_endofgame){			
 				if(_entities.targets[number_of_target].pos.removed==1)
 					count++;				
-				number_of_target++										
+				number_of_target++;										
 			}
 			
 			//all targets destroyed
@@ -284,7 +279,7 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-			for(i=0;i<_entities.rockets.length;i++){
+            for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
                     
@@ -396,8 +391,6 @@ var MC = MC || (function() {
             'initialDraw' : initialDraw,
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
-            'getErrX': getErrX,
-            'getErrY' : getErrY,
             'getPoints' : getPoints
                     
         };
@@ -540,9 +533,9 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if (this.pos.x >= this.target.pos.x &&
+       if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
-            this.pos.y <= this.target.pos.y + this.target.width)
+            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
 		{		
 			for(var i=0; i<engine.getEntities().targets.length;i++){
 				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
@@ -666,16 +659,13 @@ var MC = MC || (function() {
             flag=1;
         }
     }
-    function getErrX(){ return engine.getErrX();}
-    function getErrY(){return engine.getErrY();}
+    
     function getPoints(){return engine.getPoints();}
     
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
-        'getErrX': getErrX,
-        'getErrY' : getErrY,
         'getPoints' : getPoints
     };
 

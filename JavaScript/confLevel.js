@@ -132,146 +132,31 @@ if (check == "test"){
     switch (parametro) {
         case "1":
             result= soluzione1();
+            checkResult(result);
             break; 
         case "2":
             result= soluzione2();
+            checkResult(result);
             break; 
         case "3":
             result= soluzione3();
-            break; 
+            checkResult(result);
+            break;
+        case "4":
+            mustPlay();
+            
+            
     } 
-    if (result == true){
-        /*
-         * in caso di successo....
-         */
-        
-        //incrementiamo il numero di livelli sbloccati dal nostro utente
-        $.ajax({
-            url:"PHP/incrementLevel.php?mex=get",
-            type:"post",
-            dataType: 'text',
-            async:false,
-            success:function(data){   
-                        if(data.trim()==parametro.trim()){ //puliamo le variabili da spaziature
-                            $.ajax({
-                                url:"PHP/incrementLevel.php?mex=update",
-                                type:"post",
-                                dataType: 'text',
-                                async:false,
-                                success:function(){}
-                            });
-                   
-                            $.ajax({
-                                url:"PHP/increment_points.php?points=10000",
-                                type:"post",
-                                async:false,
-                                success:function(){setGrado(10000);}
-                            });                        
-                        }
-                    }
-        });       
-        //rendo tutte le righe non editabili (l'editor possiamo anche rimuoverlo --> scelta da prendere al momento lascio così)
-        for(var i=0; i<doc.lineCount();i++){
-            doc.addLineClass(i,"background","readOnly");
-        }
-        
-        /*
-         * all'interno del nostro modal andiamo ad appendere la frase di conclusione 
-         * del livello del capitano
-         */
+    
+}
+function mustPlay(){
         $("#text").empty();
         $("#image").empty();
-        $('#myModal').modal('show');
+        $("#myModal").modal();
         $(".modal-title").empty();
-        $(".modal-title").append(config.succTitle);
+        $(".modal-title").append("Orders");
         $("#image").append("<img src='images/generale.jpg'/>");
-        $("#text").append(config.succCommand);
-        
-        //rimuoviamo certe voci dalla navbar in modo tale da costringere l'utente al gioco
-        $("#brand").attr("href", "#");
-        $("#playNav").remove();
-        $("#profile").remove();
-        $("#aboutUs").remove();
-        $("#orders").remove();
-        $("#help").remove();
-        
-        //rimuoviamo i pulsanti "Save and Test e "Undo"
-        $("#save").remove();
-        $("#undo").remove();
-     
-        //a livello completato sblocchiamo l'obiettivo dopo pochi secondi
-        setTimeout(function(){
-            
-            if(userJSON.result.livello <= parametro){
-                audioUnlock.play();
-                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
-            }
-            else{
-                $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
-            }
-            
-            setTimeout(function(){
-                   $(".alert").alert('close');
-                   //nel caso in cui si è completato un gruppo di livelli ulteriore sblocco
-                   
-                   //trofeo complete debug
-                   if (parametro== "3" && userJSON.result.livello <= parametro){
-                        $('#trophy').empty();
-                        setTimeout(function(){
-                            audioUnlock.play();
-                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
-                            setTimeout(function(){
-                              $(".alert").alert('close');
-                            },6000);
-                        },2000);
-
-                    }
-                    
-                    // trofeo complete refactor
-                    if (parametro== "6" && userJSON.result.livello <= parametro){
-                        $('#trophy').empty();
-                        setTimeout(function(){
-                            audioUnlock.play();
-                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Refactor King!<span class='glyphicon glyphicon-ok'></span></div>");
-                            setTimeout(function(){
-                              $(".alert").alert('close');
-                            },6000);
-                        },2000);
-
-                    }
-                    
-                    // trofeo complete design 
-                    if (parametro== "9" && userJSON.result.livello <= parametro){
-                        $('#trophy').empty();
-                        setTimeout(function(){
-                            audioUnlock.play();
-                            $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
-                            setTimeout(function(){
-                              $(".alert").alert('close');
-                            },6000);
-                        },2000);
-
-                    }
-            },6000);
-            //appendiamo il nuovo pulsante "Next" che reindirizza a game.html
-            $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Next <span class='glyphicon glyphicon-arrow-right'></span></button>");
-            $("#next").click(function() {
-            window.location="game.html";
-        }); 
-        },3000);
-
-    }
-    else {
-        /*
-         * in caso di errore..
-         */
-        failSound.play();
-        $("#result").empty();
-        $('#result').html("<div class='alert alert-danger fade in'><strong>Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
-        setTimeout(function(){
-               $(".alert").alert('close');
-           },2000);
-    }
+        $("#text").append("<strong>Ora difendici!</strong> Testa la soluzione!");
 }
 
 $("#orders").click(function() {
@@ -348,6 +233,145 @@ $("#save").click(function(){
         }
 });
 
+
+
+
+function checkResult(result){
+        if (result == true){
+            /*
+             * in caso di successo....
+             */
+
+            //incrementiamo il numero di livelli sbloccati dal nostro utente
+            $.ajax({
+                url:"PHP/incrementLevel.php?mex=get",
+                type:"post",
+                dataType: 'text',
+                async:false,
+                success:function(data){   
+                            if(data.trim()==parametro.trim()){ //puliamo le variabili da spaziature
+                                $.ajax({
+                                    url:"PHP/incrementLevel.php?mex=update",
+                                    type:"post",
+                                    dataType: 'text',
+                                    async:false,
+                                    success:function(){}
+                                });
+
+                                $.ajax({
+                                    url:"PHP/increment_points.php?points=10000",
+                                    type:"post",
+                                    async:false,
+                                    success:function(){setGrado(10000);}
+                                });                        
+                            }
+                        }
+            });       
+            //rendo tutte le righe non editabili (l'editor possiamo anche rimuoverlo --> scelta da prendere al momento lascio così)
+            for(var i=0; i<doc.lineCount();i++){
+                doc.addLineClass(i,"background","readOnly");
+            }
+
+            /*
+             * all'interno del nostro modal andiamo ad appendere la frase di conclusione 
+             * del livello del capitano
+             */
+            $("#text").empty();
+            $("#image").empty();
+            $('#myModal').modal('show');
+            $(".modal-title").empty();
+            $(".modal-title").append(config.succTitle);
+            $("#image").append("<img src='images/generale.jpg'/>");
+            $("#text").append(config.succCommand);
+
+            //rimuoviamo certe voci dalla navbar in modo tale da costringere l'utente al gioco
+            $("#brand").attr("href", "#");
+            $("#playNav").remove();
+            $("#profile").remove();
+            $("#aboutUs").remove();
+            $("#orders").remove();
+            $("#help").remove();
+
+            //rimuoviamo i pulsanti "Save and Test e "Undo"
+            $("#save").remove();
+            $("#undo").remove();
+
+            //a livello completato sblocchiamo l'obiettivo dopo pochi secondi
+            setTimeout(function(){
+
+                if(userJSON.result.livello == parametro){
+                    audioUnlock.play();
+                    $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                }
+                else{
+                    $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                }
+
+                setTimeout(function(){
+                       $(".alert").alert('close');
+                       //nel caso in cui si è completato un gruppo di livelli ulteriore sblocco
+
+                       //trofeo complete debug
+                       if (parametro== "3" && userJSON.result.livello == parametro){
+                            $('#trophy').empty();
+                            setTimeout(function(){
+                                audioUnlock.play();
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                setTimeout(function(){
+                                  $(".alert").alert('close');
+                                },6000);
+                            },2000);
+
+                        }
+
+                        // trofeo complete refactor
+                        if (parametro== "6" && userJSON.result.livello == parametro){
+                            $('#trophy').empty();
+                            setTimeout(function(){
+                                audioUnlock.play();
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Refactor King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                setTimeout(function(){
+                                  $(".alert").alert('close');
+                                },6000);
+                            },2000);
+
+                        }
+
+                        // trofeo complete design 
+                        if (parametro== "9" && userJSON.result.livello == parametro){
+                            $('#trophy').empty();
+                            setTimeout(function(){
+                                audioUnlock.play();
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                setTimeout(function(){
+                                  $(".alert").alert('close');
+                                },6000);
+                            },2000);
+
+                        }
+                },6000);
+                //appendiamo il nuovo pulsante "Next" che reindirizza a game.html
+                $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Next <span class='glyphicon glyphicon-arrow-right'></span></button>");
+                $("#next").click(function() {
+                window.location="game.html";
+            }); 
+            },3000);
+
+        }
+        else {
+            /*
+             * in caso di errore..
+             */
+            failSound.play();
+            $("#result").empty();
+            $('#result').html("<div class='alert alert-danger fade in'><strong>Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+            setTimeout(function(){
+                   $(".alert").alert('close');
+               },2000);
+        }
+    }
+    
+    
 function soluzione1(){
     var x= MC.getErrX();
     var y= MC.getErrY();
@@ -361,7 +385,7 @@ function soluzione1(){
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
-    var line=doc.getLine(595); // andiamo a prendere la riga incriminata
+    var line=doc.getLine(588); // andiamo a prendere la riga incriminata
     line = line.replace(/\s+/g, '');
     if (result == line)
         return true;
@@ -370,7 +394,7 @@ function soluzione2(){
 }
 
 function soluzione3(){
-    var line= doc.getLine(286);
+    var line= doc.getLine(281);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
     if (result[0]=== "0")
@@ -379,3 +403,20 @@ function soluzione3(){
         return false;   
 }
 
+function soluzione4(x,pot){
+    var content;
+    var check;
+    for(var i=275; i<284; i++){
+        content+= doc.getLine(i);
+    }
+    console.log("ciao");
+    content=content.replace(/\s+/g, '');
+    console.log(content);
+    check= content.search("Math.pow");
+    if (Math.pow(x,2) == pot && check == -1)
+        result= true;
+    else 
+        result= false;
+    
+    checkResult(result);
+}

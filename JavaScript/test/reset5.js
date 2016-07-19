@@ -279,7 +279,7 @@ var MC = MC || (function() {
          * @return {bool} Boolean verdict.
          */
         function hasHitRocketExplosion(missile) {
-            for(i=10;i<_entities.rockets.length;i++){
+            for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
 
@@ -534,16 +534,16 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if ((this.pos.x >= this.target.pos.x &&
+       if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
             this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
 		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                        if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                                this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                                        engine.removeEntities(i);
+                        }				
+                }
             return true;			
         } 
 		else
@@ -601,7 +601,8 @@ var MC = MC || (function() {
                 if (this.currentRadius >= this.fullRadius) {
                     this.expanding = false;
                 }
-            } else {
+            } 
+            else {
                 this.currentRadius -= this.explosionSpeed;
             }
             

@@ -149,7 +149,7 @@ var MC = MC || (function() {
 			while(number_of_target<_entities.targets.length && !_endofgame){			
 				if(_entities.targets[number_of_target].pos.removed==1)
 					count++;				
-				number_of_target++										
+				number_of_target++;										
 			}
 			
 			//all targets destroyed
@@ -320,7 +320,7 @@ var MC = MC || (function() {
 		
 		
 		
-		var initHomes=[
+        var initHomes=[
             { 'x': 30,  'y': 430,'stricken':3,'removed':0},
             { 'x': 100, 'y': 430 ,'stricken':3,'removed':0},
             { 'x': 175, 'y': 430 ,'stricken':3,'removed':0},
@@ -375,9 +375,12 @@ var MC = MC || (function() {
 		}
         
 		function removeEntities(i){
-			_entities.targets[i].pos.stricken--;
-			_entities.targets[i].height-=10;
-			_entities.targets[i].pos.y+=10;
+                    console.log(_entities.targets[i].pos.removed);
+                     if(_entities.targets[i].pos.removed==0){
+                            _entities.targets[i].pos.stricken--;                      
+                            _entities.targets[i].height-=10;
+                            _entities.targets[i].pos.y+=10;
+                        }
 			
 			
 			if(_entities.targets[i].pos.stricken==0)
@@ -558,20 +561,19 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if (this.pos.x >= this.target.pos.x &&
+        if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
-            this.pos.y <= this.target.pos.y + this.target.width)
-		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
+            {		
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                    if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                            this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                                    engine.removeEntities(i);
+                    }				
+                }
             return true;			
         } 
-		else
-		{
+        else{
             return false;
         }
     };
