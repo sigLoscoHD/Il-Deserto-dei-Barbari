@@ -56,8 +56,8 @@
             "title": "Livello 5",
             "command": "Soldato ti stai comportando molto bene! Adesso aumentiamo la difficoltà",
              "editable": {
-                "begin":600,
-                "end":606
+                "begin":599,
+                "end":609
             }, 
             "help":"",
             "succTitle": "Livello 5 completato",

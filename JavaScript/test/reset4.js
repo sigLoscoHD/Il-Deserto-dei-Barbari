@@ -298,14 +298,13 @@ var MC = MC || (function() {
                 var potX=power(x, 2);
                 var potY=power(y, 2);
 
-                var dist = Math.sqrt(potX +potY); 
-                console.log("fuori");
-                if(!flag1){
-                    console.log("dentro");
-                    soluzione4(x,potX);
-                    flag1=true;
-                }
-                    
+                var dist = Math.sqrt(potX +potY);
+                if(check=="test" || check=="crit"){
+                    if(!flag1){
+                        soluzione4(x,potX);
+                        flag1=true;
+                    }
+                }    
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
                     return true;

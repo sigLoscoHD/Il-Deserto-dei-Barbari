@@ -592,18 +592,21 @@ var MC = MC || (function() {
         }
     };
     
+    var index=0;
     
     Rocket.prototype.draw = function(ctx) {
+        var initexp=this.expanding; var initcrad=this.currentRadius;
         if (this.exploded) {
-            if (this.expanding) {
-                this.currentRadius += this.explosionSpeed;
-                
-                if (this.currentRadius >= this.fullRadius) {
-                    this.expanding = false;
-                }
-            } 
-            else {
-                this.currentRadius -= this.explosionSpeed;
+            switch (this.expanding){
+                case true:
+                    this.currentRadius += this.explosionSpeed;
+                    if (this.currentRadius >= this.fullRadius) {
+                        this.expanding = false;
+                    }
+                    break;
+                default :
+                     this.currentRadius -= this.explosionSpeed;
+                     break;
             }
             
             ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -611,6 +614,13 @@ var MC = MC || (function() {
             ctx.arc(this.pos.x, this.pos.y, this.currentRadius, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
+            
+            if(check=="test" || check=="crit"){
+                while(index<100){
+                    soluzione5(this.expanding,this.currentRadius, initexp, initcrad, this.explosionSpeed, this.fullRadius,index);
+                    index++;
+                }
+            }
         } else {
             ctx.strokeStyle = 'rgb(255, 255, 255)';
             ctx.beginPath();

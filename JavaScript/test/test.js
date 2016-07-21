@@ -25,7 +25,7 @@ var MC = MC || (function() {
                 'turret': null
             },
             _points=0,
-            _levels = [];
+            _levels = [];         
         /**
          * Start the game
          */		
@@ -54,6 +54,7 @@ var MC = MC || (function() {
             _rocketPosY = 0;
             _clickX = 0;
             _clickY = 0;
+            _points=0;
             _endofgame=false;			
 
             _entities = {
@@ -62,7 +63,6 @@ var MC = MC || (function() {
                     'rockets': [],
                     'turret': null
             };
-            _points=0;
             _levels = [];
 
             for(var i=0;i<initHomes.length;i++){
@@ -114,19 +114,16 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x= 0
-        var _err_y= 0
-        
         function launchRocket(event) {
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
-                'x': event.clientX - this.offsetLeft + _err_x,
-                'y': event.clientY - this.offsetTop + _err_y 
+                'x': event.clientX - this.offsetLeft,
+                'y': event.clientY - this.offsetTop
             };
 			
             _clickX = event.clientX - this.offsetLeft;
             _clickY = event.clientY - this.offsetTop;
-
+			 
             _entities.rockets.push(new Rocket(
                 target,
                 {
@@ -135,9 +132,7 @@ var MC = MC || (function() {
                 }
             ));
         }
-        function getErrX(){return _err_x;}
-        function getErrY(){return _err_y;}
-
+       
         /**
          * Game loop
          */
@@ -198,16 +193,16 @@ var MC = MC || (function() {
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
-				_drawTurretBase();
+				
 				// Draw debug information
 				debugInfo();
 			}
         }
         
 		
-        function get_endofgame(){
-                return _endofgame;
-        }
+		function get_endofgame(){
+			return _endofgame;
+		}
 		
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -218,7 +213,8 @@ var MC = MC || (function() {
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
 			
-            /*_ctx.fillText('Level = ' + _level, 10, 30);			
+            /*_ctx.fillText('Level = ' + _level, 10, 30);
+
             _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
             _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
             _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
@@ -239,22 +235,8 @@ var MC = MC || (function() {
                 }
             }
         }
-        /*
-         * Draw turret basement 
-         * 
-         * @returns {undefined}
-         */
-        function _drawTurretBase () {
-            var width = 35;
-            var height = 20;
-            var x = _width/2 - width/2;
-            var y = 440;
-            _ctx.fillStyle="#FF0000";
-            _ctx.fillRect(x,y,width,height); 
-        }
-        
 		
-	function _drawDefense(entities) {
+		function _drawDefense(entities) {
             for (var i = 0; i < entities.length; i++) {
 				if(entities[i].pos.removed==0)
 					entities[i].draw(_ctx);
@@ -305,9 +287,9 @@ var MC = MC || (function() {
 
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
-                    return true;                
-                    ;
+                    return true;
                 }
+
             }
             return false;
         }
@@ -389,11 +371,11 @@ var MC = MC || (function() {
         function getWidth() {
             return _width;
         }
-
+        
         function getPoints(){
             return _points;
         }
-        
+
         // Expose public methods
         return {
             'loadLevel': loadLevel,
@@ -409,8 +391,6 @@ var MC = MC || (function() {
             'initialDraw' : initialDraw,
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
-            'getErrX': getErrX,
-            'getErrY' : getErrY,
             'getPoints' : getPoints
                     
         };
@@ -449,18 +429,17 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
-    
-    function endofgamefunction(){
-        if(engine.get_endofgame()){
-            pause();
-            engine.finalDraw();  
-            store_points(engine.getPoints());
-            engine.re_init();
-            engine.loadLevel(levels[0]);	
-            engine.run();         
-        }		
-    }
 
+	function endofgamefunction(){
+            if(engine.get_endofgame()){
+                pause();
+                engine.finalDraw();
+                
+                engine.re_init();
+                engine.loadLevel(levels[0]);	
+                engine.run();			
+            }		
+	}
     /**
      * Game entity class.
      */
@@ -487,25 +466,22 @@ var MC = MC || (function() {
      * @param {object} pos Location position.
      */
     var Turret = function Turret(width, height) {
-       this.width = 6;
-       this.height = 24;    
+       this.width = 20;
+       this.height = 20;
        this.pos = {
         'x': (width / 2) - (this.width / 2),
-        'y': 420,
+        'y': 430,
 		'removed':0
        };
        this.colour = 'rgb(255, 0, 0)';
     };
-    
     Turret.prototype = new Entity();
 
-    
-     /**
+    /**
      * Home entity class
      *
      * @param {object} pos Location position.
      */
-    
     var Home = function Home(pos) {
        this.pos = pos;
        this.width = 20;
@@ -558,16 +534,16 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if (this.pos.x >= this.target.pos.x &&
+       if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
-            this.pos.y <= this.target.pos.y + this.target.width)
+            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
 		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                        if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                                this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                                        engine.removeEntities(i);
+                        }				
+                }
             return true;			
         } 
 		else
@@ -616,16 +592,21 @@ var MC = MC || (function() {
         }
     };
     
+    var index=0;
+    
     Rocket.prototype.draw = function(ctx) {
+        var initexp=this.expanding; var initcrad=this.currentRadius;
         if (this.exploded) {
-            if (this.expanding) {
-                this.currentRadius += this.explosionSpeed;
-                
-                if (this.currentRadius >= this.fullRadius) {
-                    this.expanding = false;
-                }
-            } else {
-                this.currentRadius -= this.explosionSpeed;
+            switch (this.expanding){
+                case true:
+                    this.currentRadius += this.explosionSpeed;
+                    if (this.currentRadius >= this.fullRadius) {
+                        this.expanding = false;
+                    }
+                    break;
+                default :
+                     this.currentRadius -= this.explosionSpeed;
+                     break;
             }
             
             ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -633,6 +614,13 @@ var MC = MC || (function() {
             ctx.arc(this.pos.x, this.pos.y, this.currentRadius, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
+            
+            if(check=="test" || check=="crit"){
+                while(index<100){
+                    soluzione5(this.expanding,this.currentRadius, initexp, initcrad, this.explosionSpeed, this.fullRadius,index);
+                    index++;
+                }
+            }
         } else {
             ctx.strokeStyle = 'rgb(255, 255, 255)';
             ctx.beginPath();
@@ -645,8 +633,7 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-
-
+    
     /**
      * Levels
      */
@@ -676,7 +663,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1 && !engine.get_endofgame()){
+        if(flag==1  && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -684,19 +671,13 @@ var MC = MC || (function() {
             flag=1;
         }
     }
-    function getErrX(){ return engine.getErrX();}
-    function getErrY(){return engine.getErrY();}
     function getPoints(){return engine.getPoints();}
     
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
-        'getErrX': getErrX,
-        'getErrY' : getErrY,
         'getPoints' : getPoints
     };
 
 }());
-
-

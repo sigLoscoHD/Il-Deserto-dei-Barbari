@@ -144,8 +144,10 @@ if (check == "test"){
             break;
         case "4":
             mustPlay();
-            
-            
+            break;
+        case "5":
+            mustPlay();
+            break;
     } 
     
 }
@@ -403,20 +405,57 @@ function soluzione3(){
         return false;   
 }
 
+
 function soluzione4(x,pot){
     var content;
     var check;
     for(var i=275; i<284; i++){
         content+= doc.getLine(i);
     }
-    console.log("ciao");
     content=content.replace(/\s+/g, '');
-    console.log(content);
     check= content.search("Math.pow");
     if (Math.pow(x,2) == pot && check == -1)
         result= true;
     else 
         result= false;
-    
     checkResult(result);
+}
+
+var count=0;
+
+function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
+    if(initexp){
+        initcrad += expSpeed;
+        if (cradius >= fradius) {
+            initexp = false;           
+        }
+    }
+    else
+        initcrad -= expSpeed;
+    
+   
+    
+    if(i<100){
+        if(initexp == exp && cradius === initcrad)
+            count++; 
+    }
+
+    if(i==99){
+        var content;
+        var check;
+        for(var i=599; i<610; i++){
+            content+= doc.getLine(i);
+        }
+        content=content.replace(/\s+/g, '');
+        console.log(content);
+        check= content.search("switch");
+        console.log(check);
+        
+        if (count==100 && check == -1)
+            result= true;
+        else
+            result= false;
+        checkResult(result);
+    }
+ 
 }
