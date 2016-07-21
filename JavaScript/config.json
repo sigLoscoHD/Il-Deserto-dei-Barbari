@@ -5,8 +5,8 @@
             "id":"1",
             "title":"Livello 1",
             "editable": {
-                "begin":116,
-                "end":117
+                "begin":115,
+                "end":116
             }, 
             "command": "Soldato siamo sotto attacco! Quei maledetti barbari sono diventati più forti che mai. I loro missili si stanno abbattendo violentemente su di noi, senza lasciarci scampo. Le nostre difese presentano molti problemi, le nostre armi sono arruginite, funzionano male, e tu sei l'unico che può sistemarle! Un nuovo attacco sta giungendo proprio ora! <br> Il sistema di puntamento dei nostri cannoni è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra questi missili prima che diventiamo un cumulo di cenere!!!",
             "help":"Indovinello ?!?! <br> Ad ogni posizione corrisponde una.....",
@@ -18,8 +18,8 @@
             "title": "Livello 2",
             "command": "Soldato! Cosa è successo ai nostri missili? <br> Queste non possono essere definite esplosioni! <br> Faccia qualcosa prima che gli invasori ci riducano in poltiglia! ",
              "editable": {
-                "begin":588,
-                "end":588
+                "begin":589,
+                "end":589
             }, 
             "help":"L'esplosione ha una circonferenza quindi.......",
             "succTitle": "Livello 2 completato",
@@ -30,8 +30,8 @@
             "title": "Livello 3",
             "command": "Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci trasformi tutti in polvere!",
              "editable": {
-                "begin":281,
-                "end":281
+                "begin":280,
+                "end":280
             }, 
             "help":"Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi",
             "succTitle": "Livello 3 completato",
@@ -43,8 +43,8 @@
             "title": "Livello 4",
             "command": "Il nostro software è obsoleto! <br> Dimostraci di cosa sei capace! Abbiamo bisogno di un <strong>restyling</strong>",
              "editable": {
-                "begin":275,
-                "end":283
+                "begin":274,
+                "end":282
             }, 
             "help":"",
             "succTitle": "Livello 4 completato",
@@ -56,10 +56,22 @@
             "title": "Livello 5",
             "command": "Soldato ti stai comportando molto bene! Adesso aumentiamo la difficoltà",
              "editable": {
-                "begin":599,
-                "end":609
+                "begin":600,
+                "end":610
             }, 
-            "help":"",
+            "help":"Occhio al warning...........",
+            "succTitle": "Livello 5 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            },
+            {   
+            "id": "6",
+            "title": "Livello 6",
+            "command": "Soldato il nostro software sta migliorando ma non è ancora abbastanza! So che puoi fare ancora meglio",
+             "editable": {
+                "begin":184,
+                "end":198
+            }, 
+            "help":"La ricorsione che brutta bestia.",
             "succTitle": "Livello 5 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
             }

@@ -148,6 +148,9 @@ if (check == "test"){
         case "5":
             mustPlay();
             break;
+        case "6":
+            mustPlay();
+            break;
     } 
     
 }
@@ -387,7 +390,7 @@ function soluzione1(){
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
-    var line=doc.getLine(588); // andiamo a prendere la riga incriminata
+    var line=doc.getLine(589); // andiamo a prendere la riga incriminata
     line = line.replace(/\s+/g, '');
     if (result == line)
         return true;
@@ -396,7 +399,7 @@ function soluzione2(){
 }
 
 function soluzione3(){
-    var line= doc.getLine(281);
+    var line= doc.getLine(280);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
     if (result[0]=== "0")
@@ -409,7 +412,7 @@ function soluzione3(){
 function soluzione4(x,pot){
     var content;
     var check;
-    for(var i=275; i<284; i++){
+    for(var i=274; i<283; i++){
         content+= doc.getLine(i);
     }
     content=content.replace(/\s+/g, '');
@@ -444,7 +447,7 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
         // andiamo a verificare la presenza dello switch nel codice
         var content;
         var check;
-        for(var i=599; i<610; i++){
+        for(var i=600; i<611; i++){
             content+= doc.getLine(i);
         }
         content=content.replace(/\s+/g, '');
@@ -456,4 +459,22 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
         checkResult(result);
     }
  
+}
+
+function soluzione6(initEnt, ent){
+    for (var i = 0; i < initEnt.length; i++) {
+        initEnt[i].move();
+   
+    }
+    
+    var strInitEnt= initEnt.toString();
+    var strEnt=ent.toString();
+    
+    if(strInitEnt == strEnt && ent[0].distance<-10)
+        result= true;
+    else
+        result=false;
+    
+    checkResult(result);
+    
 }

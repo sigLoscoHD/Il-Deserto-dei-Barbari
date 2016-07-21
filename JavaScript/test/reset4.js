@@ -49,7 +49,6 @@ var MC = MC || (function() {
             _missiles_created = 0;
             _missiles_destroyed = 0;
             _gameInterval=0;
-            _stricken=3;
             _rocketPosX = 0;
             _rocketPosY = 0;
             _clickX = 0;
@@ -378,13 +377,15 @@ var MC = MC || (function() {
 		}
         
 		function removeEntities(i){
+                    if(_entities.targets[i].pos.removed==0){
 			_entities.targets[i].pos.stricken--;
 			_entities.targets[i].height-=10;
 			_entities.targets[i].pos.y+=10;
+                    }
 			
 			
-			if(_entities.targets[i].pos.stricken==0)
-				_entities.targets[i].pos.removed=1;
+                    if(_entities.targets[i].pos.stricken==0)
+                        _entities.targets[i].pos.removed=1;
 		}
         /*
          * @return {float} Width of the canvas
