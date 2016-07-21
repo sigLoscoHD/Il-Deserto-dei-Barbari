@@ -441,16 +441,14 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
     }
 
     if(i==99){
+        // andiamo a verificare la presenza dello switch nel codice
         var content;
         var check;
         for(var i=599; i<610; i++){
             content+= doc.getLine(i);
         }
         content=content.replace(/\s+/g, '');
-        console.log(content);
-        check= content.search("switch");
-        console.log(check);
-        
+        check= content.search("switch");        
         if (count==100 && check == -1)
             result= true;
         else
