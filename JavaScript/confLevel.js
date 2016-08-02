@@ -477,8 +477,10 @@ function soluzione6(initEnt, ent, res){
     var strEnt=ent.toString();
     console.log("res " + res);
     console.log("count " + initEnt[1].ind);
+    console.log("len "+ initEnt.length);
     console.log(JSON.stringify(initEnt));
-    if(strInitEnt == strEnt && ent[0].distance<-10 && check != -1 && res == initEnt[1].ind)
+    console.log(initEnt[1].ind == initEnt.length);
+    if(strInitEnt == strEnt && ent[0].distance<-10 && check != -1 && res == initEnt[1].ind && res == initEnt.length)
         result= true;
     else
         result=false;
