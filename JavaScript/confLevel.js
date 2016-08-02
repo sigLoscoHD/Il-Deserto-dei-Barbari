@@ -461,16 +461,24 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
  
 }
 
-function soluzione6(initEnt, ent){
+function soluzione6(initEnt, ent, res){
     for (var i = 0; i < initEnt.length; i++) {
         initEnt[i].move();
    
     }
-    
+    var content;
+    var check;
+    for(var i=184; i<198; i++){
+        content+= doc.getLine(i);
+    }
+    content=content.replace(/\s+/g, '');
+    check= content.search("moveEntities");
     var strInitEnt= initEnt.toString();
     var strEnt=ent.toString();
-    
-    if(strInitEnt == strEnt && ent[0].distance<-10)
+    console.log("res " + res);
+    console.log("count " + initEnt[1].ind);
+    console.log(JSON.stringify(initEnt));
+    if(strInitEnt == strEnt && ent[0].distance<-10 && check != -1 && res == initEnt[1].ind)
         result= true;
     else
         result=false;

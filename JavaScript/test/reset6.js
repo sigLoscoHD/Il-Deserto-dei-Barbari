@@ -180,7 +180,7 @@ var MC = MC || (function() {
 				// Move missiles & rockets
 				_moveEntities(_entities.missiles);
 				var count = _entities.rockets.length;
-                                
+                var ind=0;                
                 function moveEntities(index){
                     
                     
@@ -197,8 +197,10 @@ var MC = MC || (function() {
                     
                     
                     
-                    
-                }
+                               
+                
+                return ind++;
+            }
                 var initEnt;
                 if(count>1){
                     initEnt=_entities.rockets;
@@ -206,12 +208,12 @@ var MC = MC || (function() {
                 
                 
                 
-                moveEntities(0);
                 
+                var res=moveEntities(0);
                 
                 
                 if(count>1 && (check=="test" || check=="crit") && !flag1 ){
-                    soluzione6(initEnt, _entities.rockets);
+                    soluzione6(initEnt, _entities.rockets, res);
                     flag1=true;
                 }
 				// Draw entities to the canvas
@@ -237,12 +239,6 @@ var MC = MC || (function() {
             );
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
-			
-            /*_ctx.fillText('Level = ' + _level, 10, 30);
-
-            _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
-            _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
-            _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
         }
 
         /**
@@ -588,7 +584,7 @@ var MC = MC || (function() {
         this.exploded = false;
         this.speed = 10;
         this.distance = 0;
-        
+        this.ind=0;
         this.target = target;
         
         // @TODO: Weird turret reference issue causing red turrets to move
@@ -609,7 +605,7 @@ var MC = MC || (function() {
         if (this.exploded) {
             return;
         }
-        
+        this.ind = this.ind +1;
         this.distance -= this.speed;
         
         this.pos.x = Math.sin(this.angle) * this.distance + this.origin.x;
