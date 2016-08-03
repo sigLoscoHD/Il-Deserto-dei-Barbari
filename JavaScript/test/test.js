@@ -12,6 +12,8 @@ var MC = MC || (function() {
             _missiles_created = 0,
             _missiles_destroyed = 0,
             _gameInterval=0,
+            _rocketPosX = 0,
+            _rocketPosY = 0,
             _clickX = 0,
             _clickY = 0,
             _again=false,
@@ -46,7 +48,7 @@ var MC = MC || (function() {
             _new_missile = 10000;
             _missiles_created = 0;
             _missiles_destroyed = 0;
-            _gameInterval=0;      
+            _gameInterval=0;
             _rocketPosX = 0;
             _rocketPosY = 0;
             _clickX = 0;
@@ -129,7 +131,7 @@ var MC = MC || (function() {
                 }
             ));
         }
-        var flag1=false;
+       
         /**
          * Game loop
          */
@@ -180,42 +182,12 @@ var MC = MC || (function() {
 				// Move missiles & rockets
 				_moveEntities(_entities.missiles);
 				var count = _entities.rockets.length;
-                var ind=0;                
-                function moveEntities(index){
-                    
-                    
-                    
-                    _entities.rockets[index].move();
-                    
-                    
-                    if(index < count) {
-                        index++;
-                        moveEntities(index);
-                    }
-                    
-                    
-                   
-                    
-                    
-                               
-                
-                return ind++;
-            }
-                var initEnt;
-                if(count>1){
-                    initEnt=_entities.rockets;
-                }
-                
-                
-                
-                
-                var res=moveEntities(0);
-                
-                
-                if(count>1 && (check=="test" || check=="crit") && !flag1 ){
-                    soluzione6(initEnt, _entities.rockets, res);
-                    flag1=true;
-                }
+				for (var i = 0; i < count; i++) {
+					_entities.rockets[i].move();
+					_rocketPosX = _entities.rockets[i].pos.x ;
+					_rocketPosY = _entities.rockets[i].pos.y ;
+				}
+
 				// Draw entities to the canvas
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
@@ -239,6 +211,12 @@ var MC = MC || (function() {
             );
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
+			
+            /*_ctx.fillText('Level = ' + _level, 10, 30);
+
+            _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
+            _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
+            _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
         }
 
         /**
@@ -366,9 +344,9 @@ var MC = MC || (function() {
             var rndIndex = Math.floor(Math.random()*(targetCount-1)+1);
             var target = _entities.targets[rndIndex];
 			
-            if(_entities.targets[rndIndex].pos.removed==1){
-                    target=getRandomTarget();
-            }
+			if(_entities.targets[rndIndex].pos.removed==1){
+				target=getRandomTarget();
+			}
 
             return target;
         }
@@ -559,19 +537,18 @@ var MC = MC || (function() {
     Missile.prototype.hasHit = function() {
         if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
-            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y){
-                
-            for(var i=0; i<engine.getEntities().targets.length; i++){
-                    if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-                            this.target.pos.y==engine.getEntities().targets[i].pos.y){
-                                    engine.removeEntities(i);
-                    }				
-            }
-           
+            this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
+		{		
+			for(var i=0; i<engine.getEntities().targets.length;i++){
+				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+					this.target.pos.y==engine.getEntities().targets[i].pos.y){
+						engine.removeEntities(i);
+				}				
+			}
             return true;			
         } 
-        else
-        {
+		else
+		{
             return false;
         }
     };
@@ -584,7 +561,7 @@ var MC = MC || (function() {
         this.exploded = false;
         this.speed = 10;
         this.distance = 0;
-        this.ind=0;
+        
         this.target = target;
         
         // @TODO: Weird turret reference issue causing red turrets to move
@@ -605,7 +582,7 @@ var MC = MC || (function() {
         if (this.exploded) {
             return;
         }
-        this.ind = this.ind +1;
+        
         this.distance -= this.speed;
         
         this.pos.x = Math.sin(this.angle) * this.distance + this.origin.x;
