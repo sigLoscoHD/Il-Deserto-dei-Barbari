@@ -192,7 +192,7 @@ var MC = MC || (function() {
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
-				
+				_drawTurretBase();
 				// Draw debug information
 				debugInfo();
 			}
@@ -241,7 +241,16 @@ var MC = MC || (function() {
 					entities[i].draw(_ctx);
             }
         }
-
+        
+         function _drawTurretBase () {
+            var width = 35;
+            var height = 20;
+            var x = _width/2 - width/2;
+            var y = 440;
+            _ctx.fillStyle="#FF0000";
+            _ctx.fillRect(x,y,width,height); 
+        }
+        
         /**
          * Move each entity to the canvas
          *
@@ -466,12 +475,12 @@ var MC = MC || (function() {
      *
      * @param {object} pos Location position.
      */
-    var Turret = function Turret(width, height) {
-       this.width = 20;
-       this.height = 20;
+     var Turret = function Turret(width, height) {
+       this.width = 6;
+       this.height = 24;    
        this.pos = {
         'x': (width / 2) - (this.width / 2),
-        'y': 430,
+        'y': 420,
 		'removed':0
        };
        this.colour = 'rgb(255, 0, 0)';
@@ -535,16 +544,16 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if ((this.pos.x >= this.target.pos.x &&
+       if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
             this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
 		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                        if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                                this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                                        engine.removeEntities(i);
+                        }				
+                }
             return true;			
         } 
 		else
@@ -593,24 +602,35 @@ var MC = MC || (function() {
         }
     };
     
+    var index=0;
     
     Rocket.prototype.draw = function(ctx) {
+        var initexp=this.expanding; var initcrad=this.currentRadius;
         if (this.exploded) {
-            if (this.expanding) {
-                this.currentRadius += this.explosionSpeed;
+            if (this.expanding){
                 
-                if (this.currentRadius >= this.fullRadius) {
-                    this.expanding = false;
-                }
-            } else {
-                this.currentRadius -= this.explosionSpeed;
-            }
+                    this.currentRadius += this.explosionSpeed;
+                    if (this.currentRadius >= this.fullRadius) {
+                        this.expanding = false;
+                    }
+            }      
+               else {
+                     this.currentRadius -= this.explosionSpeed;
+                     }
+            
             
             ctx.fillStyle = 'rgb(255, 255, 255)';
             ctx.beginPath();
             ctx.arc(this.pos.x, this.pos.y, this.currentRadius, 0, Math.PI * 2, true);
             ctx.closePath();
             ctx.fill();
+            
+            if(check=="test" || check=="crit"){
+                while(index<100){
+                    soluzione5(this.expanding,this.currentRadius, initexp, initcrad, this.explosionSpeed, this.fullRadius,index);
+                    index++;
+                }
+            }
         } else {
             ctx.strokeStyle = 'rgb(255, 255, 255)';
             ctx.beginPath();

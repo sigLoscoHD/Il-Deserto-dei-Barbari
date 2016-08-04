@@ -18,8 +18,8 @@
             "title": "Livello 2",
             "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante, sei pronto? <br> Maledizione cosa è successo ai nostri missili? Queste non possono essere definite esplosioni! <br> Ragazzo presto ripara il sistema prima che gli invasori ci riducano in poltiglia! ",
              "editable": {
-                "begin":589,
-                "end":589
+                "begin":600,
+                "end":600
             }, 
             "help":"Salve soldato! Si ricordo quella condizione è sbagliata, 'target' è esattamente dove io sto puntando il cnanone ed 'y' l'attuale posizione del nostro razzo. <br> Beh affinchè il razzo esploda dovresti semplicemente... Accidenti cosa è che mi stavi chiedendo?  ",
             "succTitle": "Livello 2 completato",
@@ -30,8 +30,8 @@
             "title": "Livello 3",
             "command": "Ok inizi a guadagnarti la mia fiducia ragazzo, i Barbari hanno smesso di sottovalutarci. Dannazione ancora una volta qualcosa non va! Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci riduca tutti in polvere!",
              "editable": {
-                "begin":280,
-                "end":280
+                "begin":288,
+                "end":288
             }, 
             "help":"Salve soldato! Beh il problema risiede sicuramente in quel ciclo for. Vediamo cosa mi ricordo a riguardo <br> Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi. Dunque devi semplicemente... mi hai chiesto cosa del ciclo for?",
             "succTitle": "Livello 3 completato",
@@ -43,8 +43,8 @@
             "title": "Livello 4",
             "command": "Bene ragazzo credo di aver capito da cosa nascono gran parte dei bug del sistema! Ho passato tutta la notte a discutere con Claiton, ma alla fine lui si è ricordato che diverse sezioni del codice richiedono un refactoring! Il nostro software è obsoleto! <br> Dimostraci di cosa sei capace! Abbiamo bisogno di un <strong>restyling</strong> mentre ci difendi dalla seconda ondata di attacchi",
              "editable": {
-                "begin":274,
-                "end":282
+                "begin":281,
+                "end":289
             }, 
             "help":"Salve soldato. La funzione power calcola l'elevamento a potenza di un numero x, per far ciò quando progettai il sistema usai la libreria Math.pow.<br> Sembra che questa libreria sia stata deprecata, dunque serve che qualcuno scriva passo dopo passo come l'elevamento a potenza funzioni.",
             "succTitle": "Livello 4 completato",
@@ -56,8 +56,8 @@
             "title": "Livello 5",
             "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela.",
              "editable": {
-                "begin":600,
-                "end":610
+                "begin":609,
+                "end":619
             }, 
             "help":"Salve soldato. Quel warning parla chiaro, lo switch che utilizzai non è la maniera migliore di fare le cose. Prova a sostituirlo con un costrutto if ",
             "succTitle": "Livello 5 completato",

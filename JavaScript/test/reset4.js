@@ -192,7 +192,7 @@ var MC = MC || (function() {
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
-				
+				_drawTurretBase();
 				// Draw debug information
 				debugInfo();
 			}
@@ -241,7 +241,14 @@ var MC = MC || (function() {
 					entities[i].draw(_ctx);
             }
         }
-
+         function _drawTurretBase () {
+            var width = 35;
+            var height = 20;
+            var x = _width/2 - width/2;
+            var y = 440;
+            _ctx.fillStyle="#FF0000";
+            _ctx.fillRect(x,y,width,height); 
+        }
         /**
          * Move each entity to the canvas
          *
@@ -273,12 +280,16 @@ var MC = MC || (function() {
         
         function power(x, n){
             
+            
+            
+ 
+ 
            return Math.pow(x,n); 
             
             
             
             
-            
+  
             
             
         }
@@ -488,12 +499,12 @@ var MC = MC || (function() {
      *
      * @param {object} pos Location position.
      */
-    var Turret = function Turret(width, height) {
-       this.width = 20;
-       this.height = 20;
+     var Turret = function Turret(width, height) {
+       this.width = 6;
+       this.height = 24;    
        this.pos = {
         'x': (width / 2) - (this.width / 2),
-        'y': 430,
+        'y': 420,
 		'removed':0
        };
        this.colour = 'rgb(255, 0, 0)';

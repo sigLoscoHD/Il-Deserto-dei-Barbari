@@ -390,7 +390,7 @@ function soluzione1(){
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
-    var line=doc.getLine(589); // andiamo a prendere la riga incriminata
+    var line=doc.getLine(600); // andiamo a prendere la riga incriminata
     line = line.replace(/\s+/g, '');
     if (result == line)
         return true;
@@ -399,7 +399,7 @@ function soluzione2(){
 }
 
 function soluzione3(){
-    var line= doc.getLine(280);
+    var line= doc.getLine(288);
     var exp = /\d+/g; //espressione regolare che ci permette di cercare un numero all'interno di una stringa
     var result=line.match(exp);
     if (result[0]=== "0")
@@ -412,7 +412,7 @@ function soluzione3(){
 function soluzione4(x,pot){
     var content;
     var check;
-    for(var i=274; i<283; i++){
+    for(var i=281; i<289; i++){
         content+= doc.getLine(i);
     }
     content=content.replace(/\s+/g, '');
@@ -447,7 +447,7 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
         // andiamo a verificare la presenza dello switch nel codice
         var content;
         var check;
-        for(var i=600; i<611; i++){
+        for(var i=609; i<620; i++){
             content+= doc.getLine(i);
         }
         content=content.replace(/\s+/g, '');
