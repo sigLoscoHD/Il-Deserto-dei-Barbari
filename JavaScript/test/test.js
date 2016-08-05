@@ -328,13 +328,13 @@ var MC = MC || (function() {
             var x = Xshield - missile.pos.x,
                 y = Yshield - missile.pos.y;
             distanceShield=-1;
+             distanceShield = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+
+   			 return true;            				               
+  
                     
-                distanceShield = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));   
                                                                               
-                    return true;
-                    
-                                              
-                                                     
+                                        
             
             
                                 

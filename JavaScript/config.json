@@ -80,11 +80,35 @@
             "title": "Livello 7",
             "command": "liv7",
              "editable": {
-                "begin":329,
+                "begin":330,
                 "end":339
             }, 
             "help":"help7",
             "succTitle": "Livello 7 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            },
+            {   
+            "id": "8",
+            "title": "Livello 8",
+            "command": "liv8",
+             "editable": {
+                "begin":330,
+                "end":339
+            }, 
+            "help":"help8",
+            "succTitle": "Livello 8 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            },
+            {   
+            "id": "9",
+            "title": "Livello 9",
+            "command": "liv7",
+             "editable": {
+                "begin":330,
+                "end":339
+            }, 
+            "help":"help9",
+            "succTitle": "Livello 9 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
             }
         
