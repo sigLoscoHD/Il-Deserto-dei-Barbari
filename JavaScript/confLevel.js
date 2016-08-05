@@ -151,6 +151,9 @@ if (check == "test"){
         case "6":
             mustPlay();
             break;
+        case "7":
+            mustPlay();
+            break;
     } 
     
 }
@@ -487,4 +490,39 @@ function soluzione6(initEnt, ent, res){
     
     checkResult(result);
     
+}
+
+var control;
+
+function soluzione7(missile,distance,hitShield,width){
+    var Xshield = width/2;
+    var Yshield = 420;
+    var radiusShield = 248;
+    var x = Xshield - missile.x,
+        y = Yshield - missile.y;
+
+    var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+                
+    if (dist < radiusShield){ 
+        control = true; 
+    }   
+    else{
+        control = false;
+    }
+    
+    console.log(x+" "+y);
+    console.log(distance+" "+dist);
+    console.log(control+" "+hitShield);
+    console.log((control==hitShield));
+    console.log(distance==dist);
+    
+    
+    
+    if( (control==hitShield) && (distance==dist) ){
+        result= true;
+    }else{
+        result= false;
+    }
+    
+    checkResult(result);
 }

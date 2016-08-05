@@ -74,6 +74,18 @@
             "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituiresti con approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata",
             "succTitle": "Livello 6 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            },
+            {   
+            "id": "7",
+            "title": "Livello 7",
+            "command": "liv7",
+             "editable": {
+                "begin":329,
+                "end":339
+            }, 
+            "help":"help7",
+            "succTitle": "Livello 7 completato",
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
             }
         
             ]
