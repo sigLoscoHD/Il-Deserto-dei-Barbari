@@ -12,7 +12,7 @@ function grado(punteggio){
 }
 
 $.ajax({
-url:"PHP/getuser.php",
+url:"PHP/getUser.php",
 type:"post",
 dataType: 'text',
 async:false,
