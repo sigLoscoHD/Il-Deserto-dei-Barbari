@@ -99,7 +99,7 @@ if( check == "init"){
             $("#image").empty();
             $('#myModal').modal('show');
             $(".modal-title").empty();
-            $(".modal-title").append("Orders");
+            $(".modal-title").append("Tenente Rogers");
             $("#image").append("<img src='images/generale.jpg'/>");
             $("#text").append(config.command);
 
@@ -162,7 +162,7 @@ function mustPlay(){
         $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
-        $(".modal-title").append("Orders");
+        $(".modal-title").append("Tenente Rogers");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append("<strong>Ora difendici!</strong> Testa la soluzione!");
 }
@@ -172,7 +172,7 @@ $("#orders").click(function() {
         $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
-        $(".modal-title").append("Orders");
+        $(".modal-title").append("Tenente Rogers");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
        
@@ -183,7 +183,7 @@ $("#help1").click(function() {
         $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
-        $(".modal-title").append("Help me");
+        $(".modal-title").append("Scienziato Claiton");
         $("#image").append("<img src='images/crazyprog.jpg'/>");
         $("#text").append(config.help);
        
@@ -476,11 +476,6 @@ function soluzione6(initEnt, ent, res){
     check= content.search("moveEntities");
     var strInitEnt= initEnt.toString();
     var strEnt=ent.toString();
-    console.log("res " + res);
-    console.log("count " + initEnt[1].ind);
-    console.log("len "+ initEnt.length);
-    console.log(JSON.stringify(initEnt));
-    console.log(initEnt[1].ind == initEnt.length);
     if(strInitEnt == strEnt && ent[0].distance<-10 && check != -1 && res == initEnt[1].ind && res == initEnt.length)
         result= true;
     else

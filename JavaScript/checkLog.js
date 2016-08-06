@@ -53,7 +53,6 @@ function getGrado(punteggio){
 }
 
 function setGrado(punteggio){
-
     grado.eccesso=parseInt(grado.eccesso)+punteggio;
 
     if(parseInt(grado.eccesso)>15000*(grado.gr)){

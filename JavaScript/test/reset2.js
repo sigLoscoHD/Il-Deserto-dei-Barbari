@@ -6,7 +6,7 @@ var MC = MC || (function() {
             _ctx = _canvas.getContext('2d'),
             _width = _canvas.width || _canvas.style.width,
             _height = _canvas.height || _canvas.style.height,
-            _gradient = _ctx.createLinearGradient(_width / 2, 0, _width / 2, _height),
+            _gradient = _ctx.createLinearGradient(_width / 2, 0, _width / 2, _height),F
             _level = 0,
             _new_missile = 10000,
             _missiles_created = 0,
@@ -446,6 +446,7 @@ var MC = MC || (function() {
                 pause();
                 engine.finalDraw();  				
                 engine.re_init();
+                store_points(engine.getPoints());
                 engine.loadLevel(levels[0]);	
                 engine.run();			
             }		
