@@ -9,7 +9,7 @@
                 "end":116
             }, 
             "command": "Maledezione avevo chiesto un esperto soldato, non un pivellino fresco di accademia! Il primo attacco dei Barbari stà per abbattersi violentemente su di noi, dimostrami cosa sai fare.  <br> Il sistema di puntamento del nostro cannone è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra quei missili prima che ci trasformino in un cumulo di cenere!!!",
-            "help":"Indovinello ?!?! <br> Salve Soldato! Dannazione ci deve essere qualche valore sbagliato che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di quei valori, in particolare dovresti.... Dannazione di cosa stavamo parlando?",
+            "help":"Salve Soldato! Dannazione ci deve essere qualche valore sbagliato che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di quei valori, in particolare dovresti.... Dannazione di cosa stavamo parlando?",
             "succTitle": "Livello 1 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         },
@@ -21,7 +21,7 @@
                 "begin":600,
                 "end":600
             }, 
-            "help":"Salve soldato! Si ricordo quella condizione è sbagliata, 'target' è esattamente dove io sto puntando il cnanone ed 'y' l'attuale posizione del nostro razzo. <br> Beh affinchè il razzo esploda dovresti semplicemente... Accidenti cosa è che mi stavi chiedendo?  ",
+            "help":"Salve soldato! Si ricordo quella condizione è sbagliata, 'target' è esattamente dove io sto puntando il cannone ed 'y' l'attuale posizione del nostro razzo. <br> Beh affinchè il razzo esploda dovresti semplicemente... Accidenti cosa è che mi stavi chiedendo?  ",
             "succTitle": "Livello 2 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         },
@@ -46,44 +46,44 @@
                 "begin":281,
                 "end":289
             }, 
-            "help":"Salve soldato. La funzione power calcola l'elevamento a potenza di un numero x, per far ciò quando progettai il sistema usai la libreria Math.pow.<br> Sembra che questa libreria sia stata deprecata, dunque serve che qualcuno scriva passo dopo passo come l'elevamento a potenza funzioni.",
+            "help":"Salve soldato. La funzione power calcola l'elevamento a potenza di un numero x, per far ciò quando progettai il sistema usai la libreria Math.pow.<br> Sembra che questa libreria sia stata deprecata, dunque serve che qualcuno scriva passo dopo passo come l'elevamento a potenza funzioni. Dovrai per cui sfruttare... Un momento... E tu chi sei?",
             "succTitle": "Livello 4 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             
             {   
             "id": "5",
             "title": "Livello 5",
-            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela.",
+            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela. Claiton quando progettò i nostri missili era nel pieno della sua amnesia e probabilmente si era dimenticato come si faceva, inserendo dei pasticci all'interno del codice di controllo. Qualcosa nei missili dunque potrebbe essere migliorato qui, dai un'occhiata soldato!",
              "editable": {
                 "begin":609,
                 "end":619
             }, 
-            "help":"Salve soldato. Quel warning parla chiaro, lo switch che utilizzai non è la maniera migliore di fare le cose. Prova a sostituirlo con un costrutto if ",
+            "help":"Salve soldato. Non ricordo bene, ma forse nello scrivere questo pezzo di codice non ho dato il meglio di me. Potrei aver scritto qualche costrutto sintattico che magari in quest'occasione fa funzionare il codice ma non è la maniera migliore di farlo. Ah si ora ricordo! devi modificare... O forse no...",
             "succTitle": "Livello 5 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "6",
             "title": "Livello 6",
-            "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto",
+            "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un'ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto, almeno così mi ha detto Claiton, parlava di ricordone o qualcosa così, parla con lui per ottenere alcuni dettagli più specifici sulla modifica da effettuare.",
              "editable": {
                 "begin":184,
                 "end":198
             }, 
-            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituiresti con approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata",
+            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, qual'è il mio nome?",
             "succTitle": "Livello 6 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "7",
             "title": "Livello 7",
-            "command": "liv7",
+            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
              "editable": {
-                "begin":329,
-                "end":339
+                "begin":346,
+                "end":356
             }, 
-            "help":"help7",
+            "help":"Salve soldato, devo scusarmi, nell'ultima missione sono stati i Barbari a costringermi a far si che tu scriva quella brutta cosa chiamata ricorsione, le mie amnesie mi hanno fatto dimenticare da che parte stessi! Riguardo la missione attuale se non ricordo male un qualche matematico inventò una formula per calcolare la distanza fra due punti; qualosa del tipo d=sqrt( (x1-x2)^2 - (y1-y2)^2). Magari potrebbe tornarti utile! riguardo i driver se non ricordo male invece dovresti verificare se il missile si trova nel raggio dello scudo per distruggerlo percui controlla che tale distanza sia... No un attimo, dove mi trovo?",
             "succTitle": "Livello 7 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
             }

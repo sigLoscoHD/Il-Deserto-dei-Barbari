@@ -241,6 +241,10 @@ var MC = MC || (function() {
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
             _ctx.fillText('Shields = ' + _shieldsOpp, 10, 50);
+            _ctx.font="18px Georgia";
+            _ctx.fillText('press the right mouse button ', 220, 20);
+            _ctx.fillText('to activate the shield', 220, 40);
+            _ctx.font="11px Georgia";
 			
             /*_ctx.fillText('Level = ' + _level, 10, 30);
 
@@ -320,14 +324,26 @@ var MC = MC || (function() {
             }
         }
         
-        
+        /*
+         * 
+         * @param {type} missile
+         * @returns boolean
+         * 
+         * La funzione hasHitShield è una funzione che prende come parametro un
+         * missile dei barbari che contiene al suo interno la sua posizione 
+         * nel frame corrente. Compito della funzione è misurare la distanza fra
+         * il missile e il centro dello scudo (sfrutta la variabile distanceShield
+         * assegnandole tale valore della distanza) e quindi verificare se tale 
+         * distanza è minore della dimensione dello scudo. Ritorna true se il 
+         * missile è colpito dallo scudo, false altrimenti.
+         */
         function hasHitShield (missile) {
-            Xshield = _width/2;
-            Yshield = 420;
-            radiusShield = 248;
-            var x = Xshield - missile.pos.x,
-                y = Yshield - missile.pos.y;
-            distanceShield=-1;
+            Xshield = _width/2; //coordinata x del centro dello scudo
+            Yshield = 420;      //coordinata y del centro dello scudo
+            radiusShield = 248; //raggio dello scudo
+            var x = Xshield - missile.pos.x,  //distanza lungo x fra missili e centro dello scudo
+                y = Yshield - missile.pos.y;  //distanza lungo y fra missili e centro dello scudo
+            distanceShield=-1;  //distanza fra missili e centro dello scudo da calcolare
                     
                     
                                                                               
