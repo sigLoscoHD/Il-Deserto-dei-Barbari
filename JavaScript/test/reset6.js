@@ -190,7 +190,6 @@ var MC = MC || (function() {
                     
                     for (var i = index; i < count; i++) {
                         _entities.rockets[i].move();
-                        console.log(JSON.stringify( _entities.rockets[i]));
                     }
                     
                     
@@ -466,7 +465,7 @@ var MC = MC || (function() {
             if(engine.get_endofgame()){
                 pause();
                 engine.finalDraw();
-                
+                store_points(engine.getPoints());
                 engine.re_init();
                 engine.loadLevel(levels[0]);	
                 engine.run();			

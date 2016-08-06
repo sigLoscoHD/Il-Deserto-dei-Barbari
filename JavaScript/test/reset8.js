@@ -230,10 +230,7 @@ var MC = MC || (function() {
 					);
 					_missiles_created += 1;
 					_new_missile += Wave.getWave(_level).TimeBetweenShots;
-				}
-				
-                                console.log(_entities.missiles.length);
-                           
+				}                       
                                 
 				_new_missile -= FPS;
 			
@@ -263,8 +260,6 @@ var MC = MC || (function() {
                                 _launchRocketAutomatic();
 				// Draw debug information
 				debugInfo();
-                                
-                                console.log(_entities.missiles[0].pos.y);
 			}
         }
         
@@ -545,6 +540,7 @@ var MC = MC || (function() {
             pause();
             engine.finalDraw();  				
             engine.re_init();
+            store_points(engine.getPoints());
             engine.loadLevel(levels[0]);	
             engine.run();			
         }		
@@ -789,7 +785,6 @@ var MC = MC || (function() {
     }
     function getErrX(){ return engine.getErrX();}
     function getErrY(){return engine.getErrY();}
-    console.log("bella"+ getErrX());
     
     return {
         'init': init,

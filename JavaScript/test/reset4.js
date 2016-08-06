@@ -468,7 +468,7 @@ var MC = MC || (function() {
             if(engine.get_endofgame()){
                 pause();
                 engine.finalDraw();
-                
+                store_points(engine.getPoints());
                 engine.re_init();
                 engine.loadLevel(levels[0]);	
                 engine.run();			
