@@ -80,13 +80,8 @@
             "title": "Livello 7",
             "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
              "editable": {
-<<<<<<< HEAD
                 "begin":346,
                 "end":356
-=======
-                "begin":330,
-                "end":339
->>>>>>> a9a48e6e24093a7af7c2564eb2e9d0ba67262acf
             }, 
             "help":"Salve soldato, devo scusarmi, nell'ultima missione sono stati i Barbari a costringermi a far si che tu scriva quella brutta cosa chiamata ricorsione, le mie amnesie mi hanno fatto dimenticare da che parte stessi! Riguardo la missione attuale se non ricordo male un qualche matematico inventò una formula per calcolare la distanza fra due punti; qualosa del tipo d=sqrt( (x1-x2)^2 - (y1-y2)^2). Magari potrebbe tornarti utile! riguardo i driver se non ricordo male invece dovresti verificare se il missile si trova nel raggio dello scudo per distruggerlo percui controlla che tale distanza sia... No un attimo, dove mi trovo?",
             "succTitle": "Livello 7 completato",
