@@ -438,9 +438,7 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
     }
     else
         initcrad -= expSpeed;
-    
-   
-    
+
     if(i<100){
         if(initexp == exp && cradius === initcrad)
             count++; 
@@ -509,15 +507,7 @@ function soluzione7(missile,distance,hitShield,width){
     else{
         control = false;
     }
-    
-    console.log(x+" "+y);
-    console.log(distance+" "+dist);
-    console.log(control+" "+hitShield);
-    console.log((control==hitShield));
-    console.log(distance==dist);
-    
-    
-    
+ 
     if( (control==hitShield) && (distance==dist) ){
         result= true;
     }else{
