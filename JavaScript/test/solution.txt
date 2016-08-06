@@ -1,4 +1,4 @@
-<---- SOLUZIONE LIVELLO 6 --->
+<---- SOLUZIONE LIVELLO 7 --->
 distanceShield = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
                 
 if (distanceShield < radiusShield )
@@ -6,3 +6,35 @@ if (distanceShield < radiusShield )
 else
     return false;
 -------------------------------------------------------------------------------
+
+<---- SOLUZIONE LIVELLO 8 -------->
+
+ if(!automatic){ 
+           this.width = 6;
+           this.height = 24;    
+           this.pos = {
+           'x': (width / 2) - (this.width / 2),
+           'y': height - 60,
+		'removed':0
+           };
+           this.colour = 'rgb(255, 0, 0)';
+       }else {
+           this.width = 8;
+           this.height = 34;    
+           this.pos = {
+           'x': (width / 2) + 110 - (this.width / 2),
+           'y': 420,
+           'removed':0
+           };
+           this.colour = 'rgb(255, 0, 0)';
+       }   
+-----------------------------------------------------------
+<------- SOLUZIONE 9 ----------->
+
+new Rocket(target,
+ {
+    'x': _entities.turret[1].pos.x + (_entities.turret[1].width / 2),
+    'y': _entities.turret[1].pos.y
+ })
+
+---------------------------------------------------------------------

@@ -154,6 +154,12 @@ if (check == "test"){
         case "7":
             mustPlay();
             break;
+        case "8":
+            mustPlay();
+            break;
+        case "9":
+            mustPlay();
+            break;
     } 
     
 }
@@ -509,5 +515,48 @@ function soluzione7(missile,distance,hitShield,width){
         result= false;
     }
     
+    checkResult(result);
+}
+
+function soluzione8(turret, width){
+  if(   (   turret[1].width == 8 &&
+            turret[1].height == 34 &&    
+            turret[1].pos.x == (width / 2) + 110 - (turret[1].width / 2) &&
+            turret[1].pos.y ==420 &&
+            turret[1].pos.removed==0 &&
+            turret[1].colour == 'rgb(255, 0, 0)'
+        ) 
+        &&
+        (   turret[0].width == 6 &&
+            turret[0].height == 24 &&    
+            turret[0].pos.x == (width / 2) - (turret[0].width / 2) &&
+            turret[0].pos.y ==420 &&
+            turret[0].pos.removed==0 &&
+            turret[0].colour == 'rgb(255, 0, 0)'
+        )
+    )
+        result = true;
+    else 
+        result= false;
+
+    checkResult(result);
+}
+
+
+function soluzione9(rocket, target, x, y){
+    console.log( JSON.stringify(rocket));
+    console.log(JSON.stringify(target));
+    console.log("rocket x"+  rocket[0].x);
+    console.log("rocket y"+  rocket[0].y);
+    console.log("x"+  x);
+    console.log("y"+  y);
+    console.log("target" + rocket[0].target.toString()== target.toString());
+    console.log("x" + rocket[0].x==x);
+    console.log( "y" + rocket[0].y == y);
+    if( rocket[0].target.x== target.x && rocket[0].target.y== target.y  && rocket[0].pos.x == x && rocket[0].pos.y == y )
+        result= true;
+    else 
+        result= false;
+
     checkResult(result);
 }
