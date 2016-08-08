@@ -97,12 +97,18 @@ if( check == "init"){
             //Configurazione del modal
             $("#text").empty();
             $("#image").empty();
-            $('#myModal').modal('show');
+            $("#modal-button").empty();
             $(".modal-title").empty();
+            $('#myModal').modal('show');
             $(".modal-title").append("Tenente Rogers");
+            $("#modal-button").addClass("btn-danger");
+            $("#modal-button").text("Specifiche");  
             $("#image").append("<img src='images/generale.jpg'/>");
             $("#text").append(config.command);
-
+            //secondo modal
+            $("#specific").empty();
+            $("#specific").append(config.specific);
+            
             setTimeout(function(){
                $("#help1").removeClass("disabled");
                $("#help1").css("color","red");
@@ -111,10 +117,14 @@ if( check == "init"){
                setTimeout(function(){
                    $(".alert").alert('close');
                },3000);
-            },10000);
+            },6000);
 
     });
-} 
+}
+else{
+   $("#help1").removeClass("disabled");
+   $("#help1").css("color","red"); 
+}
 
 /*
  * Ricapitolando:
@@ -171,25 +181,38 @@ function mustPlay(){
         $(".modal-title").append("Tenente Rogers");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append("<strong>Ora difendici!</strong> Testa la soluzione!");
+
 }
 
 $("#orders").click(function() {
         $("#text").empty();
         $("#image").empty();
-        $("#myModal").modal();
+        $("#modal-button").empty();
         $(".modal-title").empty();
+        $("#myModal").modal();
         $(".modal-title").append("Tenente Rogers");
+        $("#modal-button").addClass("btn-danger");
+        $("#modal-button").text("Specifiche");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
+        //secondo modal
+        $("#specific").empty();
+        $("#specific").append(config.specific);
        
 });
     
 $("#help1").click(function() {
         $("#text").empty();
         $("#image").empty();
-        $("#myModal").modal();
+        $("#modal-button").empty();
         $(".modal-title").empty();
+        $("#modal-button").removeAttr("data-target");
+        $("#modal-button").removeAttr("data-toogle");
+        $("modal-button").removeClass("btn-danger");
+        $("#myModal").modal();
         $(".modal-title").append("Scienziato Claiton");
+        $("#modal-button").addClass("btn-default");
+        $("#modal-button").text("Close");
         $("#image").append("<img src='images/crazyprog.jpg'/>");
         $("#text").append(config.help);
        
