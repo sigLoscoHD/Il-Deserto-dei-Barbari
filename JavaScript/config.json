@@ -8,15 +8,10 @@
                 "begin":115,
                 "end":116
             }, 
-<<<<<<< HEAD
-            "command": "Maledezione avevo chiesto un esperto soldato, non un pivellino fresco di accademia! Il primo attacco dei Barbari stà per abbattersi violentemente su di noi, dimostrami cosa sai fare.  <br> Il sistema di puntamento del nostro cannone è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra quei missili prima che ci trasformino in un cumulo di cenere!!!",
-            "specific": "Controlla che il missile sia indirizzato verso le giuste coordinate",
-            "help":"Salve Soldato! Dannazione ci deve essere qualche valore sbagliato che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di quei valori, in particolare dovresti.... Dannazione di cosa stavamo parlando?",
-=======
             "command": "Maledezione avevo chiesto un esperto soldato, non un pivellino fresco di accademia! I Barbari stanno intensificando i loro attacchi negli ultimi tempi e le città libere del sud non riescono a difendersi; le nostre armi difensive costruite dallo scienziato Claiton sono malfunzionanti e la sua amnesia non gli consente di sistemarle. L'attacco dei Barbari è imminente, stà per abbattersi violentemente su di noi, dimostrami cosa sai fare e sistema le nostre difese.  <br> Il sistema di puntamento del nostro cannone è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra quei missili prima che ci trasformino in un cumulo di cenere!!!",
             "help":"E tu chi sei? Mi avevano detto che avrebbero mandato qualcuno a darmi una mano a sistemare le difese delle città, ma io vedo solo un novellino! Le armi che vedi le ho costruite molto tempo fa e come tutte le cose col tempo si guastano! Diversi come te hanno messo le mani sul codice nel tentativo di sistemarlo e chissà quali pasticci hanno combinato! Io soffro di una grave forma di amnesia e non riesco a ricordare come diavolo funzioni questa roba. Ci deve essere tuttavia qualcosa di sbagliato, che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di qualcosa che probabilmente è di troppo, ah si ora ricorda devi.... Dannazione di cosa stavamo parlando?",
->>>>>>> b0ece36e0f807e5cc4c27182123c697d1b951158
             "succTitle": "Livello 1 completato",
+            "specific": "Controlla che il missile sia indirizzato verso le giuste coordinate",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         },
         {   
@@ -24,18 +19,11 @@
             "title": "Livello 2",
             "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante! Devi sistemare nuovamente le nostre armi! Una tormenta si è abbattuta sui nostri missili danneggiandoli! Rientrarli negli hangar non è stato sufficiente purtroppo. Qualche configurazione deve essersi sprogrammata, non ne capisco molto io ma sono sicuro che qualcosa potrai pur combinare tu con le tue fresche conoscenze di accademia. Puoi provarci?  <br>Le esplosioni sembrano non avere alcun effetto sui missili dei Barbari, ci ridurranno in poltiglia! ",
              "editable": {
-<<<<<<< HEAD
-                "begin":600,
-                "end":600
-            },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato! Si ricordo quella condizione è sbagliata, 'target' è esattamente dove io sto puntando il cannone ed 'y' l'attuale posizione del nostro razzo. <br> Beh affinchè il razzo esploda dovresti semplicemente... Accidenti cosa è che mi stavi chiedendo?  ",
-=======
                 "begin":601,
                 "end":601
             }, 
+            "specific": "fai qualcosa utente",
             "help":"Soldato! Ancora qui? il generale deve riporre molta fiducia in te. Questa notte mentre dormivo beatamente un forte vento come non avevo mai sentito mi ha svegliato! missili che rotolavano dappertutto! Devono essersi sicuramente danneggiati quando poi hanno iniziato a rotolare giu per la collina. Credo di aver più o meno individuato dove sta il problema, 'target' è esattamente dove io sto puntando il cannone ed 'y' l'attuale posizione del nostro razzo. Beh quando un missile si trova nei pressi dell'esplosione generata dai nostri missili quelli dei Barbari si dovrebbero distruggere, ma tutti quei rotolamenti devono aver invertito qualcosa! Magari è...Salve soldato! Come mai sei di nuovo qui?",
->>>>>>> b0ece36e0f807e5cc4c27182123c697d1b951158
             "succTitle": "Livello 2 completato",
             "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
         },
