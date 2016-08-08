@@ -195,11 +195,13 @@ $("#orders").click(function() {
         $(".modal-title").empty();
         $("#myModal").modal();
         $(".modal-title").append("Tenente Rogers");
+        $("#modal-button").attr("data-target", "#myModal2");
+        $("#modal-button").attr("data-toogle", "modal");
         $("#modal-button").addClass("btn-danger");
         $("#modal-button").text("Specifiche");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append(config.command);
-        //secondo modal
+        //secondo modal contenente le specifiche
         $("#specific").empty();
         $("#specific").append(config.specific);
        

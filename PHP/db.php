@@ -47,7 +47,7 @@ class database{
             if($this->conn->connect_error){                      
                 $this->stato = false;
                 $this->descrizione_stato = 'err_serv';	
-                header("Location: ../home.html?mex=".$this->get_descrizione_stato());
+                header("Location: ../index.html?mex=".$this->get_descrizione_stato());
                 die;
             }
             else
@@ -59,7 +59,7 @@ class database{
             if ( !$this->conn->select_db($this->db_name) ){
                 $this->stato = false;
                 $this->descrizione_stato = 'err_serv';	
-                header("Location: ../home.html?mex=".$this->get_descrizione_stato());
+                header("Location: ../index.html?mex=".$this->get_descrizione_stato());
             }
             else
                 $this->stato = true;										

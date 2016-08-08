@@ -60,6 +60,6 @@
         }
     }   
     else{
-        header("Location: ../home.html?mex=not_logged"); //non autenticato
+        header("Location: ../index.html?mex=not_logged"); //non autenticato
         exit; 
     }
