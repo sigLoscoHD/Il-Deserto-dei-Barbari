@@ -12,6 +12,9 @@ var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
 var failSound= new Audio("audio/fail.mp3");
 
+if(parseInt(parametro)>parseInt(userJSON.result.livello))
+    window.location.href = 'level.html?id='+userJSON.result.livello+'&check=init';
+
 //riprendiamo il file di configurazione fatto in json in base al livello (parametro)
 $.ajax({
     url:"JavaScript/config.json",
@@ -422,7 +425,7 @@ function soluzione1(){
 
 function soluzione2(){
     var result="if(this.pos.y<this.target.y){"; //la soluzione
-    var line=doc.getLine(600); // andiamo a prendere la riga incriminata
+    var line=doc.getLine(601); // andiamo a prendere la riga incriminata
     line = line.replace(/\s+/g, '');
     if (result == line)
         return true;

@@ -6,7 +6,7 @@ var MC = MC || (function() {
             _ctx = _canvas.getContext('2d'),
             _width = _canvas.width || _canvas.style.width,
             _height = _canvas.height || _canvas.style.height,
-            _gradient = _ctx.createLinearGradient(_width / 2, 0, _width / 2, _height),
+            _gradient = _ctx.createLinearGradient(_width / 2, 0, _width / 2, _height),F
             _level = 0,
             _new_missile = 10000,
             _missiles_created = 0,
@@ -113,19 +113,22 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
+<<<<<<< HEAD
         var _err_x= 0;
         var _err_y= 75;
         
+=======
+>>>>>>> b0ece36e0f807e5cc4c27182123c697d1b951158
         function launchRocket(event) {
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
-                'x': event.clientX - this.offsetLeft + _err_x,
-                'y': event.clientY - this.offsetTop + _err_y 
+                'x': event.clientX - this.offsetLeft,
+                'y': event.clientY - this.offsetTop
             };
 			
             _clickX = event.clientX - this.offsetLeft;
             _clickY = event.clientY - this.offsetTop;
-
+			 
             _entities.rockets.push(new Rocket(
                 target,
                 {
@@ -134,9 +137,7 @@ var MC = MC || (function() {
                 }
             ));
         }
-        function getErrX(){return _err_x;}
-        function getErrY(){return _err_y;}
-
+       
         /**
          * Game loop
          */
@@ -204,9 +205,9 @@ var MC = MC || (function() {
         }
         
 		
-        function get_endofgame(){
-                return _endofgame;
-        }
+		function get_endofgame(){
+			return _endofgame;
+		}
 		
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -217,7 +218,8 @@ var MC = MC || (function() {
             _ctx.fillText('Level = ' + _level, 10, 30);
             _ctx.fillText('Points = ' + _points, 10, 40);
 			
-            /*_ctx.fillText('Level = ' + _level, 10, 30);			
+            /*_ctx.fillText('Level = ' + _level, 10, 30);
+
             _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
             _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
             _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
@@ -238,12 +240,15 @@ var MC = MC || (function() {
                 }
             }
         }
-        /*
-         * Draw turret basement 
-         * 
-         * @returns {undefined}
-         */
-        function _drawTurretBase () {
+		
+		function _drawDefense(entities) {
+            for (var i = 0; i < entities.length; i++) {
+				if(entities[i].pos.removed==0)
+					entities[i].draw(_ctx);
+            }
+        }
+
+         function _drawTurretBase () {
             var width = 35;
             var height = 20;
             var x = _width/2 - width/2;
@@ -251,14 +256,7 @@ var MC = MC || (function() {
             _ctx.fillStyle="#FF0000";
             _ctx.fillRect(x,y,width,height); 
         }
-        
-		
-	function _drawDefense(entities) {
-            for (var i = 0; i < entities.length; i++) {
-				if(entities[i].pos.removed==0)
-					entities[i].draw(_ctx);
-            }
-        }
+
 
         /**
          * Move each entity to the canvas
@@ -299,15 +297,15 @@ var MC = MC || (function() {
             for(i=0;i<_entities.rockets.length;i++){
                 var x = _entities.rockets[i].pos.x - missile.pos.x,
                     y = _entities.rockets[i].pos.y - missile.pos.y;
-
+                    
                 var dist = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-
+                
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
-                    return true;                
-                    ;
+                    return true;
                 }
-            }
+				               
+			}
             return false;
         }
 
@@ -319,7 +317,7 @@ var MC = MC || (function() {
 		
 		
 		
-        var initHomes=[
+		var initHomes=[
             { 'x': 30,  'y': 430,'stricken':3,'removed':0},
             { 'x': 100, 'y': 430 ,'stricken':3,'removed':0},
             { 'x': 175, 'y': 430 ,'stricken':3,'removed':0},
@@ -374,16 +372,15 @@ var MC = MC || (function() {
 		}
         
 		function removeEntities(i){
-
                     if(_entities.targets[i].pos.removed==0){
-                            _entities.targets[i].pos.stricken--;                      
-                            _entities.targets[i].height-=10;
-                            _entities.targets[i].pos.y+=10;
+			_entities.targets[i].pos.stricken--;
+			_entities.targets[i].height-=10;
+			_entities.targets[i].pos.y+=10;
                     }
 			
 			
                     if(_entities.targets[i].pos.stricken==0)
-                            _entities.targets[i].pos.removed=1;
+                        _entities.targets[i].pos.removed=1;
 		}
         /*
          * @return {float} Width of the canvas
@@ -391,11 +388,11 @@ var MC = MC || (function() {
         function getWidth() {
             return _width;
         }
-
+        
         function getPoints(){
             return _points;
         }
-        
+
         // Expose public methods
         return {
             'loadLevel': loadLevel,
@@ -411,8 +408,6 @@ var MC = MC || (function() {
             'initialDraw' : initialDraw,
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
-            'getErrX': getErrX,
-            'getErrY' : getErrY,
             'getPoints' : getPoints
                     
         };
@@ -451,18 +446,17 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
-    
-    function endofgamefunction(){
-        if(engine.get_endofgame()){
-            pause();
-            engine.finalDraw();  
-            store_points(engine.getPoints());
-            engine.re_init();
-            engine.loadLevel(levels[0]);	
-            engine.run();         
-        }		
-    }
 
+	function endofgamefunction(){
+            if(engine.get_endofgame()){
+                pause();
+                engine.finalDraw();  				
+                engine.re_init();
+                store_points(engine.getPoints());
+                engine.loadLevel(levels[0]);	
+                engine.run();			
+            }		
+	}
     /**
      * Game entity class.
      */
@@ -488,7 +482,7 @@ var MC = MC || (function() {
      *
      * @param {object} pos Location position.
      */
-    var Turret = function Turret(width, height) {
+     var Turret = function Turret(width, height) {
        this.width = 6;
        this.height = 24;    
        this.pos = {
@@ -501,13 +495,11 @@ var MC = MC || (function() {
     
     Turret.prototype = new Entity();
 
-    
-     /**
+    /**
      * Home entity class
      *
      * @param {object} pos Location position.
      */
-    
     var Home = function Home(pos) {
        this.pos = pos;
        this.width = 20;
@@ -560,19 +552,20 @@ var MC = MC || (function() {
     };
     
     Missile.prototype.hasHit = function() {
-        if ((this.pos.x >= this.target.pos.x &&
+       if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
             this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
-            {		
-                for(var i=0; i<engine.getEntities().targets.length;i++){
-                    if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-                            this.target.pos.y==engine.getEntities().targets[i].pos.y){
-                                    engine.removeEntities(i);
-                    }				
-                }
+		{		
+			for(var i=0; i<engine.getEntities().targets.length;i++){
+				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+					this.target.pos.y==engine.getEntities().targets[i].pos.y){
+						engine.removeEntities(i);
+				}				
+			}
             return true;			
         } 
-        else{
+		else
+		{
             return false;
         }
     };
@@ -612,10 +605,11 @@ var MC = MC || (function() {
         this.pos.x = Math.sin(this.angle) * this.distance + this.origin.x;
         this.pos.y = Math.cos(this.angle) * this.distance + this.origin.y;
         
-        if (this.pos.y < this.target.y) {
+        if (this.pos.y > this.target.y) {
             this.exploded = true;
         }
     };
+    
     
     Rocket.prototype.draw = function(ctx) {
         if (this.exploded) {
@@ -646,8 +640,7 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-
-
+    
     /**
      * Levels
      */
@@ -677,7 +670,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1 && !engine.get_endofgame()){
+        if(flag==1  && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -685,19 +678,14 @@ var MC = MC || (function() {
             flag=1;
         }
     }
-    function getErrX(){ return engine.getErrX();}
-    function getErrY(){return engine.getErrY();}
+    
     function getPoints(){return engine.getPoints();}
     
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
-        'getErrX': getErrX,
-        'getErrY' : getErrY,
         'getPoints' : getPoints
     };
 
 }());
-
-
