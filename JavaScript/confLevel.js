@@ -104,7 +104,6 @@ if( check == "init"){
             $(".modal-title").empty();
             $('#myModal').modal('show');
             $(".modal-title").append("Tenente Rogers");
-            $("#modal-button").addClass("btn-danger");
             $("#modal-button").text("Specifiche");  
             $("#image").append("<img src='images/generale.jpg'/>");
             $("#text").append(config.command);
@@ -184,6 +183,8 @@ function mustPlay(){
         $(".modal-title").append("Tenente Rogers");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append("<strong>Ora difendici!</strong> Testa la soluzione!");
+        $("#modal-button").addClass("btn-default");
+        $("#modal-button").text("Close");
 
 }
 
@@ -209,10 +210,10 @@ $("#help1").click(function() {
         $("#image").empty();
         $("#modal-button").empty();
         $(".modal-title").empty();
+        $("#myModal").modal();
         $("#modal-button").removeAttr("data-target");
         $("#modal-button").removeAttr("data-toogle");
-        $("modal-button").removeClass("btn-danger");
-        $("#myModal").modal();
+        $("modal-button").removeClass("btn-danger"); 
         $(".modal-title").append("Scienziato Claiton");
         $("#modal-button").addClass("btn-default");
         $("#modal-button").text("Close");
@@ -320,6 +321,12 @@ function checkResult(result){
             $("#image").empty();
             $('#myModal').modal('show');
             $(".modal-title").empty();
+            $("#modal-button").empty();
+            $("#modal-button").removeAttr("data-target");
+            $("#modal-button").removeAttr("data-toogle");
+            $("modal-button").removeClass("btn-danger");
+            $("#modal-button").addClass("btn-default");
+            $("#modal-button").text("Close");
             $(".modal-title").append(config.succTitle);
             $("#image").append("<img src='images/generale.jpg'/>");
             $("#text").append(config.succCommand);
