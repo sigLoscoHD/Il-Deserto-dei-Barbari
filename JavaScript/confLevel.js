@@ -12,6 +12,9 @@ var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
 var failSound= new Audio("audio/fail.mp3");
 
+if(parseInt(parametro)>parseInt(userJSON.result.livello))
+    window.location.href = 'level.html?id='+userJSON.result.livello+'&check=init';
+
 //riprendiamo il file di configurazione fatto in json in base al livello (parametro)
 $.ajax({
     url:"JavaScript/config.json",
