@@ -11,115 +11,115 @@
             "command": "Maledezione avevo chiesto un esperto soldato, non un pivellino fresco di accademia! I Barbari stanno intensificando i loro attacchi negli ultimi tempi e le città libere del sud non riescono a difendersi; le nostre armi difensive costruite dallo scienziato Claiton sono malfunzionanti e la sua amnesia non gli consente di sistemarle. L'attacco dei Barbari è imminente, stà per abbattersi violentemente su di noi, dimostrami cosa sai fare e sistema le nostre difese.  <br> Il sistema di puntamento del nostro cannone è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra quei missili prima che ci trasformino in un cumulo di cenere!!!",
             "help":"E tu chi sei? Mi avevano detto che avrebbero mandato qualcuno a darmi una mano a sistemare le difese delle città, ma io vedo solo un novellino! Le armi che vedi le ho costruite molto tempo fa e come tutte le cose col tempo si guastano! Diversi come te hanno messo le mani sul codice nel tentativo di sistemarlo e chissà quali pasticci hanno combinato! Io soffro di una grave forma di amnesia e non riesco a ricordare come diavolo funzioni questa roba. Ci deve essere tuttavia qualcosa di sbagliato, che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di qualcosa che probabilmente è di troppo, ah si ora ricorda devi.... Dannazione di cosa stavamo parlando?",
             "succTitle": "Livello 1 completato",
-            "specific": "Controlla che il missile sia indirizzato verso le giuste coordinate",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "specific": "Correggi il bug che impedisce il corretto lancio di missili.",
+            "succCommand":"Ben fatto soldato! Ora ai posti di combattimento e difendi il villaggio dagli invasori!"
         },
         {   
             "id": "2",
             "title": "Livello 2",
-            "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante! Devi sistemare nuovamente le nostre armi! Una tormenta si è abbattuta sui nostri missili danneggiandoli! Rientrarli negli hangar non è stato sufficiente purtroppo. Qualche configurazione deve essersi sprogrammata, non ne capisco molto io ma sono sicuro che qualcosa potrai pur combinare tu con le tue fresche conoscenze di accademia. Puoi provarci?  <br>Le esplosioni sembrano non avere alcun effetto sui missili dei Barbari, ci ridurranno in poltiglia! ",
+            "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante! Devi sistemare nuovamente le nostre armi! Una tormenta si è abbattuta sui nostri missili danneggiandoli! Rientrarli negli hangar non è stato sufficiente purtroppo. Qualche configurazione deve essersi sprogrammata, non ne capisco molto io ma sono sicuro che qualcosa potrai pur combinare tu con le tue fresche conoscenze di accademia. Puoi provarci?  <br>I nostri missili esplodono non appena partono, se non li aggiustiamo immediatamente ci ridurranno in poltiglia! ",
              "editable": {
                 "begin":601,
                 "end":601
             }, 
-            "specific": "fai qualcosa utente",
-            "help":"Soldato! Ancora qui? il generale deve riporre molta fiducia in te. Questa notte mentre dormivo beatamente un forte vento come non avevo mai sentito mi ha svegliato! missili che rotolavano dappertutto! Devono essersi sicuramente danneggiati quando poi hanno iniziato a rotolare giu per la collina. Credo di aver più o meno individuato dove sta il problema, 'target' è esattamente dove io sto puntando il cannone ed 'y' l'attuale posizione del nostro razzo. Beh quando un missile si trova nei pressi dell'esplosione generata dai nostri missili quelli dei Barbari si dovrebbero distruggere, ma tutti quei rotolamenti devono aver invertito qualcosa! Magari è...Salve soldato! Come mai sei di nuovo qui?",
+            "specific": "Correggi il bug nel sistema di funzionamento dei missili.",
+            "help":"Soldato! Ancora qui? il generale deve riporre molta fiducia in te. Questa notte mentre dormivo beatamente un forte vento come non avevo mai sentito mi ha svegliato! missili che rotolavano dappertutto! Devono essersi sicuramente danneggiati quando poi hanno iniziato a rotolare giu per la collina. Credo di aver più o meno individuato dove sta il problema, 'target' è esattamente dove io sto puntando il cannone ed 'y' l'attuale posizione del nostro razzo. Beh tuttavia i nostri missili esplodono non appena lasciano il nostro cannone e non fanno il loro lavoro, probabilmente tutti quei rotolamenti devono aver invertito qualcosa! Magari è...Salve soldato! Come mai sei di nuovo qui?",
             "succTitle": "Livello 2 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ben fatto soldato! Ora ai posti di combattimento e difendi il villaggio dagli invasori!"
         },
         {   
             "id": "3",
             "title": "Livello 3",
-            "command": "Ok inizi a guadagnarti la mia fiducia ragazzo, i Barbari hanno smesso di sottovalutarci. Dannazione ancora una volta qualcosa non va! Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci riduca tutti in polvere!",
+            "command": "Ok inizi a guadagnarti la mia fiducia ragazzo, i Barbari hanno smesso di sottovalutarci. Oh no! Dannazione ancora una volta qualcosa non va! Finiranno mai i problemi con queste armi? Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! O almeno lo spero, altrimenti temo che sia finita per noi!<br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci riduca tutti in polvere!",
              "editable": {
                 "begin":288,
                 "end":288
             },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato! Beh il problema risiede sicuramente in quel ciclo for. Vediamo cosa mi ricordo a riguardo <br> Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi. Dunque devi semplicemente... mi hai chiesto cosa del ciclo for?",
+            "specific": "Correggi il bug che non consente la distruzione dei missili de Barbari",
+            "help":"Salve soldato! Beh il problema risiede sicuramente in quel ciclo for. Vediamo cosa mi ricordo a riguardo <br> Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi. Dunque, ah si eccolo l'errore, semplicemente... mi hai chiesto cosa del ciclo for?",
             "succTitle": "Livello 3 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ben fatto soldato! Finalmente le nostre armi sono state sistemate grazie al tuo contributo. Ora ai posti di combattimento e difendi il villaggio dagli invasori!"
         },
             
             {   
             "id": "4",
             "title": "Livello 4",
-            "command": "Bene ragazzo credo di aver capito da cosa nascono gran parte dei bug del sistema! Ho passato tutta la notte a discutere con Claiton, ma alla fine lui si è ricordato che diverse sezioni del codice richiedono un refactoring! Il nostro software è obsoleto! <br> Dimostraci di cosa sei capace! Abbiamo bisogno di un <strong>restyling</strong> mentre ci difendi dalla seconda ondata di attacchi",
+            "command": "Bene ragazzo credo di aver capito da cosa nascono gran parte dei problemi riscontrati nel nostro sistema difensivo! Ho passato tutta la notte a discutere con Claiton, ma alla fine lui si è ricordato che diverse sezioni del codice richiedono un refactoring! Il nostro software è obsoleto! <br> Dimostraci di cosa sei capace! Abbiamo bisogno di un <strong>restyling</strong> mentre ci difendi dalla seconda ondata di attacchi",
              "editable": {
                 "begin":281,
                 "end":289
             },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato. La funzione power calcola l'elevamento a potenza di un numero x, per far ciò quando progettai il sistema usai la libreria Math.pow.<br> Sembra che questa libreria sia stata deprecata, dunque serve che qualcuno scriva passo dopo passo come l'elevamento a potenza funzioni. Dovrai per cui sfruttare... Un momento... E tu chi sei?",
+            "specific": "pow() è una funzione della libreria Math che calcola l'elevamento di x alla n, che la funzione prende nell'ordine come parametri. Riscrivi questo stralcio di codice al fine di calcolare l'elevamento a potenza ritornando il valore del risultato.",
+            "help":"Salve soldato. La funzione power calcola l'elevamento a potenza di un numero x, per far ciò quando progettai il sistema usai la libreria Math.pow.<br> Sembra che questa libreria sia stata deprecata, dunque serve che qualcuno scriva passo dopo passo come l'elevamento a potenza funzioni. Dovrai per cui sfruttare il cicl... Un momento... E tu chi sei?",
             "succTitle": "Livello 4 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
+            "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato e capire se abbiamo raggiunto il risultato sperato!"
             },
             
             {   
             "id": "5",
             "title": "Livello 5",
-            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela. Claiton quando progettò i nostri missili era nel pieno della sua amnesia e probabilmente si era dimenticato come si faceva, inserendo dei pasticci all'interno del codice di controllo. Qualcosa nei missili dunque potrebbe essere migliorato qui, dai un'occhiata soldato!",
+            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela. Claiton quando progettò i nostri missili era nel pieno della sua amnesia e probabilmente si era dimenticato come si faceva, inserendo dei pasticci all'interno del codice di controllo. Qualcosa nei missili dunque potrebbe essere migliorato qui, dai un'occhiata soldato. Claiton parlava di swing errato o qualcosa del genere ma non sapevo che fosse anche un musicista!",
              "editable": {
-                "begin":609,
-                "end":619
+                "begin":608,
+                "end":618
             },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato. Non ricordo bene, ma forse nello scrivere questo pezzo di codice non ho dato il meglio di me. Potrei aver scritto qualche costrutto sintattico che magari in quest'occasione fa funzionare il codice ma non è la maniera migliore di farlo. Ah si ora ricordo! devi modificare... O forse no...",
+            "specific": "lo switch è usato impropriamente, riscrivi lo stralcio di codice in maniera più corretta utilizzando un altro costrutto più opportuno.",
+            "help":"Salve soldato. Purtroppo quando ho scritto questa parte del codice difensivo dei missili i medicinali che curano la mia amnesia erano scaduti e non hanno fatto effetto ed ho dimenticato come si faceva. Potrei aver scritto qualche costrutto sintattico che magari in quest'occasione fa funzionare il codice ma non è la maniera migliore di farlo. Ah si ora ricordo! devi modificare... O forse no...",
             "succTitle": "Livello 5 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
+            "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato e capire se abbiamo raggiunto il risultato sperato!"
             },
             {   
             "id": "6",
             "title": "Livello 6",
-            "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un'ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto, almeno così mi ha detto Claiton, parlava di ricordone o qualcosa così, parla con lui per ottenere alcuni dettagli più specifici sulla modifica da effettuare.",
+            "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un'ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto, almeno così mi ha detto Claiton, parlava di ricordone o qualcosa così. Senti lui per ottenere alcuni dettagli più specifici sulla modifica da effettuare.",
              "editable": {
                 "begin":184,
                 "end":198
             },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, qual'è il mio nome?",
+            "specific": "Riscrivi il ciclo for con una funzione ricorsiva, ovvero una funzione che richiami se stessa, ottenendo lo stesso effetto.",
+            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, è questo il mio nome?",
             "succTitle": "Livello 6 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
+            "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "7",
             "title": "Livello 7",
-            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
+            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton sfruttando la sua amnesia, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
              "editable": {
-                "begin":346,
-                "end":356
+                "begin":333,
+                "end":342
             },
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato, devo scusarmi, nell'ultima missione sono stati i Barbari a costringermi a far si che tu scriva quella brutta cosa chiamata ricorsione, le mie amnesie mi hanno fatto dimenticare da che parte stessi! Riguardo la missione attuale se non ricordo male un qualche matematico inventò una formula per calcolare la distanza fra due punti; qualosa del tipo d=sqrt( (x1-x2)^2 - (y1-y2)^2). Magari potrebbe tornarti utile! riguardo i driver se non ricordo male invece dovresti verificare se il missile si trova nel raggio dello scudo per distruggerlo percui controlla che tale distanza sia... No un attimo, dove mi trovo?",
+            "specific": "La funzione hasHitShield è una funzione che prende come parametro un missile dei barbari che contiene al suo interno la sua posizione nel frame corrente. Compito della funzione è misurare la distanza fra il missile e il centro dello scudo (sfrutta la variabile distanceShield assegnandole tale valore della distanza) e quindi verificare se tale distanza è minore della dimensione dello scudo. Ritorna true se il missile è colpito dallo scudo, false altrimenti.",
+            "help":"Salve soldato, devo scusarmi, nell'ultima missione sono stati i Barbari a costringermi a far si che tu scriva quella brutta cosa chiamata ricorsione, le mie amnesie mi hanno fatto dimenticare da che parte stessi! Riguardo la missione attuale se non ricordo male un qualche matematico inventò una formula per calcolare la distanza fra due punti; qualosa del tipo d=sqrt( (x1-x2)^2 - (y1-y2)^2). Magari potrebbe tornarti utile! riguardo i driver se non ricordo male invece dovresti verificare se il missile si trova nel raggio dello scudo per distruggerlo percui controlla che tale distanza sia minore di... No un attimo, dove mi trovo?",
             "succTitle": "Livello 7 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "8",
             "title": "Livello 8",
-            "command": "liv8",
+            "command": "Ottimo lavoro soldato! anzi ormai poso chiamarti Sergente. La fine della guerra contro i Barbari è vicina. Ma per vincerla abbiamo bisogno di un'ultimo aiuto. Parlando con Claiton siamo arrivati alla conclusione che una torretta automatica che ci aiuti nel distruggere i missili dei Barbari possa fare al caso nostro. Hai un compito importante oggi soldato: costruirla! Ce la puoi fare?",
              "editable": {
-                "begin":585,
-                "end":605
+                "begin":572,
+                "end":692
             },
-            "specific": "fai qualcosa utente",
-            "help":"help8",
+            "specific": "Questo è il costruttore delle torrette. Sulla base del valore booleano 'automatic' viene richiamato il costruttore opportuno. Modifcare tale funzione per costruire la torretta giusta. Mantieni i valori dati per la torretta standard mentre per la torretta automatica utilizza i seguenti valori: <br> turret width : 8 <br> turret height : 34 <br> turret position <br>   x :(width / 2)+ 106 <br>   y : height - 60 <br> removed : 0 <br> turret colour : 'rgb(255, 0, 0)'",                    
+            "help":"Hey! ho saputo che il Tenente Rogers ti ha nominato Sergente grazie agli ottimi risultati che hai ottenuto. Complimenti! Ma ora si torna subito a lavoro. Io e il Tenente abbiamo deciso di costruire una torretta automatica che aiuti le difese della città. Per farlo sarà necessario andare a ritoccare il costruttore che per ora costruisce solo quella standard. Sfrutta il valore booleano automatic per scegliere quale costruire, magari ti è utile per una condizione o magari sono troppo vecchio per questo mestiere...",
             "succTitle": "Livello 8 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ora difendi il villaggio dagli invasori!"
             },
             {   
             "id": "9",
             "title": "Livello 9",
-            "command": "liv9",
+            "command": "Ben fatto Sergente, ancora una volta ho fatto bene a riporre la mia fiducia in te! Un solo passo ci separa dalla vittoria finale. Ora è necessario far si che la torretta automatica faccia fuoco! Claiton ha lavorato tutta la notte nel tentativo di farla funzionare e stamattina all'alba è corso fuori dicendo di esserci riuscito, ma in realtà il risultato sperato non è arrivato. Ha detto di aver tralasciato un dettaglio e di aver individuato dove, ma non ricorda esattamente cosa! Puoi dargli una mano per l'ultima volta soldato?",
              "editable": {
                 "begin":155,
                 "end":161
             },
-            "specific": "fai qualcosa utente",
-            "help":"help9",
+            "specific": "Claiton ha dimenticato di richiamare il costruttore dei missili; Il nome dell'oggetto da costruire è Rocket che per essere costruito correttamente ha bisogno nell'ordine dell'obiettivo target e del punto di lancio contenuto in un json così definito:<br> 'x': _entities.turret[1].pos.x + (_entities.turret[1].width / 2) <br> 'y': _entities.turret[1].pos.y",
+            "help":"Buongiorno Sergente! Ho bisogno del tuo aiuto! Ho dimenticato qualcosa nel funzionamento dela torretta automatica. Una notte di lavoro non è stata sufficiente maledizione! Eravamo ad un passo dal riuscirci...Un attimo si, il costruttore, ecco cosa mancava, i farmaci contro l'amnesia fanno effetto, puoi richiamarlo anteponendo new al nome dell'oggetto e passando come parametri ciò di cui ha bisogno per essere costruito, percui la sintassi è la seguente...Sergente abbiamo vinto la guerra?",
             "succTitle": "Livello 9 completato",
-            "succCommand":"Ben fatto soldato! Ora difendi il villaggio dagli invasori!"
+            "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             }
         
-            ]
+        ]
 }

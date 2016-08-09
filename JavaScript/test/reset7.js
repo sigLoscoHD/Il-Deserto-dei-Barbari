@@ -324,19 +324,6 @@ var MC = MC || (function() {
             }
         }
         
-        /*
-         * 
-         * @param {type} missile
-         * @returns boolean
-         * 
-         * La funzione hasHitShield è una funzione che prende come parametro un
-         * missile dei barbari che contiene al suo interno la sua posizione 
-         * nel frame corrente. Compito della funzione è misurare la distanza fra
-         * il missile e il centro dello scudo (sfrutta la variabile distanceShield
-         * assegnandole tale valore della distanza) e quindi verificare se tale 
-         * distanza è minore della dimensione dello scudo. Ritorna true se il 
-         * missile è colpito dallo scudo, false altrimenti.
-         */
         function hasHitShield (missile) {
             Xshield = _width/2; //coordinata x del centro dello scudo
             Yshield = 420;      //coordinata y del centro dello scudo
@@ -346,7 +333,6 @@ var MC = MC || (function() {
             distanceShield=-1;  //distanza fra missili e centro dello scudo da calcolare
                     
                     
-                                                                              
                     
                     
                                               

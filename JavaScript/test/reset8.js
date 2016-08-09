@@ -567,20 +567,7 @@ var MC = MC || (function() {
      * Turret launcher class
      *
      * @param {object} pos Location position.
-     * Questo è il costruttore delle torrette.
-     * Sulla base del valore booleano "automatic" viene richiamato il costruttore
-     * opportuno.
-     * Modifcare tale funzione per costruire la torretta giusta.
-     * Mantieni i valori dati per la torretta standard mentre per la torretta 
-     * automatica utilizza i seguenti valori: 
-    *   turret width : 8
-    *   turret height : 34
-    *   turret position
-    *       x :(width / 2)+ 106
-    *       y : height - 60
-    *       removed : 0
-    *   turret colour : 'rgb(255, 0, 0)'
-    *       
+     *     
      */
     var Turret = function Turret(width, height, automatic) {
          

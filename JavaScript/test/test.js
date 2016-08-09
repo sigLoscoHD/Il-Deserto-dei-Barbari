@@ -113,8 +113,8 @@ var MC = MC || (function() {
         // Setup click/touch events
         _canvas.addEventListener('click', launchRocket, false);
         
-        var _err_x= 0;
-        var _err_y= 0;
+        var _err_x= 90;
+        var _err_y= 75;
         
         function launchRocket(event) {
             var target = {
