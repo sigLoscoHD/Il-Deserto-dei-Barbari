@@ -6,7 +6,7 @@ var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livel
 var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
 var doc;
 var editor;
-var missile; //variabile con il codice del gioco da visualizzare sull'editor.
+var missile=""; //variabile con il codice del gioco da visualizzare sull'editor.
 var config; //riprende il file config.json di configurazione dei livelli
 var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
@@ -180,6 +180,9 @@ function mustPlay(){
         $("#image").empty();
         $("#myModal").modal();
         $(".modal-title").empty();
+        $("#modal-button").removeAttr("data-target");
+        $("#modal-button").removeAttr("data-toogle");
+        $("modal-button").removeClass("btn-danger");
         $(".modal-title").append("Tenente Rogers");
         $("#image").append("<img src='images/generale.jpg'/>");
         $("#text").append("<strong>Ora difendici!</strong> Testa la soluzione!");
@@ -268,7 +271,6 @@ $("#save").click(function(){
         // in caso contrario andiamo avanti
         var data= new FormData();
         data.append("data", doc.getValue());
-        data.append("param", parametro);
         var xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new activeXOject("Microsoft.XMLHTTP");
         xhr.open('post', 'PHP/saveFile.php', false);
         xhr.send(data);
@@ -351,13 +353,14 @@ function checkResult(result){
                 if(userJSON.result.livello == parametro){
                     audioUnlock.play();
                     $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                    $('#points').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-fire'></span> + 10.000 Points </strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
                 else{
                     $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
 
                 setTimeout(function(){
-                       $(".alert").alert('close');
+                       //$(".alert").alert('close');
                        //nel caso in cui si è completato un gruppo di livelli ulteriore sblocco
 
                        //trofeo complete debug
