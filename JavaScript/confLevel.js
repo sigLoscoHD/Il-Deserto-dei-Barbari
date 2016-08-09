@@ -353,13 +353,14 @@ function checkResult(result){
                 if(userJSON.result.livello == parametro){
                     audioUnlock.play();
                     $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                    $('#points').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-fire'></span> + 10.000 Points </strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
                 else{
                     $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
 
                 setTimeout(function(){
-                       $(".alert").alert('close');
+                       //$(".alert").alert('close');
                        //nel caso in cui si è completato un gruppo di livelli ulteriore sblocco
 
                        //trofeo complete debug

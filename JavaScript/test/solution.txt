@@ -1,3 +1,12 @@
+<---- Soluzione Livello 6 --->
+if (index < count) {
+                          _entities.rockets[index].move();
+                          index++;
+                          moveEntities(index);
+                    }
+
+
+
 <---- SOLUZIONE LIVELLO 7 --->
 distanceShield = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
                 
