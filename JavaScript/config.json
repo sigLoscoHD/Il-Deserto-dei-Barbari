@@ -71,33 +71,20 @@
             {   
             "id": "6",
             "title": "Livello 6",
-<<<<<<< HEAD
-            "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un'ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto, almeno così mi ha detto Claiton, parlava di ricordone o qualcosa così. Senti lui per ottenere alcuni dettagli più specifici sulla modifica da effettuare.",
-=======
             "command": "Ragazzo complimenti ti sei guadagnato la fiducia di tutti. I Barbari hanno capito che a difenderci non c'è uno qualunque quindi aspettatti attacchi ancora più letali. <br> Ricorda un'ultima sezione necessita del refactoring dopodichè il nostro software sarà perfetto, almeno così mi ha detto Claiton, parlava di ricosione o qualcosa così, parla con lui per ottenere alcuni dettagli più specifici sulla modifica da effettuare.",
->>>>>>> 04065493555e1b6a2434e719eb67132cec6c76a7
              "editable": {
                 "begin":184,
                 "end":198
             },
-<<<<<<< HEAD
             "specific": "Riscrivi il ciclo for con una funzione ricorsiva, ovvero una funzione che richiami se stessa, ottenendo lo stesso effetto.",
-            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, è questo il mio nome?",
-=======
-            "specific": "fai qualcosa utente",
-            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, chi è Claiton?",
->>>>>>> 04065493555e1b6a2434e719eb67132cec6c76a7
+            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, Chi è Claiton?",
             "succTitle": "Livello 6 completato",
             "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "7",
             "title": "Livello 7",
-<<<<<<< HEAD
             "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton sfruttando la sua amnesia, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
-=======
-            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno ingannato Claiton, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
->>>>>>> 04065493555e1b6a2434e719eb67132cec6c76a7
              "editable": {
                 "begin":333,
                 "end":342
