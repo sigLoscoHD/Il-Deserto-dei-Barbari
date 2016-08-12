@@ -150,3 +150,7 @@ a:hover{
 .progress-bar{
     background-color: #d9534f;
 }
+
+.alert{
+    font-size:20px;
+}
