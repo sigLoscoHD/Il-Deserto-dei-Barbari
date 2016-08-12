@@ -45,16 +45,16 @@
                 <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
             </form>           
         </div> <!-- /container -->  
-        <div id="mex"></div>
+        <div id="login"></div>
         <script>
             $(window).load(function (){
                 var mex=getUrlParameter("mex");
                 switch(mex){
                     case "login_failed":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Incorrect username or password</strong></span></div>");
+                        $('#login').html("<div class='alert alert-danger fade in'><strong>Incorrect username or password</strong></span></div>");
                         break; 
                     case "must_log":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>You must be logged in to gain access to this area</strong></span></div>");
+                        $('#login').html("<div class='alert alert-danger fade in'><strong>You must be logged in to gain access to this area</strong></span></div>");
                         break;
                 };
                 setTimeout(function(){

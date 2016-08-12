@@ -20,3 +20,10 @@ and open the template in the editor.
     text-align: center;
     font-weight: bold;
 }
+
+#login{
+    position: absolute;
+    top:60%;
+    left:35%;
+    width:30%;
+}
