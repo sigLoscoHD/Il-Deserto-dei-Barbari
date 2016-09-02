@@ -77,8 +77,8 @@ var MC = MC || (function() {
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="50px Georgia";
-            _ctx.fillText("come here to defend", 20, 220);
-            _ctx.fillText("ourselves soldier!!", 40, 270);
+            _ctx.fillText("Vieni qui per", 90, 220);
+            _ctx.fillText("difenderci soldato!!", 30, 270);
             _ctx.font="11px Georgia";
         }
 		
@@ -88,12 +88,12 @@ var MC = MC || (function() {
             _ctx.fillRect(0, 0, _width, _height);
             _ctx.fillStyle = "#F0FFFF";
             _ctx.font="85px Georgia";
-            _ctx.fillText("You Lose", 70, 150);
+            _ctx.fillText("Hai perso!", 40, 150);
             _ctx.font="50px Georgia";
-            _ctx.fillText("Points= "+_points, 30, 320);
+            _ctx.fillText("Punti = "+_points, 30, 320);
             _ctx.font="25px Georgia";
-            _ctx.fillText("Move the cursor out of the box", 70,200);
-            _ctx.fillText("and come back here for a new challenge!", 20, 230);        
+            _ctx.fillText("Muovi il cursore fuori dal quadrante", 40,200);
+            _ctx.fillText("e torna qui per una nuova sfida!", 50, 230);        
             _ctx.font="11px Georgia";
         }
         
@@ -211,11 +211,11 @@ var MC = MC || (function() {
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
             _ctx.fillText(
-                'Missile launched = ' + _missiles_created + '/' + Wave.getWave(_level).MissilesToDetroy,
+                'Missili lanciati = ' + _missiles_created + '/' + Wave.getWave(_level).MissilesToDetroy,
                 10, 20
             );
-            _ctx.fillText('Level = ' + _level, 10, 30);
-            _ctx.fillText('Points = ' + _points, 10, 40);
+            _ctx.fillText('Livello = ' + _level, 10, 30);
+            _ctx.fillText('Punti = ' + _points, 10, 40);
 			
             /*_ctx.fillText('Level = ' + _level, 10, 30);			
             _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );

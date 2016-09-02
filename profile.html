@@ -23,8 +23,8 @@
                     <!-- Voci della navbar -->
                     <div class="collapse navbar-collapse" id="voci-nav">
                         <ul id="nav" class="nav navbar-nav">
-                            <li><a href="game.html"> Play!</a></li>
-                            <li><a href="aboutUs.html"> About Us</a></li>
+                            <li><a href="game.html"> Gioca!</a></li>
+                            <li><a href="aboutUs.html"> Contatti</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -36,8 +36,8 @@
       
         <!-- tab di scorrimento -->
         <ul class="nav nav-tabs" id="tab-prof">
-            <li class="active"><a data-toggle="tab" href="#info" style="font-size: 25px"><b>Personal Info</b></a></li>
-            <li><a data-toggle="tab" href="#trophy" style="font-size: 25px"><b>Trophy</b></a></li>
+            <li class="active"><a data-toggle="tab" href="#info" style="font-size: 25px"><b>Informazioni Personali</b></a></li>
+            <li><a data-toggle="tab" href="#trophy" style="font-size: 25px"><b>Trofei</b></a></li>
         </ul>
         <div id="container" class="container">
             <div class="row">
@@ -45,10 +45,10 @@
                 <div class="col-md-4 col-sm-6 col-xs-12">
                      <div class="text-center">
                         <img id="profile-image" src="" class="avatar img-circle img-thumbnail" alt="avatar" onError="this.src = 'images/user.png'" style="width: 250px; height: 250px;">
-                        <h6>Upload a new photo</h6>
+                        <h6>Carica una nuova foto</h6>
                         <form action="PHP/upload.php" method="post" enctype="multipart/form-data">
                             <input type="file" name="fileToUpload" id="fileToUpload" class="text-center center-block well well-sm">
-                            <input type="submit" value="Upload Image" name="submit" class="text-center center-block well well-sm">
+                            <input type="submit" value="Carica immagine" name="submit" class="text-center center-block well well-sm">
                         </form>
                         
                     </div>
@@ -57,13 +57,13 @@
                 <div class=" tab-content" id="tab-cont">
                     <div class="col-md-8 col-sm-6 col-xs-12 personal-info tab-pane fade in active" id="info">
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">First name:</label>
+                            <label class="col-lg-3 control-label">Nome:</label>
                             <div class="col-lg-8">
                                 <input id="name" class="form-control" type="text" disabled>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Last name:</label>
+                            <label class="col-lg-3 control-label">Cognome:</label>
                             <div class="col-lg-8">
                                 <input id="surname" class="form-control" type="text" disabled>
                             </div>
@@ -91,9 +91,9 @@
                                 <td id="debug"><span class="glyphicon glyphicon-tower img"></span> </td> 
                             </tr>
                             <tr>
-                                <td id="text1" class="text">Complete Level 1</td>
-                                <td id="text2" class="text">Complete Level 2</td> 
-                                <td id="text3" class="text">Complete Level 3</td>
+                                <td id="text1" class="text">Completa Livello 1</td>
+                                <td id="text2" class="text">Completa Livello 2</td> 
+                                <td id="text3" class="text">Completa Livello 3</td>
                                 <td id="debug-text" class="text">Debug King</td>
                             </tr>
                             <tr>
@@ -103,9 +103,9 @@
                                 <td id="refactor"><span class="glyphicon glyphicon-tower img"></span> </td>
                             </tr>
                             <tr>
-                                <td id="text4" class="text">Complete Level 4</td>
-                                <td id="text5" class="text">Complete Level 5</td> 
-                                <td id="text6" class="text">Complete Level 6</td>
+                                <td id="text4" class="text">Completa Livello 4</td>
+                                <td id="text5" class="text">Completa Livello 5</td> 
+                                <td id="text6" class="text">Completa Livello 6</td>
                                 <td id="refactor-text" class="text">Refactor King</td>
                             </tr>
                             <tr>
@@ -115,9 +115,9 @@
                                 <td id="design"><span class="glyphicon glyphicon-tower img"></span> </td>
                             </tr>
                             <tr>
-                                <td id="text7" class="text">Complete Level 7</td>
-                                <td id="text8" class="text">Complete Level 8</td> 
-                                <td id="text9" class="text">Complete Level 9</td>
+                                <td id="text7" class="text">Completa Livello 7</td>
+                                <td id="text8" class="text">Completa Livello 8</td> 
+                                <td id="text9" class="text">Completa Livello 9</td>
                                 <td id="design-text" class="text">Design King</td>
                             </tr>
 
@@ -138,25 +138,25 @@
 
                 switch(mex){
                     case "log_succ":
-                        $('#mex').html("<div class='alert alert-success fade in'><strong>Successful login</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-success fade in'><strong>Login avvenuto!</strong></span></div>");
                         break;
                     case "reg_succ":
-                        $('#mex').html("<div class='alert alert-success fade in'><strong>Succesful registration</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-success fade in'><strong>Registrazione avvenuta</strong></span></div>");
                         break;
                     case "large":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Sorry, your file is too large.</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Spiacente, il tuo file è troppo grande</strong></span></div>");
                         break;
                     case "type":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Sorry, only JPG, JPEG, PNG  files are allowed.</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Spiacente, solo formati JPG, JPEG, PNG sono consentiti.</strong></span></div>");
                         break;
                     case "not-image":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>File is not an image.</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Il file non è un immagine.</strong></span></div>");
                         break;
                     case "upload":
-                        $('#mex').html("<div class='alert alert-success fade in'><strong>The image is changed</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-success fade in'><strong>Immagine cambiata con successo!</strong></span></div>");
                         break;
                     case "err-upload":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Sorry, there's a problem with the upload</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Spiacente, C'è un problema con il caricamento</strong></span></div>");
                         break;
                 };
                 setTimeout(function(){

@@ -35,8 +35,8 @@
                         <!-- Voci della navbar -->
                         <div class="collapse navbar-collapse" id="voci-nav">
                             <ul id="nav" class="nav navbar-nav">
-                                <li id="playNav"><a href="game.html"> Play!</a></li>
-                                <li><a href="aboutUs.html"> About Us</a></li>                      
+                                <li id="playNav"><a href="game.html"> Gioca!</a></li>
+                                <li><a href="aboutUs.html"> Contatti</a></li>                      
                                 <li id="orders"><a href="#">Rogers <span class="glyphicon glyphicon-info-sign"></span></a></li>
                                 <li id="help" ><a href="#" class="disabled" id="help1">Claiton<span class="glyphicon glyphicon-question-sign"></span></a></li>
                             </ul>
@@ -96,7 +96,7 @@
                 <textarea id="code" name="code"></textarea>
               
                 <button type="button" class="btn btn-danger btn-lg" id="undo">Undo</button>
-                <button type="button" class="btn btn-danger btn-lg" id="save">Save and Test</button>
+                <button type="button" class="btn btn-danger btn-lg" id="save">Salva e prova</button>
             </div>
         
              <canvas  id="canvas" width="480" height="480" onmouseover='MC.re_run()' onmouseout='MC.pause()' oncontextmenu="return false;"></canvas>
@@ -113,7 +113,7 @@
                     MC.init();
                 }
                 catch(err){
-                   // window.location.replace("level.html?id="+parametro+"&check=crit");
+                    window.location.replace("level.html?id="+parametro+"&check=crit");
                 }
             </script>
             

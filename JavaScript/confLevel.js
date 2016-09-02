@@ -46,7 +46,7 @@ if (check=="init"||check=="crit"){
 
     if(check=="crit"){
         failSound.play();
-        $('#result').html("<div class='alert alert-danger fade in'><strong> Critical error ! Your solution is semantically incorrect and leads to malfunctioning of the game. Try again!</strong><span class='glyphicon glyphicon-ban-circle'></span></div>");
+        $('#result').html("<div class='alert alert-danger fade in'><strong>Errore critico! La tua soluzione è semanticamente sbagliata e porta ad un malfunzionamento del gioco. Prova ancora!</strong><span class='glyphicon glyphicon-ban-circle'></span></div>");
         setTimeout(function(){
             $(".alert").alert('close');
         },10000);
@@ -115,7 +115,7 @@ if( check == "init"){
                $("#help1").removeClass("disabled");
                $("#help1").css("color","red");
                audio.play();
-               $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Help avaiable! <span class='glyphicon glyphicon-arrow-up'></span></div>");
+               $('#mex').html("<div class='alert alert-info fade in'><strong>Info!</strong> Aiuto disponibile! <span class='glyphicon glyphicon-arrow-up'></span></div>");
                setTimeout(function(){
                    $(".alert").alert('close');
                },3000);
@@ -262,7 +262,7 @@ $("#save").click(function(){
     if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
         failSound.play();
         $("#result").empty();
-        $('#result').html("<div class='alert alert-danger fade in'><strong>Syntax Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+        $('#result').html("<div class='alert alert-danger fade in'><strong>Errore sintattico!</strong>Prova ancora!<span class='glyphicon glyphicon-ban-circle'></span></div>");
         setTimeout(function(){
                $(".alert").alert('close');
            },2000);
@@ -352,11 +352,11 @@ function checkResult(result){
 
                 if(userJSON.result.livello == parametro){
                     audioUnlock.play();
-                    $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
-                    $('#points').html("<div class='alert alert-warning fade in'><strong> <span class='glyphicon glyphicon-fire'></span> + 10.000 Points </strong> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                    $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Trofeo sbloccato!</strong> livello "+ parametro + " completato! <span class='glyphicon glyphicon-ok'></span></div>");
+                    $('#points').html("<div class='alert alert-warning fade in'><strong> <span class='glyphicon glyphicon-fire'></span> + 10.000 Points </strong> Livello "+ parametro + " completato! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
                 else{
-                    $('#trophy').html("<div class='alert alert-success fade in'> Level "+ parametro + " complete! <span class='glyphicon glyphicon-ok'></span></div>");
+                    $('#trophy').html("<div class='alert alert-success fade in'> Livello "+ parametro + " completato! <span class='glyphicon glyphicon-ok'></span></div>");
                 }
 
                 setTimeout(function(){
@@ -368,7 +368,7 @@ function checkResult(result){
                             $('#trophy').empty();
                             setTimeout(function(){
                                 audioUnlock.play();
-                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Trofeo sbloccato!</strong> Debugging King!<span class='glyphicon glyphicon-ok'></span></div>");
                                 setTimeout(function(){
                                   $(".alert").alert('close');
                                 },6000);
@@ -381,7 +381,7 @@ function checkResult(result){
                             $('#trophy').empty();
                             setTimeout(function(){
                                 audioUnlock.play();
-                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Refactor King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Trofeo sbloccato!</strong> Refactor King!<span class='glyphicon glyphicon-ok'></span></div>");
                                 setTimeout(function(){
                                   $(".alert").alert('close');
                                 },6000);
@@ -394,7 +394,7 @@ function checkResult(result){
                             $('#trophy').empty();
                             setTimeout(function(){
                                 audioUnlock.play();
-                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Unlocked Trophy!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Trofeo sbloccato!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
                                 setTimeout(function(){
                                   $(".alert").alert('close');
                                 },6000);
@@ -403,7 +403,7 @@ function checkResult(result){
                         }
                 },6000);
                 //appendiamo il nuovo pulsante "Next" che reindirizza a game.html
-                $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Next <span class='glyphicon glyphicon-arrow-right'></span></button>");
+                $('#codice').append("<button type='button' class='btn btn-danger btn-lg' id='next'>Prossimo! <span class='glyphicon glyphicon-arrow-right'></span></button>");
                 $("#next").click(function() {
                 window.location="game.html";
             }); 
@@ -416,7 +416,7 @@ function checkResult(result){
              */
             failSound.play();
             $("#result").empty();
-            $('#result').html("<div class='alert alert-danger fade in'><strong>Error!</strong>Try again!<span class='glyphicon glyphicon-ban-circle'></span></div>");
+            $('#result').html("<div class='alert alert-danger fade in'><strong>Errore!</strong>Prova ancora!<span class='glyphicon glyphicon-ban-circle'></span></div>");
             setTimeout(function(){
                    $(".alert").alert('close');
                },2000);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Learn JavaScript</title>
     <!-- CSS import -->
      <link href="bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -22,8 +23,8 @@
                 <!-- Voci della navbar -->
                 <div class="collapse navbar-collapse" id="voci-nav">
                     <ul id="nav" class="nav navbar-nav"> 
-                        <li><a href="game.html"> Play!</a></li>
-                        <li><a href="aboutUs.html"> About Us</a></li>                      
+                        <li><a href="game.html"> Gioca!</a></li>
+                        <li><a href="aboutUs.html"> Contatti</a></li>                      
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -31,11 +32,11 @@
     </div>
      
    <div class="jumbotron">
-        <h1 id="titleLearn">Learn JavaScript playing with</h1>
+        <h1 id="titleLearn">Impara JavaScript giocando con</h1>
         <h1 id="titleDeserto">"Il Deserto dei Barbari"</h1>
         <div id="buttonJumbotron">
-            <a id="play" class="btn btn-danger btn-lg" href="" role="button">Play!</a>
-            <a id="learn-more" class="btn btn-success btn-lg" href="learnMore.html" role="button">Learn more</a>
+            <a id="play" class="btn btn-danger btn-lg" href="" role="button">Gioca!</a>
+            <a id="learn-more" class="btn btn-success btn-lg" href="learnMore.html" role="button">Per Saperne di più..</a>
         </div>
     </div> 
     
@@ -48,13 +49,13 @@
             
             switch(mex){
                 case "err_serv":
-                    $('#mex').html("<div class='alert alert-danger fade in'><strong>There's a problem with the server! Try again...</strong></span></div>");
+                    $('#mex').html("<div class='alert alert-danger fade in'><strong>C'è un problema con il server, prova ancora...</strong></span></div>");
                     break;
                 case "not_logged":
-                    $('#mex').html("<div class='alert alert-danger fade in'><strong>You must be logged in!</strong></span></div>");
+                    $('#mex').html("<div class='alert alert-danger fade in'><strong>Devi essere loggato!</strong></span></div>");
                     break;
                 case "suc_logout":
-                    $('#mex').html("<div class='alert alert-success fade in'><strong>Succesful logout!</strong></span></div>");
+                    $('#mex').html("<div class='alert alert-success fade in'><strong>Logout avvenuto!</strong></span></div>");
                     break;
             };
             setTimeout(function(){

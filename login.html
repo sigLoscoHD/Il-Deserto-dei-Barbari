@@ -26,9 +26,9 @@
                     <!-- Voci della navbar -->
                     <div class="collapse navbar-collapse" id="voci-nav">
                         <ul class="nav navbar-nav">
-                            <li id="playNav"><a href="game.html"> Play!</a></li>                      
-                            <li><a href="aboutUs.html"> About Us</a></li>
-                            <li><a href="registration.html">Sign Up</a></li>           
+                            <li id="playNav"><a href="game.html"> Gioca!</a></li>                      
+                            <li><a href="aboutUs.html"> Contatti</a></li>
+                            <li><a href="registration.html"> Registrati</a></li>           
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -37,12 +37,21 @@
 
         <div class="Lcontainer">
             <form class="form-signin" method="POST" action="PHP/login.php">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <label for="inputEmail" class="sr-only">Email address</label>
+                <h2 class="form-signin-heading">Login</h2>
+                
+                <br>
+                
+                <label for="inputEmail" class="sr-only">Email</label>
                 <input type="email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+                
+                <br>
+                
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Password" required="">
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Sign in</button>
+                
+                <br>
+                
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Login</button>
             </form>           
         </div> <!-- /container -->  
         <div id="login"></div>
@@ -51,10 +60,10 @@
                 var mex=getUrlParameter("mex");
                 switch(mex){
                     case "login_failed":
-                        $('#login').html("<div class='alert alert-danger fade in'><strong>Incorrect username or password</strong></span></div>");
+                        $('#login').html("<div class='alert alert-danger fade in'><strong>Email o password non corretti!</strong></span></div>");
                         break; 
                     case "must_log":
-                        $('#login').html("<div class='alert alert-danger fade in'><strong>You must be logged in to gain access to this area</strong></span></div>");
+                        $('#login').html("<div class='alert alert-danger fade in'><strong>Devi essere loggato per poter accedere a quest'area!</strong></span></div>");
                         break;
                 };
                 setTimeout(function(){

@@ -34,8 +34,8 @@ and open the template in the editor.
          <!-- Voci della navbar -->
          <div class="collapse navbar-collapse" id="voci-nav">
            <ul class="nav navbar-nav">           
-             <li id="playNav"><a href="game.html"> Play!</a></li>
-             <li><a href="aboutUs.html"> About Us</a></li>      
+             <li id="playNav"><a href="game.html"> Gioca!</a></li>
+             <li><a href="aboutUs.html"> Contatti</a></li>      
              <li><a href="login.html">Login</a></li>
            </ul>
          </div><!-- /.navbar-collapse -->
@@ -45,25 +45,25 @@ and open the template in the editor.
         
          <div class="Rcontainer">
              <form class="form-signup" action="PHP/reg.php" method="POST">
-                <h1 class="form-signup-heading">Sign Up</h1>
+                <h1 class="form-signup-heading">Registrazione</h1>
                 
-                <label for="name" class="sr-only">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Name" required="">
+                <label for="name" class="sr-only">Nome</label>
+                <input type="text" name="name" class="form-control" placeholder="Nome" required="">
                 
                 <br>
                 
-                <label for="surname" class="sr-only">Surname</label>
-                <input type="text" name="surname" class="form-control" placeholder="Surname" required="">
+                <label for="surname" class="sr-only">Cognome</label>
+                <input type="text" name="surname" class="form-control" placeholder="Cognome" required="">
                 
                 <br>
                 
                 <label for="username" class="sr-only">Username</label>             
-                <input type="text" class="form-control" name="username" placeholder="Your username"/>
+                <input type="text" class="form-control" name="username" placeholder="Username"/>
           
                 <br>
                 
                 <label for="email" class="sr-only">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+                <input type="email" name="email" class="form-control" placeholder="Email" required="" autofocus="">
                 
                 <br>
                 
@@ -72,7 +72,7 @@ and open the template in the editor.
                 
                 <br>
                 
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Sign up</button>
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Registrati!</button>
             </form>
 
         </div> <!-- /container -->  
@@ -82,13 +82,13 @@ and open the template in the editor.
                 var mex=getUrlParameter("mex");
                 switch(mex){
                     case "existent_email":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>The email address you entered is already existing</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Indirizzo email esistente</strong></span></div>");
                         break;
                     case "reg_failed":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Registration failed, there's a problem with the server</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Registrazione fallita, c'è un problema con il server</strong></span></div>");
                         break;
                     case "must_log":
-                        $('#mex').html("<div class='alert alert-danger fade in'><strong>You have to sign up</strong></span></div>");
+                        $('#mex').html("<div class='alert alert-danger fade in'><strong>Devi registrarti</strong></span></div>");
                         break;                    
                 };
                 setTimeout(function(){
