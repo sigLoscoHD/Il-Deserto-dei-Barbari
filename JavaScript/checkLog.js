@@ -80,7 +80,7 @@ if(userJSON.result!= "false"){
     $('#password').val(userJSON.result.password);
     $("#nav").append("<li><a href='leaderboard.html'>Leaderboard</a></li>");
     $("#nav").append("<li id='profile'><a href='profile.html'> Profilo</a></li>");
-    $("#nav").append("<li id='logout'><a href='PHP/logout.php'>Logout</a></li>");
+    $("#nav").append("<li id='logout'><a href='PHP/logout.php'> Logout</a></li>");
     $("#nav").append("<li id='level'> <span class='glyphicon glyphicon-user'></span> "+userJSON.result.username+" Grado : <nobr id='grado'>"+ grado.gr+"</nobr><div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='"+grado.eccesso+"' aria-valuemin=0 aria-valuemax='"+15000*(grado.gr)+"' style='width:"+(grado.eccesso/(15000*(grado.gr)))*100+"%'><p id='eccesso'>"+grado.eccesso+"</p></div></div></li>");
     $("#login").remove();
     $("#sign").remove();

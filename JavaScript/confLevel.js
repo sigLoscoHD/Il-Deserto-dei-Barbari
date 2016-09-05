@@ -334,12 +334,6 @@ function checkResult(result){
             $(".modal-title").append(config.succTitle);
             $("#image").append("<img src='images/generale.jpg'/>");
             $("#text").append(config.succCommand);
-
-            //rimuoviamo certe voci dalla navbar in modo tale da costringere l'utente al gioco
-            $("#brand").attr("href", "#");
-            $("#playNav").remove();
-            $("#profile").remove();
-            $("#aboutUs").remove();
             $("#orders").remove();
             $("#help").remove();
 
