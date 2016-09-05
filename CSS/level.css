@@ -38,6 +38,13 @@
     width:30%;
     z-index:20;
 }
+#gift {
+    position: absolute;
+    top:15%;
+    left: 33%;
+    width:30%;
+    z-index:20;
+}
 #points{
    position: absolute;
     top:15%;

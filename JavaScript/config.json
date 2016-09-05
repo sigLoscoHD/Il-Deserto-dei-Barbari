@@ -9,7 +9,7 @@
                 "end":116
             }, 
             "command": "Maledezione avevo chiesto un esperto soldato, non un pivellino fresco di accademia! I Barbari stanno intensificando i loro attacchi negli ultimi tempi e le città libere del sud non riescono a difendersi; le nostre armi difensive costruite dallo scienziato Claiton sono malfunzionanti e la sua amnesia non gli consente di sistemarle. L'attacco dei Barbari è imminente, stà per abbattersi violentemente su di noi, dimostrami cosa sai fare e sistema le nostre difese.  <br> Il sistema di puntamento del nostro cannone è guasto, necessita di essere aggiustato, pensi di poter riuscire a sistemarlo? Aggiustalo e centra quei missili prima che ci trasformino in un cumulo di cenere!!!",
-            "help":"E tu chi sei? Mi avevano detto che avrebbero mandato qualcuno a darmi una mano a sistemare le difese delle città, ma io vedo solo un novellino! Le armi che vedi le ho costruite molto tempo fa e come tutte le cose col tempo si guastano! Diversi come te hanno messo le mani sul codice nel tentativo di sistemarlo e chissà quali pasticci hanno combinato! Io soffro di una grave forma di amnesia e non riesco a ricordare come diavolo funzioni questa roba. Ci deve essere tuttavia qualcosa di sbagliato, che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di qualcosa che probabilmente è di troppo, ah si ora ricorda devi.... Dannazione di cosa stavamo parlando?",
+            "help":"E tu chi sei? Mi avevano detto che avrebbero mandato qualcuno a darmi una mano a sistemare le difese delle città, ma io vedo solo un novellino! Le armi che vedi le ho costruite molto tempo fa e come tutte le cose col tempo si guastano! Diversi come te hanno messo le mani sul codice nel tentativo di sistemarlo e chissà quali pasticci hanno combinato! Io soffro di una grave forma di amnesia e non riesco a ricordare come diavolo funzioni questa roba. Ci deve essere tuttavia qualcosa di sbagliato che modifica il corretto puntamento del cannone. <br> Devi annullare l'effetto di qualcosa che probabilmente è di troppo, ah si ora ricorda devi.... Dannazione di cosa stavamo parlando?",
             "succTitle": "Livello 1 completato",
             "specific": "Correggi il bug che impedisce il corretto lancio di missili.",
             "succCommand":"Ben fatto soldato! Ora ai posti di combattimento e difendi il villaggio dagli invasori!"
@@ -17,7 +17,7 @@
         {   
             "id": "2",
             "title": "Livello 2",
-            "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante! Devi sistemare nuovamente le nostre armi! Una tormenta si è abbattuta sui nostri missili danneggiandoli! Rientrarli negli hangar non è stato sufficiente purtroppo. Qualche configurazione deve essersi sprogrammata, non ne capisco molto io ma sono sicuro che qualcosa potrai pur combinare tu con le tue fresche conoscenze di accademia. Puoi provarci?  <br>I nostri missili esplodono non appena partono, se non li aggiustiamo immediatamente ci ridurranno in poltiglia! ",
+            "command": "Va bene lo ammetto, non male per un pivellino! I Barbari hanno capito che siamo piuttosto organizzati difensivamente, dunque oggi ci andranno giù pesante! Devi sistemare nuovamente le nostre armi! Una tormenta si è abbattuta sui nostri missili danneggiandoli! Rientrarli negli hangar non è stato sufficiente purtroppo. Qualche configurazione deve essersi compromessa, non ne capisco molto, ma spero che le tue fresche conoscenze di accademia servino a qualcosa. Puoi provarci?  <br>I nostri missili esplodono non appena partono, se non li aggiustiamo immediatamente ci ridurranno in poltiglia! ",
              "editable": {
                 "begin":601,
                 "end":601
@@ -30,13 +30,13 @@
         {   
             "id": "3",
             "title": "Livello 3",
-            "command": "Ok inizi a guadagnarti la mia fiducia ragazzo, i Barbari hanno smesso di sottovalutarci. Oh no! Dannazione ancora una volta qualcosa non va! Finiranno mai i problemi con queste armi? Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! O almeno lo spero, altrimenti temo che sia finita per noi!<br> Cerca di capire cosa non va nei nostri missili ma fallo alla svelta prima che il nemico ci riduca tutti in polvere!",
+            "command": "Ok inizi a guadagnarti la mia fiducia ragazzo, i Barbari hanno smesso di sottovalutarci. Oh no! Dannazione ancora una volta qualcosa non va! Finiranno mai i problemi con queste armi? Soldato le cose sono due: <br> o la nostra contraerea è difettosa o i missili del nemico sono indistruttibili! <br> Ma non ho mai visto nulla di indistruttibile! <br> Cerca di capire cosa non va nei nostri missili, ma fallo alla svelta prima che il nemico ci riduca tutti in polvere!",
              "editable": {
                 "begin":288,
                 "end":288
             },
             "specific": "Correggi il bug che non consente la distruzione dei missili de Barbari",
-            "help":"Salve soldato! Beh il problema risiede sicuramente in quel ciclo for. Vediamo cosa mi ricordo a riguardo <br> Il ciclo for in JavaScript è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br>In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi. Dunque, ah si eccolo l'errore, semplicemente... mi hai chiesto cosa del ciclo for?",
+            "help":"Salve soldato! Beh il problema risiede sicuramente in quel ciclo for. Vediamo cosa mi ricordo a riguardo <br> Il ciclo for è un costrutto con il quale possiamo andare a controllare degli elementi ordinati in un array. <br> In genere come primo parametro prende il primo elemento che si vuole andare a scansionare <br> Il secondo parametro del for prende una condizione che deve essere rispettata <br> Infine il terzo serve per scorrere gli elementi. Dunque, ah si eccolo l'errore, semplicemente... mi hai chiesto cosa del ciclo for?",
             "succTitle": "Livello 3 completato",
             "succCommand":"Ben fatto soldato! Finalmente le nostre armi sono state sistemate grazie al tuo contributo. Ora ai posti di combattimento e difendi il villaggio dagli invasori!"
         },
@@ -58,13 +58,13 @@
             {   
             "id": "5",
             "title": "Livello 5",
-            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela. Claiton quando progettò i nostri missili era nel pieno della sua amnesia e probabilmente si era dimenticato come si faceva, inserendo dei pasticci all'interno del codice di controllo. Qualcosa nei missili dunque potrebbe essere migliorato qui, dai un'occhiata soldato. Claiton parlava di swing errato o qualcosa del genere ma non sapevo che fosse anche un musicista!",
+            "command": "Bene il primo refactoring è andato adesso sotto con il secondo! Confido in te soldato puoi farcela! Claiton quando progettò i nostri missili era nel pieno della sua amnesia e probabilmente si era dimenticato come si faceva, inserendo dei pasticci all'interno del codice di controllo. Qualcosa nei missili dunque potrebbe essere migliorato qui, dai un'occhiata soldato. Claiton parlava di swing errato o qualcosa del genere ma non sapevo che fosse anche un musicista!",
              "editable": {
                 "begin":608,
                 "end":618
             },
             "specific": "lo switch è usato impropriamente, riscrivi lo stralcio di codice in maniera più corretta utilizzando un altro costrutto più opportuno.",
-            "help":"Salve soldato. Purtroppo quando ho scritto questa parte del codice difensivo dei missili i medicinali che curano la mia amnesia erano scaduti e non hanno fatto effetto ed ho dimenticato come si faceva. Potrei aver scritto qualche costrutto sintattico che magari in quest'occasione fa funzionare il codice ma non è la maniera migliore di farlo. Ah si ora ricordo! devi modificare... O forse no...",
+            "help":"Salve soldato. Purtroppo quando ho scritto questa parte del codice difensivo dei missili i medicinali che curano la mia amnesia erano scaduti, non hanno fatto effetto, ed ho dimenticato come si faceva. Potrei aver scritto qualche costrutto sintattico che magari in quest'occasione fa funzionare il codice ma non è la maniera migliore di farlo. Ah si ora ricordo! devi modificare... O forse no...",
             "succTitle": "Livello 5 completato",
             "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato e capire se abbiamo raggiunto il risultato sperato!"
             },
@@ -77,14 +77,14 @@
                 "end":198
             },
             "specific": "Riscrivi il ciclo for con una funzione ricorsiva, ovvero una funzione che richiami se stessa, ottenendo lo stesso effetto.",
-            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, so solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, Chi è Claiton?",
+            "help":"Salve soldato. Quel ciclo for funziona ma vorrei che lo sostituissi con un approccio equivalente: la ricorsione. Non posso esserti di aiuto questa volta, ai miei tempi la ricorsione non era una metodologia usata, sò solo che si dice sia una cosa molto intelligente che chiama se stessa, anche se non capisco bene che senso abbia e come se io chiamassi in continuazione Claitooooon, Claitoo...Aspetta un attimo, Chi è Claiton?",
             "succTitle": "Livello 6 completato",
             "succCommand":"Ora difendi il villaggio dagli invasori per verificare la soluzione che hai adottato!"
             },
             {   
             "id": "7",
             "title": "Livello 7",
-            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quel ricordone dell'ultima missione non era necessario; i Barbari hanno costretto Claiton sfruttando la sua amnesia, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
+            "command": "Soldato! il tuo contributo ci sta portando alla salvezza! Ultimamente Claiton sta delirando, quella ricorsione dell'ultima missione non era necessaria; i Barbari hanno ingannato Claiton sfruttando la sua amnesia, ma per fortuna sei stato bravo a non commettere errori e a far funzionare comunque il nostro cannone. Tuttavia i barbari hanno potenziato le loro armi negli ultimi tempi, abbiamo bisogno di nuove tecnologie che siano in grado di contrastarli. Claiton in passato progettò uno scudo a difesa della città, ma si dimenticò di progettare i driver per il suo funzionamento. Puoi aiutarci soldato?",
              "editable": {
                 "begin":333,
                 "end":342

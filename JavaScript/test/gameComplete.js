@@ -154,13 +154,12 @@ var MC = MC || (function() {
                 if (_entities.missiles[0].pos.y > 0 && target.y < 410) {
                       _entities.rockets.push(
                               
-                            
-        new Rocket(target,
+                           new Rocket(target,
  {
     'x': _entities.turret[1].pos.x + (_entities.turret[1].width / 2),
     'y': _entities.turret[1].pos.y
- })
-                    
+ }) 
+                            
                         
                             
                      
@@ -802,3 +801,4 @@ var MC = MC || (function() {
     };
 
 }());
+

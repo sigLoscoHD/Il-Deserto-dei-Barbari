@@ -93,7 +93,10 @@ else{
     $("#logout").remove();
     $("#profile").remove();
 }
-    
+
+if (userJSON.result.livello > 9) {
+     $("#nav").append("<li id ='justplay'> <a href='justPlay.html'>Missile Command</a></li>");
+}
     
 
 

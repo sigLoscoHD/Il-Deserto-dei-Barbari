@@ -395,6 +395,7 @@ function checkResult(result){
                             setTimeout(function(){
                                 audioUnlock.play();
                                 $('#trophy').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-tower'></span> Trofeo sbloccato!</strong> Design King!<span class='glyphicon glyphicon-ok'></span></div>");
+                                $('#gift').html("<div class='alert alert-success fade in'><strong> <span class='glyphicon glyphicon-gift'></span> Gioco Missile Command sbloccato <span class='glyphicon glyphicon-ok'></span></div>");
                                 setTimeout(function(){
                                   $(".alert").alert('close');
                                 },6000);
