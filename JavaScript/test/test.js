@@ -1,7 +1,7 @@
 var MC = MC || (function() {
     var engine = (function() {
         // Private variables protected by closure
-        var FPS = 1000 / 40,
+        var FPS = 1000 / 80,
             _canvas = document.querySelector('canvas'),
             _ctx = _canvas.getContext('2d'),
             _width = _canvas.width || _canvas.style.width,
@@ -22,13 +22,10 @@ var MC = MC || (function() {
                 'missiles': [],
                 'targets': [],
                 'rockets': [],
-                'turret': []
+                'turret': null
             },
             _points=0,
-            _levels = [],
-            _shield=false,
-            _shieldsOpp=2,
-            _checkAutomaticTurret = true;        
+            _levels = [];
         /**
          * Start the game
          */		
@@ -56,15 +53,15 @@ var MC = MC || (function() {
             _rocketPosY = 0;
             _clickX = 0;
             _clickY = 0;
-            _points=0;
             _endofgame=false;			
 
             _entities = {
                     'missiles': [],
                     'targets': [],
                     'rockets': [],
-                    'turret': []
+                    'turret': null
             };
+            _points=0;
             _levels = [];
 
             for(var i=0;i<initHomes.length;i++){
@@ -74,7 +71,7 @@ var MC = MC || (function() {
             }
         }
 		
-       function initialDraw () {
+        function initialDraw () {
             _ctx.fillStyle = "#191970";
             _ctx.fillStyle = _gradient;
             _ctx.fillRect(0, 0, _width, _height);
@@ -114,98 +111,35 @@ var MC = MC || (function() {
         }
         
         // Setup click/touch events
-        _canvas.addEventListener('click', launchRocket, false); //left click
-        _canvas.addEventListener('contextmenu', shield, false); // right click
+        _canvas.addEventListener('click', launchRocket, false);
         
-        function shield (event){              
-            if (_shieldsOpp > 0) {
-                _shield = true;
-                _shieldsOpp--;
-           
-                setTimeout(function(){ 
-                    _shield = false;              
-                }, 2000);
-            }
-        }  
-        
-        function drawShield(){
-            _ctx.fillStyle = 'rgb(179, 176, 153)';
-            _ctx.fillText('ciao',100,420);
-            var x = _width/2 ;
-            var y = 420;
-            _ctx.arc(x,y,248,0,2*Math.PI);
-            _ctx.fill();
-        }
-        
-          // lancio rocket torretta automatica
-        var flag1= false;
-        function _launchRocketAutomatic() {
-            if (_checkAutomaticTurret) {              
-                var target = {
-                
-                //valori x e y del lancio modificati per precisione maggiore
-                'x': Math.sin(_entities.missiles[0].angle) * ( _entities.missiles[0].distance + 100) + _entities.missiles[0].origin.x ,			
-                'y': Math.cos(_entities.missiles[0].angle) * ( _entities.missiles[0].distance + 100) + _entities.missiles[0].origin.y  
-                };
-                // posizioni da dare al costruttore del rocket
-                var x= _entities.turret[1].pos.x + (_entities.turret[1].width / 2);
-                var y= _entities.turret[1].pos.y; 
-                
-                if (_entities.missiles[0].pos.y > 0 && target.y < 410) {
-                      _entities.rockets.push(
-                              
-                            
-        new Rocket(target,
- {
-    'x': _entities.turret[1].pos.x + (_entities.turret[1].width / 2),
-    'y': _entities.turret[1].pos.y
- })
-                    
-                        
-                            
-                     
-                            
-                      ); 
-                   
-                }
-                _checkAutomaticTurret = false;
-                
-                setTimeout(function(){
-                  _checkAutomaticTurret = true;  
-                },2500);
-                
-                if((check=="test" || check=="crit") && !flag1){
-                    console.log("dentro");
-                    soluzione9(_entities.rockets, target,x, y );
-                    flag1=true;
-                }
-            }  
-        };
-        
+        var _err_x= 0;
+        var _err_y= 0;
         
         function launchRocket(event) {
             var target = {
                 //valori x e y del lancio modificati per precisione maggiore
-                'x': event.clientX - this.offsetLeft,
-                'y': event.clientY - this.offsetTop
+                'x': event.clientX - this.offsetLeft + _err_x,
+                'y': event.clientY - this.offsetTop + _err_y 
             };
-		console.log(target.x + " " + target.y);
+			
             _clickX = event.clientX - this.offsetLeft;
             _clickY = event.clientY - this.offsetTop;
-			 
+
             _entities.rockets.push(new Rocket(
                 target,
                 {
-                    'x': _entities.turret[0].pos.x + (_entities.turret[0].width / 2),
-                    'y': _entities.turret[0].pos.y
+                    'x': _entities.turret.pos.x + (_entities.turret.width / 2),
+                    'y': _entities.turret.pos.y
                 }
             ));
         }
-       
+        function getErrX(){return _err_x;}
+        function getErrY(){return _err_y;}
+
         /**
          * Game loop
          */
-
         function _gameLoop() {
 		
 			var count=0;
@@ -218,7 +152,7 @@ var MC = MC || (function() {
 			}
 			
 			//all targets destroyed
-			if(count==_entities.targets.length-2){
+			if(count==_entities.targets.length-1){
 				_endofgame=true;
 				endofgamefunction();
 			}
@@ -258,29 +192,21 @@ var MC = MC || (function() {
 					_rocketPosX = _entities.rockets[i].pos.x ;
 					_rocketPosY = _entities.rockets[i].pos.y ;
 				}
-                                
-                                // draw the shield
-                                if(_shield) {
-                                    drawShield();
-                                }
 
 				// Draw entities to the canvas
 				_drawDefense(_entities.targets);
 				_drawEntities(_entities.missiles);
 				_drawEntities(_entities.rockets);
 				_drawTurretBase();
-                                _drawAutomaticTurretBase();
-                                _launchRocketAutomatic();
-
 				// Draw debug information
 				debugInfo();
 			}
         }
         
 		
-		function get_endofgame(){
-			return _endofgame;
-		}
+        function get_endofgame(){
+                return _endofgame;
+        }
 		
         function debugInfo() {
             _ctx.fillStyle = 'rgb(255, 255, 255)';
@@ -290,11 +216,11 @@ var MC = MC || (function() {
             );
             _ctx.fillText('Livello = ' + _level, 10, 30);
             _ctx.fillText('Punti = ' + _points, 10, 40);
-            _ctx.fillText('Scudi rimasti = ' + _shieldsOpp, 10, 50);
-            _ctx.font="18px Georgia";
-            _ctx.fillText('Tasto destro del mouse ', 220, 20);
-            _ctx.fillText('per attivare lo scudo', 220, 40);
-            _ctx.font="11px Georgia";		
+			
+            /*_ctx.fillText('Level = ' + _level, 10, 30);			
+            _ctx.fillText('click x ='+ _clickX + '  click y ='+ _clickY, 10,40 );
+            _ctx.fillText('Rocket pos x =' + _rocketPosX ,10,50);
+            _ctx.fillText('Rocket pos y =' + _rocketPosY ,10,60);*/
         }
 
         /**
@@ -312,15 +238,12 @@ var MC = MC || (function() {
                 }
             }
         }
-		
-		function _drawDefense(entities) {
-            for (var i = 0; i < entities.length; i++) {
-				if(entities[i].pos.removed==0)
-					entities[i].draw(_ctx);
-            }
-        }
-        
-         function _drawTurretBase () {
+        /*
+         * Draw turret basement 
+         * 
+         * @returns {undefined}
+         */
+        function _drawTurretBase () {
             var width = 35;
             var height = 20;
             var x = _width/2 - width/2;
@@ -329,29 +252,27 @@ var MC = MC || (function() {
             _ctx.fillRect(x,y,width,height); 
         }
         
-        // disegnare torretta automatica
-        function _drawAutomaticTurretBase () {
-            var width = 35;
-            var height = 20;
-            var x = _width/2 + 110 - width/2;
-            var y = 440;
-            _ctx.fillStyle="#FF0000";
-            _ctx.fillRect(x,y,width,height); 
+		
+	function _drawDefense(entities) {
+            for (var i = 0; i < entities.length; i++) {
+				if(entities[i].pos.removed==0)
+					entities[i].draw(_ctx);
+            }
         }
+
         /**
          * Move each entity to the canvas
          *
          * @param {array} entities all the game entities.
          */
-        var distanceShield;     
         function _moveEntities(entities) {
-             var count = entities.length;
+            var count = entities.length;
             for (var i = 0; i < count; i++) {
                 entities[i].move();
-                var hitShield = hasHitShield(entities[i]);
+                
                 // Check for collision
                 // @TODO: Split the two hits into different sections
-                if (hasHitRocketExplosion(entities[i]) || entities[i].hasHit() || (_shield && hitShield) ) {
+                if (hasHitRocketExplosion(entities[i]) || entities[i].hasHit()) {
                     // Remove the missile
                     entities.splice(i, 1);
                     count -= 1;
@@ -361,28 +282,11 @@ var MC = MC || (function() {
                     _new_missile = 0;
                 }
                 
-                
                 // Pause the game if there's no missiles
                 if (_entities.missiles.length <= 0) {
                    // _pause();
                 }
             }
-        }
-        
-        function hasHitShield (missile) {
-            Xshield = _width/2; //coordinata x del centro dello scudo
-            Yshield = 420;      //coordinata y del centro dello scudo
-            radiusShield = 248; //raggio dello scudo
-            var x = Xshield - missile.pos.x,  //distanza lungo x fra missili e centro dello scudo
-                y = Yshield - missile.pos.y;  //distanza lungo y fra missili e centro dello scudo
-            distanceShield=-1;  //distanza fra missili e centro dello scudo da calcolare
-                    
-            distanceShield = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-
-             if (distanceShield < radiusShield )
-                 return true;            				               
-             else
-                 return false;    
         }
         
         /**
@@ -400,9 +304,9 @@ var MC = MC || (function() {
 
                 if (dist < _entities.rockets[i].currentRadius) {
                     _points+=1*_level + 1;
-                    return true;
+                    return true;                
+                    ;
                 }
-
             }
             return false;
         }
@@ -415,7 +319,7 @@ var MC = MC || (function() {
 		
 		
 		
-		var initHomes=[
+        var initHomes=[
             { 'x': 30,  'y': 430,'stricken':3,'removed':0},
             { 'x': 100, 'y': 430 ,'stricken':3,'removed':0},
             { 'x': 175, 'y': 430 ,'stricken':3,'removed':0},
@@ -430,14 +334,9 @@ var MC = MC || (function() {
 		 
         function loadLevel(level) {
             // Add game entities
-            _entities.turret.push( new Turret(_width, _height, false)); 
-            _entities.turret.push( new Turret(_width, _height, true));
-            
-            
-            _entities.targets.push(_entities.turret[0]); // disegna torretta normale
-            _entities.targets.push(_entities.turret[1]); // disegna torretta automatica
-            
-            addHomes(initHomes,level);
+            _entities.turret = new Turret(_width, _height);
+            _entities.targets.push(_entities.turret);
+			addHomes(initHomes,level);
             for (var i = 0; i < level.homes.length; i++) {
                 _entities.targets.push(new Home(level.homes[i]));
             }
@@ -460,7 +359,7 @@ var MC = MC || (function() {
          */
         function getRandomTarget() {
             var targetCount = _entities.targets.length;
-            var rndIndex = Math.floor(Math.random()*(targetCount-2)+2);
+            var rndIndex = Math.floor(Math.random()*(targetCount-1)+1);
             var target = _entities.targets[rndIndex];
 			
 			if(_entities.targets[rndIndex].pos.removed==1){
@@ -475,15 +374,16 @@ var MC = MC || (function() {
 		}
         
 		function removeEntities(i){
+
                     if(_entities.targets[i].pos.removed==0){
-			_entities.targets[i].pos.stricken--;
-			_entities.targets[i].height-=10;
-			_entities.targets[i].pos.y+=10;
+                            _entities.targets[i].pos.stricken--;                      
+                            _entities.targets[i].height-=10;
+                            _entities.targets[i].pos.y+=10;
                     }
 			
 			
                     if(_entities.targets[i].pos.stricken==0)
-                        _entities.targets[i].pos.removed=1;
+                            _entities.targets[i].pos.removed=1;
 		}
         /*
          * @return {float} Width of the canvas
@@ -491,11 +391,11 @@ var MC = MC || (function() {
         function getWidth() {
             return _width;
         }
-        
+
         function getPoints(){
             return _points;
         }
-
+        
         // Expose public methods
         return {
             'loadLevel': loadLevel,
@@ -511,6 +411,8 @@ var MC = MC || (function() {
             'initialDraw' : initialDraw,
             'finalDraw' : finalDraw,
             'get_endofgame' : get_endofgame,
+            'getErrX': getErrX,
+            'getErrY' : getErrY,
             'getPoints' : getPoints
                     
         };
@@ -549,17 +451,18 @@ var MC = MC || (function() {
             'getWave': getWave
         };
     }());
+    
+    function endofgamefunction(){
+        if(engine.get_endofgame()){
+            pause();
+            engine.finalDraw();  
+            store_points(engine.getPoints());
+            engine.re_init();
+            engine.loadLevel(levels[0]);	
+            engine.run();         
+        }		
+    }
 
-	function endofgamefunction(){
-            if(engine.get_endofgame()){
-                pause();
-                engine.finalDraw();
-                store_points(engine.getPoints());
-                engine.re_init();
-                engine.loadLevel(levels[0]);	
-                engine.run();			
-            }		
-	}
     /**
      * Game entity class.
      */
@@ -585,35 +488,26 @@ var MC = MC || (function() {
      *
      * @param {object} pos Location position.
      */
-    var Turret = function Turret(width, height, automatic) {
-        if (!automatic){
-           this.width = 6;
-           this.height = 24;    
-           this.pos = {
-           'x': (width / 2) - (this.width / 2),
-           'y': 420,
+    var Turret = function Turret(width, height) {
+       this.width = 6;
+       this.height = 24;    
+       this.pos = {
+        'x': (width / 2) - (this.width / 2),
+        'y': 420,
 		'removed':0
-           };
-           this.colour = 'rgb(255, 0, 0)';
-       } else {
-           this.width = 8;
-           this.height = 34;    
-           this.pos = {
-           'x': (width / 2) + 110 - (this.width / 2),
-           'y': 420,
-           'removed':0
-           };
-           this.colour = 'rgb(255, 0, 0)';
-       }
+       };
+       this.colour = 'rgb(255, 0, 0)';
     };
     
     Turret.prototype = new Entity();
 
-    /**
+    
+     /**
      * Home entity class
      *
      * @param {object} pos Location position.
      */
+    
     var Home = function Home(pos) {
        this.pos = pos;
        this.width = 20;
@@ -669,17 +563,16 @@ var MC = MC || (function() {
         if ((this.pos.x >= this.target.pos.x &&
             this.pos.y >= this.target.pos.y &&
             this.pos.y <= this.target.pos.y + this.target.width)||this.pos.y >= this.target.pos.y)
-		{		
-			for(var i=0; i<engine.getEntities().targets.length;i++){
-				if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
-					this.target.pos.y==engine.getEntities().targets[i].pos.y){
-						engine.removeEntities(i);
-				}				
-			}
+            {		
+                for(var i=0; i<engine.getEntities().targets.length;i++){
+                    if (this.target.pos.x==engine.getEntities().targets[i].pos.x && 
+                            this.target.pos.y==engine.getEntities().targets[i].pos.y){
+                                    engine.removeEntities(i);
+                    }				
+                }
             return true;			
         } 
-		else
-		{
+        else{
             return false;
         }
     };
@@ -724,7 +617,6 @@ var MC = MC || (function() {
         }
     };
     
-    
     Rocket.prototype.draw = function(ctx) {
         if (this.exploded) {
             if (this.expanding) {
@@ -754,7 +646,8 @@ var MC = MC || (function() {
             ctx.stroke(); // disegna linea
         }        
     };
-    
+
+
     /**
      * Levels
      */
@@ -784,7 +677,7 @@ var MC = MC || (function() {
     var flag=0;
     
     function re_run(){
-        if(flag==1  && !engine.get_endofgame()){
+        if(flag==1 && !engine.get_endofgame()){
             engine.re_run();
         }
         else{   
@@ -792,13 +685,19 @@ var MC = MC || (function() {
             flag=1;
         }
     }
+    function getErrX(){ return engine.getErrX();}
+    function getErrY(){return engine.getErrY();}
     function getPoints(){return engine.getPoints();}
     
     return {
         'init': init,
         'pause' : pause,
         're_run': re_run,
+        'getErrX': getErrX,
+        'getErrY' : getErrY,
         'getPoints' : getPoints
     };
 
 }());
+
+
