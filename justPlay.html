@@ -39,8 +39,12 @@
             <script src="JavaScript/confLevel.js"></script>
             
             <script>
+                console.log(JSON.stringify(userJSON.result));
                 if(userJSON.result=="false")
                     window.location.href = 'login.html?mex=must_log';
+                
+                if(userJSON.result.livello<10)
+                    window.location.href = 'index.html?mex=refused';
                 
                 try{
                     MC.init();

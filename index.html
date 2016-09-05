@@ -57,6 +57,9 @@
                 case "suc_logout":
                     $('#mex').html("<div class='alert alert-success fade in'><strong>Logout avvenuto!</strong></span></div>");
                     break;
+                case "refused":
+                    $('#mex').html("<div class='alert alert-danger fade in'><strong>Non hai ancora guadagnato l'accesso a quest'area!</strong></span></div>");
+                    break;
             };
             setTimeout(function(){
                $(".alert").alert('close');
