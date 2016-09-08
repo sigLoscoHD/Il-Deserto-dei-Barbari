@@ -258,6 +258,14 @@ var result; // variabile all'interno della quale andiamo a salvare il valore del
  * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
  */
 $("#save").click(function(){
+    //eliminazione pagina test.js per risolvere problema di cache
+    $.ajax({
+        url:"PHP/deleteTest.php",
+        type:"post",
+        dataType: 'text',
+        async:false,
+        success:function(){}
+    });
     // se vengono riscontrati degli errori di sintassi nell'editor, stampiamo l'errore e rimaniamo sulla pagina
     if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
         failSound.play();
