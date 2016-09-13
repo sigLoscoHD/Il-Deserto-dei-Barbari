@@ -107,7 +107,9 @@ body {
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
     background-color:#d9534f;
 }
-
+.nav>li{
+    display: block;
+}
 #mex{
     position: absolute;
     top:84%;
@@ -135,15 +137,15 @@ a:hover{
 }
 
 #level{
-    width:20%;
+    width:13%;
     position:absolute;
-    margin-left: 53%;
+    left: 66%;
     margin-top: 0.1%;
 
 }
 
 .progress{
-    width:70%;
+    width:100%;
     background-color:#cccccc;
 }
 
