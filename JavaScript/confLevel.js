@@ -119,7 +119,7 @@ if( check == "init"){
                setTimeout(function(){
                    $(".alert").alert('close');
                },3000);
-            },15000);
+            },40000);
 
     });
 }
