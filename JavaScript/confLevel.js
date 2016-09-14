@@ -487,11 +487,11 @@ function soluzione5(exp, cradius, initexp, initcrad, expSpeed, fradius,i){
         // andiamo a verificare la presenza dello switch nel codice
         var content;
         var check;
-        for(var i=609; i<620; i++){
+        for(var i=608; i<618; i++){
             content+= doc.getLine(i);
         }
         content=content.replace(/\s+/g, '');
-        check= content.search("switch");        
+        check= content.search("switch");
         if (count==100 && check == -1)
             result= true;
         else
