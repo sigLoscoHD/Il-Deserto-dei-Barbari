@@ -31,7 +31,7 @@ $.ajax({
 
 /*
  * Se check è uguale a zero non abbiamo ancora fatto save and test (caricheremo reset .js sull'editor).
- * Altrimenti abbiamo già cercato di testare una soluzione e quindi caricheremo test.js sull'editor .
+ * Altrimenti abbiamo già cercato di testare una soluzione e quindi caricheremo personale js sull'editor .
  */
 if (check=="init"||check=="crit"){
     //riprendiamo il codice di missile_command in base a quale livello ci troviamo
@@ -54,7 +54,7 @@ if (check=="init"||check=="crit"){
 }
 else {
     $.ajax({
-        url:"JavaScript/test/test.js",
+        url:"JavaScript/test/"+userJSON.result.id+".js",
         type:"get",
         async:false,
         success:function(data){
@@ -139,7 +139,7 @@ else{
 
 
 if (check == "test"){
-    $("#script").attr("src","JavaScript/test/test.js"); 
+    $("#script").attr("src","JavaScript/test/"+userJSON.result.id+".js"); 
     //in base al livello in cui ci troviamo applichiamo una soluzione...
     switch (parametro) {
         case "1":
@@ -255,17 +255,9 @@ var result; // variabile all'interno della quale andiamo a salvare il valore del
 
 /*
  * al click del pulsante "Save and Test" reindirizziamo alla pagina con il parametro "check" settato a test
- * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file test.js
+ * e andiamo a eseguire saveFile.php che scrive/sovrascrive il file personale js.
  */
 $("#save").click(function(){
-    //eliminazione pagina test.js per risolvere problema di cache
-    $.ajax({
-        url:"PHP/deleteTest.php",
-        type:"post",
-        dataType: 'text',
-        async:false,
-        success:function(){}
-    });
     // se vengono riscontrati degli errori di sintassi nell'editor, stampiamo l'errore e rimaniamo sulla pagina
     if ($(".CodeMirror-lint-mark-error").length > 0 || $(".CodeMirror-lint-marker-multiple").length >0){
         failSound.play();
