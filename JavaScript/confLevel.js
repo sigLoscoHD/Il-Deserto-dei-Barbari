@@ -1,6 +1,9 @@
 /* 
 * In questo file configuriamo l'editor ed il gioco a seconda del livello a cui si trova l'utente.
 */
+$.ajaxSetup({
+    cache: false
+});
 
 var parametro=getUrlParameter("id"); // questo parametro ci indica a quale livello facciamo riferimento
 var check=getUrlParameter("check"); //parametro che determina se ho cliccato save and test o meno
@@ -11,6 +14,7 @@ var config; //riprende il file config.json di configurazione dei livelli
 var audio = new Audio('audio/ring.mp3');
 var audioUnlock= new Audio("audio/unlock.mp3");
 var failSound= new Audio("audio/fail.mp3");
+
 
 if(parseInt(parametro)>parseInt(userJSON.result.livello))
     window.location.href = 'level.html?id='+userJSON.result.livello+'&check=init';
@@ -137,9 +141,8 @@ else{
  */
 
 
-
 if (check == "test"){
-    $("#script").attr("src","JavaScript/test/"+userJSON.result.id+".js"); 
+    $("#script").attr("src","JavaScript/test/"+userJSON.result.id+".js?"+Math.random()); 
     //in base al livello in cui ci troviamo applichiamo una soluzione...
     switch (parametro) {
         case "1":
